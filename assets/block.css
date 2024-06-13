@@ -1,0 +1,40 @@
+.example-woocommerce-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.example-woocommerce-block .myProduct {
+    width: 29%;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+}
+
+.example-woocommerce-block .myProduct img {
+    width: 100%;
+    height: auto;
+}
+
+.example-woocommerce-block .myProduct h2 {
+    font-size: 16px;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+.example-woocommerce-block .myProduct a {
+    text-decoration: none;
+}
+
+.example-woocommerce-block .myProduct .price {
+    font-size: 14px;
+    color: #888;
+}
+
+.example-woocommerce-block .myProduct .add-to-cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
