@@ -77,7 +77,7 @@ function fetch_product_prices($attributes) {
   // Fetch products using WP_Query or WooCommerce functions
   $args = array(
       'post_type' => 'product',
-      'posts_per_page' => $attributes['postPerPage'],
+      'posts_per_page' => 6,
       'orderby' => 'date',
       'order' => 'DESC'
   );

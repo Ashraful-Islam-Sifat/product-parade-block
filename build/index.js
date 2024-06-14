@@ -36,6 +36,7 @@ function Edit({
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
   const [products, setProducts] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
+  console.log(products);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     // Fetch product prices via AJAX
     fetch(exampleWooCommerceBlock.ajax_url, {
@@ -59,6 +60,38 @@ function Edit({
       setLoading(false);
     });
   }, []);
+
+  // return (
+  //     <div {...blockProps}>
+  //         <InspectorControls>
+  //             <p>Settings can go here</p>
+  //         </InspectorControls>
+  //         <div className='example-woocommerce-block'>
+  //             {products.map((product) => {
+  //                 const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
+  //                 let price = 'N/A';
+
+  //                 // Check if price is available in meta data
+  //                 if (product.meta_data) {
+  //                     const priceMeta = product.meta_data.find(meta => meta.key === '_price');
+  //                     if (priceMeta) {
+  //                         price = priceMeta.value;
+  //                     }
+  //                 }
+
+  //                 return (
+  //                     <div key={product.id} className="myProduct">
+  //                             {featuredMedia && <img src={featuredMedia.source_url} alt={product.title.rendered} />}
+  //                             <h2>{product.title.rendered}</h2>
+  //                         <span className="price">{price}</span>
+  //                         <button className='add_to_cart_button wp-element-button '>Add to cart</button>
+  //                     </div>
+  //                 );
+  //             })}
+  //         </div>
+  //     </div>
+  // );
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

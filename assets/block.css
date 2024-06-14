@@ -26,6 +26,7 @@
 
 .example-woocommerce-block .myProduct a {
     text-decoration: none;
+    outline: none;
 }
 
 .example-woocommerce-block .myProduct .price {
