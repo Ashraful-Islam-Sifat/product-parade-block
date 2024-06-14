@@ -1,7 +1,7 @@
 .example-woocommerce-block {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 0;
 }
 
@@ -37,4 +37,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.example-woocommerce-block .myProduct .add-to-cart .add_to_cart_button{
+    outline: none;
+    width: 100px;
+}
+
+.example-woocommerce-block .myProduct .add-to-cart .added_to_cart{
+    margin: 0;
+    padding: 0;
+    text-decoration: underline;
 }

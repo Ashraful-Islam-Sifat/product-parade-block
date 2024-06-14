@@ -20,7 +20,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+
 
 
 
@@ -31,48 +34,50 @@ function Edit({
   setAttributes
 }) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
-  const products = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
-    return select('core').getEntityRecords('postType', 'product', {
-      per_page: -1,
-      order: 'desc',
-      orderby: 'date',
-      _embed: true,
-      context: 'view'
+  const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
+  const [products, setProducts] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+    // Fetch product prices via AJAX
+    fetch(exampleWooCommerceBlock.ajax_url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      body: `action=fetch_product_prices&nonce=${exampleWooCommerceBlock.nonce}`
+    }).then(response => response.json()).then(data => {
+      if (data.success) {
+        setProducts(data.data);
+        setAttributes({
+          productPrices: data.data
+        });
+      } else {
+        console.error('Failed to fetch product prices');
+      }
+      setLoading(false);
+    }).catch(error => {
+      console.error('Error fetching product prices:', error);
+      setLoading(false);
     });
   }, []);
-  if (!products) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Loading products...', 'example-woocommerce-block'));
-  }
-  if (products.length === 0) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('No products found', 'example-woocommerce-block'));
-  }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Settings can go here")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "example-woocommerce-block"
-  }, products.map(product => {
-    const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
-    let price = 'N/A';
-
-    // Check if price is available in meta data
-    if (product.meta_data) {
-      const priceMeta = product.meta_data.find(meta => meta.key === '_price');
-      if (priceMeta) {
-        price = priceMeta.value;
-      }
+  }, loading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Loading...") : products.length > 0 ? products.map(product => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: product.id,
+    className: "myProduct"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    dangerouslySetInnerHTML: {
+      __html: product.thumbnail
     }
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      key: product.id,
-      className: "myProduct"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      href: product.link
-    }, featuredMedia && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: featuredMedia.source_url,
-      alt: product.title.rendered
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, product.title.rendered)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "price"
-    }, price));
-  })));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, product.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "price",
+    dangerouslySetInnerHTML: {
+      __html: product.price
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "add_to_cart_button wp-element-button "
+  }, "Add to cart"))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No products found")));
 }
 ;
 
@@ -190,6 +195,16 @@ module.exports = window["wp"]["data"];
 
 /***/ }),
 
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -206,7 +221,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wpdev/example-woocommerce-block","version":"0.1.0","title":"Example WooCommerce Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"price":{"type":"string","default":""}},"textdomain":"example-woocommerce-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wpdev/example-woocommerce-block","version":"0.1.0","title":"Example WooCommerce Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":2}},"textdomain":"example-woocommerce-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

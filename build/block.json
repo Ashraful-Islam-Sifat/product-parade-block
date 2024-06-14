@@ -16,9 +16,13 @@
     ]
   },
   "attributes": {
-    "price": {
-      "type": "string",
-      "default": ""
+    "productPrices": {
+      "type": "array",
+      "default": []
+    },
+    "postPerPage": {
+      "type": "number",
+      "default": 2
     }
   },
   "textdomain": "example-woocommerce-block",
