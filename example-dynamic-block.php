@@ -29,7 +29,6 @@ if (!defined('ABSPATH')) {
 // Render the block on the frontend
 function example_woocommerce_block_render_callback($attributes) {
     // Fetch products using WP_Query or WooCommerce functions
-    $postPerPage = $attributes['postPerPage'];
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => $attributes['postPerPage'],
@@ -68,7 +67,6 @@ function example_woocommerce_block_render_callback($attributes) {
     wp_reset_postdata();
 
     return $content;
-    
 }
 
 // Handle AJAX request to fetch product prices
