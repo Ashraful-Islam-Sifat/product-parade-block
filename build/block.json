@@ -22,7 +22,15 @@
     },
     "postPerPage": {
       "type": "number",
-      "default": 2
+      "default": 5
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "date"
+    },
+    "order": {
+      "type": "string",
+      "default": "asc"
     }
   },
   "textdomain": "example-woocommerce-block",
