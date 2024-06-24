@@ -19,7 +19,6 @@ if (!defined('ABSPATH')) {
 
 // Render the block on the frontend
 function example_woocommerce_block_render_callback($attributes) {
-    // Fetch products using WP_Query or WooCommerce functions
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => $attributes['postPerPage'],
@@ -31,7 +30,7 @@ function example_woocommerce_block_render_callback($attributes) {
     if (!$query->have_posts()) {
         return '<p>No products found</p>';
     }
-    
+
     $content = '<div ' . get_block_wrapper_attributes() . '>';
     $content .= '<div class="example-woocommerce-block">';
 
@@ -39,7 +38,6 @@ function example_woocommerce_block_render_callback($attributes) {
         $query->the_post();
         global $product;
 
-        // Fetch the product price
         $price_html = $product->get_price_html();
 
         $content .= '<div class="myProduct">';
@@ -60,40 +58,28 @@ function example_woocommerce_block_render_callback($attributes) {
     return $content;
 }
 
-// Handle AJAX request to fetch product prices
-function fetch_product_prices() {
-    // Check nonce for security
-    check_ajax_referer('example_woocommerce_block_nonce', 'nonce');
+function fetch_product_data() {
+	$args          = array(
+		'post_type'      => 'product',
+		'posts_per_page' => -1,
+		'post_status'    => 'publish',
+	);
+	$products      = get_posts( $args );
+	$products_data = array();
 
-    // Fetch product IDs from the request
-    $product_ids = isset($_POST['product_ids']) ? explode(',', sanitize_text_field($_POST['product_ids'])) : [];
+	foreach ( $products as $product ) {
+		$product_id  = $product->ID;
+		$product_item = wc_get_product( $product_id );
 
-    if (empty($product_ids)) {
-        wp_send_json_error('No product IDs provided');
-        return;
-    }
-
-    $products = [];
-    foreach ($product_ids as $product_id) {
-        $product = wc_get_product($product_id);
-        if ($product) {
-            $products[] = [
-                'id' => $product->get_id(),
-                'price' => $product->get_price_html(),
-            ];
-        }
-    }
-
-    if (!empty($products)) {
-        wp_send_json_success($products);
-    } else {
-        wp_send_json_error('No products found');
-    }
+		$product_data[] = array(
+			'id'    => $product_id,
+			'price' => $product_item->get_price_html(),
+			'rating' => $product_item->get_average_rating(),
+			'onSale' => $product_item->is_on_sale() ? true : false,
+		);
+	}
+	return $product_data;
 }
-
-add_action('wp_ajax_fetch_product_prices', 'fetch_product_prices');
-add_action('wp_ajax_nopriv_fetch_product_prices', 'fetch_product_prices');
-
 
 function wpdev_example_woocommerce_block_block_init() {
     wp_register_style('blockCss', plugin_dir_url(__FILE__) . 'assets/block.css', [], '1.0', 'all');
@@ -112,10 +98,9 @@ function wpdev_example_woocommerce_block_block_init() {
         true
     );
 
-    // Localize script with nonce and AJAX URL
+    // Localize script with product data
     wp_localize_script('example-woocommerce-block-editor', 'exampleWooCommerceBlock', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('example_woocommerce_block_nonce')
+        'productsMeta' => fetch_product_data()
     ));
 }
 

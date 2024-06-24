@@ -136,12 +136,10 @@ function Edit({
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
-  const [products, setProducts] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
-  const [productIds, setProductIds] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
   const [activeTab, setActiveTab] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)('general');
 
   // Fetch product data using wp.data.select
-  const productData = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+  const products = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
     return select('core').getEntityRecords('postType', 'product', {
       per_page: postPerPage,
       orderby: orderBy,
@@ -149,52 +147,14 @@ function Edit({
       _embed: true
     });
   }, [postPerPage, orderBy, order]);
+  console.log(products);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    if (productData) {
-      const ids = productData.map(product => product.id);
-      setProductIds(ids);
-      const productsWithMeta = productData.map(product => {
-        const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
-        return {
-          id: product.id,
-          title: product.title.rendered,
-          thumbnail: featuredMedia ? featuredMedia.source_url : ''
-        };
-      });
-      setProducts(productsWithMeta);
+    if (products === null) {
+      setLoading(true);
+    } else {
       setLoading(false);
     }
-  }, [productData]);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    if (productIds.length > 0) {
-      // Fetch product prices via AJAX
-      fetch(exampleWooCommerceBlock.ajax_url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        },
-        body: `action=fetch_product_prices&nonce=${exampleWooCommerceBlock.nonce}&product_ids=${productIds.join(',')}`
-      }).then(response => response.json()).then(data => {
-        if (data.success) {
-          const updatedProducts = products.map(product => {
-            const productPrice = data.data.find(p => p.id === product.id);
-            return {
-              ...product,
-              price: productPrice ? productPrice.price : 'N/A'
-            };
-          });
-          setProducts(updatedProducts);
-          setAttributes({
-            productPrices: data.data
-          });
-        } else {
-          console.error('Failed to fetch product prices');
-        }
-      }).catch(error => {
-        console.error('Error fetching product prices:', error);
-      });
-    }
-  }, [productIds]);
+  }, [products]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TabPanel, {
@@ -289,20 +249,24 @@ function Edit({
     })
   }, "Descending"))), tab.name === 'styles' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, "styles")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "example-woocommerce-block"
-  }, loading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Loading...") : products.length > 0 ? products.map(product => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    key: product.id,
-    className: "myProduct"
-  }, product.thumbnail && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: product.thumbnail,
-    alt: product.title
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, product.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "price",
-    dangerouslySetInnerHTML: {
-      __html: product.price
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "add_to_cart_button wp-element-button"
-  }, "Add to cart"))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No products found")));
+  }, loading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Loading...") : products && products.length > 0 ? products.map(product => {
+    const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: product.id,
+      className: "myProduct"
+    }, featuredMedia && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: featuredMedia.source_url,
+      alt: product.title.rendered
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, product.title.rendered), exampleWooCommerceBlock.productsMeta.map((v, i) => {
+      if (v.id === product.id) {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.RawHTML, {
+          key: i
+        }, v.price ? v.price : 'Out of Stock');
+      }
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: "add_to_cart_button wp-element-button"
+    }, "Add to cart"));
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No products found")));
 }
 
 /***/ }),

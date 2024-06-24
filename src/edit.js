@@ -96,7 +96,7 @@
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, RawHTML } from '@wordpress/element';
 import './editor.scss';
 import { RangeControl, SelectControl, Button, TabPanel } from '@wordpress/components';
 
@@ -106,13 +106,10 @@ export default function Edit({ attributes, setAttributes }) {
     
     const blockProps = useBlockProps();
     const [loading, setLoading] = useState(true);
-    const [products, setProducts] = useState([]);
-    const [productIds, setProductIds] = useState([]);
     const [activeTab, setActiveTab] = useState('general');
 
-
     // Fetch product data using wp.data.select
-    const productData = useSelect((select) => {
+    const products = useSelect((select) => {
         return select('core').getEntityRecords('postType', 'product', {
             per_page: postPerPage,
             orderby: orderBy,
@@ -120,58 +117,17 @@ export default function Edit({ attributes, setAttributes }) {
             _embed: true
         });
     }, [postPerPage, orderBy, order]);
-    
+
+    console.log(products);
 
     useEffect(() => {
-        if (productData) {
-            const ids = productData.map(product => product.id);
-            setProductIds(ids);
-
-            const productsWithMeta = productData.map(product => {
-                const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
-                return {
-                    id: product.id,
-                    title: product.title.rendered,
-                    thumbnail: featuredMedia ? featuredMedia.source_url : '',
-                };
-            });
-
-            setProducts(productsWithMeta);
+        if (products === null) {
+            setLoading(true);
+        } else {
             setLoading(false);
         }
-    }, [productData]);
+    }, [products]);
 
-    useEffect(() => {
-        if (productIds.length > 0) {
-            // Fetch product prices via AJAX
-            fetch(exampleWooCommerceBlock.ajax_url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                },
-                body: `action=fetch_product_prices&nonce=${exampleWooCommerceBlock.nonce}&product_ids=${productIds.join(',')}`,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    const updatedProducts = products.map(product => {
-                        const productPrice = data.data.find(p => p.id === product.id);
-                        return {
-                            ...product,
-                            price: productPrice ? productPrice.price : 'N/A',
-                        };
-                    });
-                    setProducts(updatedProducts);
-                    setAttributes({ productPrices: data.data });
-                } else {
-                    console.error('Failed to fetch product prices');
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching product prices:', error);
-            });
-        }
-    }, [productIds]);
     return (
         <div {...blockProps}>
             <InspectorControls>
@@ -261,16 +217,6 @@ export default function Edit({ attributes, setAttributes }) {
                         { value: 'rand', label: 'Random' },
                     ] }
                 />
-
-                {/* <SelectControl
-                    label={__('Order', 'example-woocommerce-block')}
-                    value={ order }
-                    onChange={ (value)=> setAttributes({ order: value }) }
-                    options={ [
-                        { value: 'asc', label: 'Ascending' },
-                        { value: 'desc', label: 'Descending' },
-                    ] }
-                /> */}
                 
                 <div className='example-woocommerce-block-sidebar-label-text'>Order</div>
                 <div className='example-woocommerce-block-button-group'>
@@ -291,24 +237,37 @@ export default function Edit({ attributes, setAttributes }) {
                 
              
             </InspectorControls>
+            
             <div className="example-woocommerce-block">
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    products.length > 0 ? (
-                        products.map((product) => (
-                            <div key={product.id} className="myProduct">
-                                {product.thumbnail && <img src={product.thumbnail} alt={product.title} />}
-                                <h2>{product.title}</h2>
-                                <span className="price" dangerouslySetInnerHTML={{ __html: product.price }}></span>
-                                <button className='add_to_cart_button wp-element-button'>Add to cart</button>
-                            </div>
-                        ))
+                    products && products.length > 0 ? (
+                        products.map((product) => {
+                            const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
+                            return (
+                                <div key={product.id} className="myProduct">
+                                    {featuredMedia && <img src={featuredMedia.source_url} alt={product.title.rendered} />}
+                                    <h2>{product.title.rendered}</h2>
+                                    {exampleWooCommerceBlock.productsMeta.map( ( v, i) =>{
+													if( v.id === product.id){
+														return (
+															<RawHTML key={i}>
+																{v.price ? v.price : 'Out of Stock'}
+															</RawHTML>
+														);
+													}
+												})}
+                                    <button className='add_to_cart_button wp-element-button'>Add to cart</button>
+                                </div>
+                            );
+                        })
                     ) : (
                         <p>No products found</p>
                     )
                 )}
             </div>
+
         </div>
     );
 }
