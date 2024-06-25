@@ -13,6 +13,10 @@
 		"align": ["wide", "full"]
 	},
 	"attributes": {
+		"frontendCss": {
+			"type": "string",
+			"default": ""
+		},
         "productPrices": {
             "type": "array",
             "default": []
@@ -28,6 +32,12 @@
 		"order": {
 			"type": "string",
 			"default": "asc"
+		},
+		"ratingPercentage": {
+			"type": "string"
+		},
+		"ratingId": {
+			"type": "number"
 		}
     },
 	"textdomain": "example-woocommerce-block",

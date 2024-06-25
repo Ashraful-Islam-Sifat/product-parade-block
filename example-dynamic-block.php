@@ -17,7 +17,13 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-// Render the block on the frontend
+// Function to enqueue FontAwesome
+function enqueue_fontawesome() {
+    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+}
+add_action('wp_enqueue_scripts', 'enqueue_fontawesome');
+
+
 function example_woocommerce_block_render_callback($attributes) {
     $args = array(
         'post_type' => 'product',
@@ -39,6 +45,19 @@ function example_woocommerce_block_render_callback($attributes) {
         global $product;
 
         $price_html = $product->get_price_html();
+        $average_rating = $product->get_average_rating();
+        $rating_count = $product->get_rating_count();
+
+        // Generate star rating HTML using FontAwesome
+        $rating_html = '<div class="star-rating">';
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= $average_rating) {
+                $rating_html .= '<i class="fas fa-star"></i>'; // Full star
+            } else {
+                $rating_html .= '<i class="far fa-star"></i>'; // Empty star
+            }
+        }
+        $rating_html .= '</div>';
 
         $content .= '<div class="myProduct">';
         $content .= '<a href="' . get_the_permalink() . '">';
@@ -46,7 +65,8 @@ function example_woocommerce_block_render_callback($attributes) {
         $content .= '<h2>' . get_the_title() . '</h2>';
         $content .= '</a>';
         $content .= '<span class="price">' . $price_html . '</span>';
-        $content .=  do_shortcode('[add_to_cart id="' . get_the_ID() . '" show_price="false" style="" class="add-to-cart"]' );
+        $content .= $rating_html;
+        $content .= do_shortcode('[add_to_cart id="' . get_the_ID() . '" show_price="false" style="" class="add-to-cart"]');
         $content .= '</div>';
     }
 
@@ -57,6 +77,7 @@ function example_woocommerce_block_render_callback($attributes) {
 
     return $content;
 }
+
 
 function fetch_product_data() {
 	$args          = array(
@@ -86,7 +107,7 @@ function wpdev_example_woocommerce_block_block_init() {
 
     register_block_type(__DIR__ . '/build', array(
         'render_callback' => 'example_woocommerce_block_render_callback',
-        'style' => array('blockCss', 'exampleSwiperStyles')
+        'style' => array('blockCss')
     ));
 
     // Enqueue script for block editor

@@ -98,15 +98,22 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect, RawHTML } from '@wordpress/element';
 import './editor.scss';
-import { RangeControl, SelectControl, Button, TabPanel } from '@wordpress/components';
+import dynamicCss from './dynamicCss';
+import { RangeControl, SelectControl, Button, TabPanel, Icon } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
 
-    const { postPerPage, orderBy, order } = attributes;
+    const { postPerPage, orderBy, order, ratingsAverage } = attributes;
     
     const blockProps = useBlockProps();
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('general');
+
+    useEffect(()=> {
+        setAttributes({frontendCss: JSON.stringify(dynamicCss(attributes))})
+      },[attributes]);
+
+      
 
     // Fetch product data using wp.data.select
     const products = useSelect((select) => {
@@ -118,7 +125,7 @@ export default function Edit({ attributes, setAttributes }) {
         });
     }, [postPerPage, orderBy, order]);
 
-    console.log(products);
+    console.log(exampleWooCommerceBlock.productsMeta);
 
     useEffect(() => {
         if (products === null) {
@@ -237,6 +244,7 @@ export default function Edit({ attributes, setAttributes }) {
                 
              
             </InspectorControls>
+            <style>{dynamicCss(attributes)}</style>
             
             <div className="example-woocommerce-block">
                 {loading ? (
@@ -252,12 +260,31 @@ export default function Edit({ attributes, setAttributes }) {
                                     {exampleWooCommerceBlock.productsMeta.map( ( v, i) =>{
 													if( v.id === product.id){
 														return (
+                                                            <>
 															<RawHTML key={i}>
 																{v.price ? v.price : 'Out of Stock'}
 															</RawHTML>
+                                                            <div className="example-woocommerce-block-rating-area">
+                                                                <div className='empty-icons'>
+                                                                    <Icon icon={'star-empty'} />
+                                                                    <Icon icon={'star-empty'} />
+                                                                    <Icon icon={'star-empty'} />
+                                                                    <Icon icon={'star-empty'} />
+                                                                    <Icon icon={'star-empty'} />
+                                                                </div>
+                                                                <div style={{ width: `${(v.rating / 5) * 100}%` }} className="filled-icons">
+                                                                    <Icon icon={'star-filled'} />
+                                                                    <Icon icon={'star-filled'} />
+                                                                    <Icon icon={'star-filled'} />
+                                                                    <Icon icon={'star-filled'} />
+                                                                    <Icon icon={'star-filled'} />
+                                                                </div>
+                                                            </div>
+                                                            </>
 														);
 													}
 												})}
+                                    
                                     <button className='add_to_cart_button wp-element-button'>Add to cart</button>
                                 </div>
                             );

@@ -31,6 +31,17 @@
             color: #888;
         }
 
+        .example-woocommerce-block-rating-area {
+            position: relative;
+            
+            .filled-icons {
+                position: absolute;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
         .add_to_cart_button{
             margin-top: 16px;
             outline: none;

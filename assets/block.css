@@ -53,3 +53,40 @@
     padding: 0;
     text-decoration: underline;
 }
+
+.star-rating-container .star-rating {
+    display: inline-block;
+    color: #ffb400; /* Gold color for stars */
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+.star-rating-container .star-rating::before {
+    content: "\f005 \f005 \f005 \f005 \f005"; /* Unicode characters for star */
+    font-family: "FontAwesome"; /* FontAwesome for stars */
+}
+
+.star-rating-container .star-rating span {
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+.star-rating-container .star-rating span:before {
+    content: "\f005 \f005 \f005 \f005 \f005"; /* Unicode characters for star */
+    font-family: "FontAwesome"; /* FontAwesome for stars */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.star-rating {
+    color: #FFD700;
+    font-size: 1.2em; 
+    margin-bottom: 5px; 
+}
+.rating-text {
+    margin-bottom: 10px;
+}
+
