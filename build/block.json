@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Example WooCommerce Block",
   "category": "widgets",
-  "icon": "smiley",
+  "icon": "slides",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
@@ -36,11 +36,13 @@
       "type": "string",
       "default": "asc"
     },
-    "ratingPercentage": {
-      "type": "string"
+    "showOnSaleRibbon": {
+      "type": "boolean",
+      "default": true
     },
-    "ratingId": {
-      "type": "number"
+    "showAverageRatings": {
+      "type": "boolean",
+      "default": true
     }
   },
   "textdomain": "example-woocommerce-block",

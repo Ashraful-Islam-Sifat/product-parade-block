@@ -4,8 +4,8 @@ function dynamicCss(attributes) {
     const { uniqueId, itemsGap, titlleBgColor, contentBgColor, contentHoverBgColor, titleBgHover, titlleTextColor, titleTextHover, titleTextAlingment, iconPosition, iconColor, iconHoverColor, titlePadding, contentPadding, titleFontFamily } = attributes;
 
     let desktopCss = {
-        [`.example-woocommerce-block .filled-icons`]: {
-            'width': '73%',
+        [`.wp-block-wpdev-example-woocommerce-block .myProduct h2`]: {
+            'color': 'yellow',
         },
         [`.wp-block-task-block-shapedplugin-accordion .accordion__item .accordion__title`]: {
             'background-color': 'red',

@@ -100,10 +100,11 @@ import { useState, useEffect, RawHTML } from '@wordpress/element';
 import './editor.scss';
 import dynamicCss from './dynamicCss';
 import { RangeControl, SelectControl, Button, TabPanel, Icon } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
 
-    const { postPerPage, orderBy, order, ratingsAverage } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, frontendCss } = attributes;
     
     const blockProps = useBlockProps();
     const [loading, setLoading] = useState(true);
@@ -113,7 +114,6 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({frontendCss: JSON.stringify(dynamicCss(attributes))})
       },[attributes]);
 
-      
 
     // Fetch product data using wp.data.select
     const products = useSelect((select) => {
@@ -124,8 +124,6 @@ export default function Edit({ attributes, setAttributes }) {
             _embed: true
         });
     }, [postPerPage, orderBy, order]);
-
-    console.log(exampleWooCommerceBlock.productsMeta);
 
     useEffect(() => {
         if (products === null) {
@@ -230,6 +228,32 @@ export default function Edit({ attributes, setAttributes }) {
                     <Button className={`example-woocommerce-block-sidebar-button ${order == "asc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "asc"})}>Ascending</Button>
                     <Button className={`example-woocommerce-block-sidebar-button ${order == "desc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "desc"})}>Descending</Button>
                 </div>
+
+                <ToggleControl
+                    label={__('Show On Sale Ribbon')}
+                    help={
+                        showOnSaleRibbon
+                            ? 'Disable to hide on sale ribbon.'
+                            : 'Enable to show on sale ribon.'
+                    }
+                    checked={ showOnSaleRibbon }
+                    onChange={ (newValue) => {
+                        setAttributes( { showOnSaleRibbon: newValue } );
+                    } }
+                />
+
+                <ToggleControl
+                    label={__('Show Average Ratings')}
+                    help={
+                        showAverageRatings
+                            ? 'Disable to hide average ratings.'
+                            : 'Enable to show average ratings.'
+                    }
+                    checked={ showAverageRatings }
+                    onChange={ (newValue) => {
+                        setAttributes( { showAverageRatings: newValue } );
+                    } }
+                />
                       </div>
                   )}
                   {tab.name === 'styles' && (
@@ -239,14 +263,11 @@ export default function Edit({ attributes, setAttributes }) {
                   )}
               </>
           )}
-        </TabPanel>
-
-                
-             
+            </TabPanel>
+            
             </InspectorControls>
             <style>{dynamicCss(attributes)}</style>
             
-            <div className="example-woocommerce-block">
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
@@ -256,35 +277,45 @@ export default function Edit({ attributes, setAttributes }) {
                             return (
                                 <div key={product.id} className="myProduct">
                                     {featuredMedia && <img src={featuredMedia.source_url} alt={product.title.rendered} />}
-                                    <h2>{product.title.rendered}</h2>
+                                    <h2 className='product-name'>{product.title.rendered}</h2>
                                     {exampleWooCommerceBlock.productsMeta.map( ( v, i) =>{
 													if( v.id === product.id){
+
 														return (
                                                             <>
-															<RawHTML key={i}>
-																{v.price ? v.price : 'Out of Stock'}
-															</RawHTML>
+                                                            <span className='price' dangerouslySetInnerHTML={{ __html: v.price }}></span>
+															{showAverageRatings &&
+                                                            (
+                                                            <>
                                                             <div className="example-woocommerce-block-rating-area">
                                                                 <div className='empty-icons'>
-                                                                    <Icon icon={'star-empty'} />
-                                                                    <Icon icon={'star-empty'} />
-                                                                    <Icon icon={'star-empty'} />
-                                                                    <Icon icon={'star-empty'} />
-                                                                    <Icon icon={'star-empty'} />
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
                                                                 </div>
                                                                 <div style={{ width: `${(v.rating / 5) * 100}%` }} className="filled-icons">
-                                                                    <Icon icon={'star-filled'} />
-                                                                    <Icon icon={'star-filled'} />
-                                                                    <Icon icon={'star-filled'} />
-                                                                    <Icon icon={'star-filled'} />
-                                                                    <Icon icon={'star-filled'} />
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
                                                                 </div>
                                                             </div>
+                                                            </>
+                                                            )}
+                                                            {/* {v.add_to_cart} */}
+                                                            {(v.onSale && showOnSaleRibbon) && (
+                                                                <div className='on-sale-label'>
+                                                                    On Sale!
+                                                                </div>
+                                                            )}
                                                             </>
 														);
 													}
 												})}
-                                    
+                                    {/* The button will be dynamic */}
                                     <button className='add_to_cart_button wp-element-button'>Add to cart</button>
                                 </div>
                             );
@@ -293,7 +324,6 @@ export default function Edit({ attributes, setAttributes }) {
                         <p>No products found</p>
                     )
                 )}
-            </div>
 
         </div>
     );

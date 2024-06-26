@@ -23,7 +23,6 @@ function enqueue_fontawesome() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_fontawesome');
 
-
 function example_woocommerce_block_render_callback($attributes) {
     $args = array(
         'post_type' => 'product',
@@ -37,8 +36,10 @@ function example_woocommerce_block_render_callback($attributes) {
         return '<p>No products found</p>';
     }
 
+    $cssString = str_replace('"', '', $attributes['frontendCss']);
+
     $content = '<div ' . get_block_wrapper_attributes() . '>';
-    $content .= '<div class="example-woocommerce-block">';
+    $content .= '<style>'.$cssString.'</style>';
 
     while ($query->have_posts()) {
         $query->the_post();
@@ -46,27 +47,38 @@ function example_woocommerce_block_render_callback($attributes) {
 
         $price_html = $product->get_price_html();
         $average_rating = $product->get_average_rating();
-        $rating_count = $product->get_rating_count();
-
-        // Generate star rating HTML using FontAwesome
-        $rating_html = '<div class="star-rating">';
-        for ($i = 1; $i <= 5; $i++) {
-            if ($i <= $average_rating) {
-                $rating_html .= '<i class="fas fa-star"></i>'; // Full star
-            } else {
-                $rating_html .= '<i class="far fa-star"></i>'; // Empty star
-            }
-        }
-        $rating_html .= '</div>';
+        $add_to_cart = do_shortcode('[add_to_cart id="' . get_the_ID() . '" show_price="false" style="" class="add-to-cart"]');
+        $on_sale = $product->is_on_sale();
 
         $content .= '<div class="myProduct">';
+        if ( $on_sale && $attributes['showOnSaleRibbon'] ) {
+            $content .= '<div class="on-sale-label"> On Sale </div>';
+        }
+
         $content .= '<a href="' . get_the_permalink() . '">';
         $content .= woocommerce_get_product_thumbnail();
         $content .= '<h2>' . get_the_title() . '</h2>';
         $content .= '</a>';
         $content .= '<span class="price">' . $price_html . '</span>';
-        $content .= $rating_html;
-        $content .= do_shortcode('[add_to_cart id="' . get_the_ID() . '" show_price="false" style="" class="add-to-cart"]');
+        if ( $attributes['showAverageRatings'] ){
+            $content .= '<div class="example-woocommerce-block-rating-area">
+                            <div class="empty-icons">
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div style="width: ' . (($average_rating / 5) * 100) . '%;" class="filled-icons">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                         </div>';
+        }
+        $content .= $add_to_cart;
         $content .= '</div>';
     }
 
@@ -78,29 +90,36 @@ function example_woocommerce_block_render_callback($attributes) {
     return $content;
 }
 
-
 function fetch_product_data() {
-	$args          = array(
-		'post_type'      => 'product',
-		'posts_per_page' => -1,
-		'post_status'    => 'publish',
-	);
-	$products      = get_posts( $args );
-	$products_data = array();
+    $args = array(
+        'post_type'      => 'product',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    );
+    $products = get_posts($args);
+    $products_data = array();
 
-	foreach ( $products as $product ) {
-		$product_id  = $product->ID;
-		$product_item = wc_get_product( $product_id );
+    foreach ($products as $product) {
+        $product_id  = $product->ID;
+        $product_item = wc_get_product($product_id);
 
-		$product_data[] = array(
-			'id'    => $product_id,
-			'price' => $product_item->get_price_html(),
-			'rating' => $product_item->get_average_rating(),
-			'onSale' => $product_item->is_on_sale() ? true : false,
-		);
-	}
-	return $product_data;
+        // Process the shortcode to get the button HTML
+        $add_to_cart_html = do_shortcode('[add_to_cart id="' . $product_id . '" show_price="false" style="" class="add-to-cart"]');
+
+        // Collect product data into an array
+        $products_data[] = array(
+            'id'          => $product_id,
+            'price'       => $product_item->get_price_html(),
+            'rating'      => $product_item->get_average_rating(),
+            'onSale'      => $product_item->is_on_sale() ? true : false,
+            'add_to_cart' => $add_to_cart_html
+        );
+    }
+
+    return $products_data;
 }
+
+
 
 function wpdev_example_woocommerce_block_block_init() {
     wp_register_style('blockCss', plugin_dir_url(__FILE__) . 'assets/block.css', [], '1.0', 'all');
