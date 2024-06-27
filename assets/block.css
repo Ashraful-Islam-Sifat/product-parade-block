@@ -1,11 +1,11 @@
-.wp-block-wpdev-example-woocommerce-block {
+.wp-block-wpdev-product-parade-block {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 0;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct {
+.wp-block-wpdev-product-parade-block .myProduct {
     position: relative;
     overflow: hidden;
     width: 300px;
@@ -19,28 +19,28 @@
     padding: 10px;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct img {
+.wp-block-wpdev-product-parade-block .myProduct img {
     width: 100%;
     height: auto;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct h2 {
+.wp-block-wpdev-product-parade-block .myProduct h2 {
     font-size: 16px;
     margin: 10px 0;
     text-decoration: none;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct a {
+.wp-block-wpdev-product-parade-block .myProduct a {
     text-decoration: none;
     outline: none;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct .price {
+.wp-block-wpdev-product-parade-block .myProduct .price {
     font-size: 14px;
     color: #888;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct .add-to-cart{
+.wp-block-wpdev-product-parade-block .myProduct .add-to-cart{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +49,7 @@
     margin-bottom: 0;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct .on-sale-label{
+.wp-block-wpdev-product-parade-block .myProduct .on-sale-label{
     position: absolute;
     color: #fff;
     background-color: rgb(0, 128, 68);
@@ -63,12 +63,12 @@
     0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct .add-to-cart .add_to_cart_button{
+.wp-block-wpdev-product-parade-block .myProduct .add-to-cart .add_to_cart_button{
     outline: none;
     width: 100px;
 }
 
-.wp-block-wpdev-example-woocommerce-block .myProduct .add-to-cart .added_to_cart{
+.wp-block-wpdev-product-parade-block .myProduct .add-to-cart .added_to_cart{
     margin: 0;
     padding: 0;
     text-decoration: underline;
@@ -76,22 +76,22 @@
 
 
 
-.example-woocommerce-block-rating-area {
+.product-parade-block-rating-area {
     position: relative;
     width: fit-content;
 }
 
-.example-woocommerce-block-rating-area .filled-icons{
+.product-parade-block-rating-area .filled-icons{
     color: rgb(120, 102, 1);
     display: flex;
 }
 
-.example-woocommerce-block-rating-area .empty-icons{
+.product-parade-block-rating-area .empty-icons{
     color: #888;
     display: flex;
 }
 
-.example-woocommerce-block-rating-area .filled-icons {
+.product-parade-block-rating-area .filled-icons {
     position: absolute;
     top: 0;
     left: 0;

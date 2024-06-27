@@ -1,13 +1,46 @@
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
   \****************************************************************************************************************************************************************************************************************************************/
-.wp-block-wpdev-example-woocommerce-block .add_to_cart_button {
+.wp-block-wpdev-product-parade-block .add_to_cart_button {
   margin-top: 16px;
   outline: none;
   width: 132px;
 }
 
-.example-woocommerce-block-tab-panel > .components-tab-panel__tabs .components-button {
+.product-parade-block-tab-panel .product-parade-block-layouts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.product-parade-block-tab-panel .product-parade-block-layouts > .product-parade-block-layout > .product-parade-block-layout-icon-area {
+  border: 2px solid rgb(139, 143, 143);
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+.product-parade-block-tab-panel .product-parade-block-layouts > .product-parade-block-layout > .product-parade-block-layout-icon-area img {
+  width: 80px;
+}
+.product-parade-block-tab-panel .product-parade-block-layouts > .product-parade-block-layout > .product-parade-block-layout-icon-area .layout-yes-icon {
+  color: rgb(1, 56, 14);
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.product-parade-block-tab-panel .product-parade-block-layouts > .product-parade-block-layout > .product-parade-block-layout-icon-area:hover {
+  border: 2px solid rgb(1, 56, 14);
+}
+.product-parade-block-tab-panel .product-parade-block-layouts > .product-parade-block-layout .layout-label {
+  text-align: center;
+  color: rgb(0, 47, 47);
+  font-weight: 500;
+}
+.product-parade-block-tab-panel > .components-tab-panel__tabs .components-button {
   background-color: #e8e8e8;
   color: #000000;
   border-bottom: 2px solid rgb(25, 0, 79);
@@ -16,24 +49,27 @@
   align-items: center;
   width: 50%;
 }
-.example-woocommerce-block-tab-panel > .components-tab-panel__tabs .components-button .example-woocommerce-block-tab-panel-title {
+.product-parade-block-tab-panel > .components-tab-panel__tabs .components-button .product-parade-block-tab-panel-title {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
 }
-.example-woocommerce-block-tab-panel > .components-tab-panel__tabs .components-button.example-woocommerce-block-active-tab {
+.product-parade-block-tab-panel > .components-tab-panel__tabs .components-button.product-parade-block-active-tab {
   background-color: rgb(1, 56, 14);
   color: white;
 }
-.example-woocommerce-block-tab-panel .example-woocommerce-block-tabs-content {
+.product-parade-block-tab-panel .product-parade-block-tabs-content {
   padding: 20px;
 }
-.example-woocommerce-block-tab-panel .components-panel__body .components-button:focus {
+.product-parade-block-tab-panel .components-panel__body .components-button:focus {
   outline: none;
   box-shadow: none;
 }
-.example-woocommerce-block-tab-panel .example-woocommerce-block-button-group {
+.product-parade-block-tab-panel .components-form-toggle:focus {
+  outline: none;
+}
+.product-parade-block-tab-panel .product-parade-block-button-group {
   background-color: #f3f3f3;
   padding: 10px;
   display: flex;
@@ -42,7 +78,7 @@
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.example-woocommerce-block-tab-panel .example-woocommerce-block-button-group > .example-woocommerce-block-sidebar-button {
+.product-parade-block-tab-panel .product-parade-block-button-group > .product-parade-block-sidebar-button {
   color: rgb(1, 56, 14);
   font-weight: 500;
   text-align: center;
@@ -53,16 +89,16 @@
   border-radius: 0px;
   outline: none;
 }
-.example-woocommerce-block-tab-panel .example-woocommerce-block-button-group > .example-woocommerce-block-sidebar-button.active-button {
+.product-parade-block-tab-panel .product-parade-block-button-group > .product-parade-block-sidebar-button.active-button {
   background-color: rgb(1, 56, 14);
   color: #fff;
   outline: none;
 }
-.example-woocommerce-block-tab-panel .example-woocommerce-block-button-group .components-button:focus {
+.product-parade-block-tab-panel .product-parade-block-button-group .components-button:focus {
   outline: none;
   box-shadow: none;
 }
-.example-woocommerce-block-tab-panel .example-woocommerce-block-sidebar-label-text {
+.product-parade-block-tab-panel .product-parade-block-sidebar-label-text {
   font-size: 13px;
   color: #444444;
   font-weight: 500;

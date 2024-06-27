@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "wpdev/example-woocommerce-block",
+  "name": "wpdev/product-parade-block",
   "version": "0.1.0",
-  "title": "Example WooCommerce Block",
+  "title": "Product Parade Block",
   "category": "widgets",
   "icon": "slides",
   "description": "Example block scaffolded with Create Block tool.",
@@ -45,7 +45,7 @@
       "default": true
     }
   },
-  "textdomain": "example-woocommerce-block",
+  "textdomain": "product-parade-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",

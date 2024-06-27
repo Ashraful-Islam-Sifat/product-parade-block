@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Example WooCommerce Block
+ * Plugin Name:       Product Parade Block
  * Description:       Example block scaffolded with Create Block tool.
  * Requires at least: 6.1
  * Requires PHP:      7.0
@@ -8,7 +8,7 @@
  * Author:            Sifat
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       example-woocommerce-block
+ * Text Domain:       product-parade-block
  *
  * @package Wpdev
  */
@@ -23,7 +23,7 @@ function enqueue_fontawesome() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_fontawesome');
 
-function example_woocommerce_block_render_callback($attributes) {
+function product_parade_block_render_callback($attributes) {
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => $attributes['postPerPage'],
@@ -61,7 +61,7 @@ function example_woocommerce_block_render_callback($attributes) {
         $content .= '</a>';
         $content .= '<span class="price">' . $price_html . '</span>';
         if ( $attributes['showAverageRatings'] ){
-            $content .= '<div class="example-woocommerce-block-rating-area">
+            $content .= '<div class="product-parade-block-rating-area">
                             <div class="empty-icons">
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
@@ -121,17 +121,17 @@ function fetch_product_data() {
 
 
 
-function wpdev_example_woocommerce_block_block_init() {
+function wpdev_product_parade_block_block_init() {
     wp_register_style('blockCss', plugin_dir_url(__FILE__) . 'assets/block.css', [], '1.0', 'all');
 
     register_block_type(__DIR__ . '/build', array(
-        'render_callback' => 'example_woocommerce_block_render_callback',
+        'render_callback' => 'product_parade_block_render_callback',
         'style' => array('blockCss')
     ));
 
     // Enqueue script for block editor
     wp_enqueue_script(
-        'example-woocommerce-block-editor',
+        'product-parade-block-editor',
         plugins_url('build/index.js', __FILE__),
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(plugin_dir_path(__FILE__) . 'build/index.js'),
@@ -139,9 +139,9 @@ function wpdev_example_woocommerce_block_block_init() {
     );
 
     // Localize script with product data
-    wp_localize_script('example-woocommerce-block-editor', 'exampleWooCommerceBlock', array(
+    wp_localize_script('product-parade-block-editor', 'exampleWooCommerceBlock', array(
         'productsMeta' => fetch_product_data()
     ));
 }
 
-add_action('init', 'wpdev_example_woocommerce_block_block_init');
+add_action('init', 'wpdev_product_parade_block_block_init');
