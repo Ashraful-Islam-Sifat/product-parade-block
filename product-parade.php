@@ -39,7 +39,7 @@ function product_parade_block_render_callback($attributes) {
     $cssString = str_replace('"', '', $attributes['frontendCss']);
 
     $content = '<div ' . get_block_wrapper_attributes() . '>';
-    $content .= '<style>'.$cssString.'</style>';
+    $content .= '<style>' . $cssString . '</style>';
 
     while ($query->have_posts()) {
         $query->the_post();
@@ -50,17 +50,20 @@ function product_parade_block_render_callback($attributes) {
         $add_to_cart = do_shortcode('[add_to_cart id="' . get_the_ID() . '" show_price="false" style="" class="add-to-cart"]');
         $on_sale = $product->is_on_sale();
 
-        $content .= '<div class="myProduct">';
-        if ( $on_sale && $attributes['showOnSaleRibbon'] ) {
+        $content .= '<div class="ppb-product content-position-'.$attributes['contentPosition'].'">';
+        if ($on_sale && $attributes['showOnSaleRibbon']) {
             $content .= '<div class="on-sale-label"> On Sale </div>';
         }
 
         $content .= '<a href="' . get_the_permalink() . '">';
         $content .= woocommerce_get_product_thumbnail();
+        $content .= '</a>';
+        $content .= '<div class="product-contents">';
+        $content .= '<a href="' . get_the_permalink() . '">';
         $content .= '<h2>' . get_the_title() . '</h2>';
         $content .= '</a>';
         $content .= '<span class="price">' . $price_html . '</span>';
-        if ( $attributes['showAverageRatings'] ){
+        if ($attributes['showAverageRatings']) {
             $content .= '<div class="product-parade-block-rating-area">
                             <div class="empty-icons">
                                 <i class="far fa-star"></i>
@@ -79,16 +82,16 @@ function product_parade_block_render_callback($attributes) {
                          </div>';
         }
         $content .= $add_to_cart;
-        $content .= '</div>';
+        $content .= '</div>'; // Closing product-contents div
+        $content .= '</div>'; // Closing ppb-product div
     }
-
-    $content .= '</div>';
-    $content .= '</div>';
+    $content .= '</div>'; // Closing the main div
 
     wp_reset_postdata();
 
     return $content;
 }
+
 
 function fetch_product_data() {
     $args = array(

@@ -1,5 +1,4 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "wpdev/product-parade-block",
 	"version": "0.1.0",
@@ -40,6 +39,16 @@
 		"showAverageRatings": {
 			"type": "boolean",
 			"default": true
+		},
+		"contentPosition":{
+			"type": "string",
+			"default": "bottom"
+		},
+		"categories": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
 		}
     },
 	"textdomain": "product-parade-block",

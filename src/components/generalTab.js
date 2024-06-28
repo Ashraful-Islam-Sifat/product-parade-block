@@ -8,43 +8,44 @@ import { useState } from '@wordpress/element';
 
 const GeneralTab = ({attributes, setAttributes}) => {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition } = attributes;
 
     const [ activeLayout, setActiveLayout ] = useState('bottom');
+    console.log(contentPosition);
 
     return (
         <>
             <PanelBody title={__('Product Content Position', 'product-parade-block')}>
                 <div className='product-parade-block-layouts'>
 
-                    <div className='product-parade-block-layout' onClick={ ()=> setActiveLayout('bottom') }>
-                        <figure className='product-parade-block-layout-icon-area'>
+                    <div className='product-parade-block-layout' onClick={ ()=> setAttributes({contentPosition: "bottom"}) }>
+                    <figure className={`product-parade-block-layout-icon-area ${contentPosition == 'bottom' ? 'active' : ''}`}>
                             <img src={contentBottomIcon} alt={__('content-top', 'product-parade-block')}/>
-                            { activeLayout == 'bottom' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
+                            { contentPosition == 'bottom' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
                         </figure>
                         <p className='layout-label'>Bottom</p>
                     </div>
 
-                    <div className='product-parade-block-layout' onClick={ ()=> setActiveLayout('top') }>
-                        <figure className='product-parade-block-layout-icon-area'>
+                    <div className='product-parade-block-layout' onClick={ ()=> setAttributes({ contentPosition: 'top' }) }>
+                        <figure className={`product-parade-block-layout-icon-area ${contentPosition == 'top' ? 'active' : ''}`}>
                             <img src={contentTopIcon} alt={__('content-top', 'product-parade-block')}/>
-                            { activeLayout == 'top' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
+                            { contentPosition == 'top' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
                         </figure>
                         <p className='layout-label'>Top</p>
                     </div>
 
-                    <div className='product-parade-block-layout' onClick={ ()=> setActiveLayout('left') }>
-                        <figure className='product-parade-block-layout-icon-area'>
+                    <div className='product-parade-block-layout' onClick={ ()=> setAttributes({contentPosition: "left"}) }>
+                        <figure className={`product-parade-block-layout-icon-area ${contentPosition == 'left' ? 'active' : ''}`}>
                             <img src={contentLeftIcon} alt={__('content-left', 'product-parade-block')}/>
-                            { activeLayout == 'left' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
+                            { contentPosition == 'left' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
                         </figure>
                         <p className='layout-label'>Left</p>
                     </div>
 
-                    <div className='product-parade-block-layout' onClick={ ()=> setActiveLayout('right') }>
-                        <figure className='product-parade-block-layout-icon-area'>
+                    <div className='product-parade-block-layout' onClick={ ()=> setAttributes({contentPosition: "right"}) }>
+                    <figure className={`product-parade-block-layout-icon-area ${contentPosition == 'right' ? 'active' : ''}`}>
                             <img src={contentRightIcon} alt={__('content-right', 'product-parade-block')}/>
-                            { activeLayout == 'right' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
+                            { contentPosition == 'right' && <Icon className='layout-yes-icon' icon='yes-alt'/>}
                         </figure>
                         <p className='layout-label'>Right</p>
                     </div>

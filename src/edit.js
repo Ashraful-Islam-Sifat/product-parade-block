@@ -8,7 +8,7 @@ import TabsContent from './components/tabsContents';
 
 export default function Edit({ attributes, setAttributes }) {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, frontendCss } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition } = attributes;
     
     const blockProps = useBlockProps();
     const [loading, setLoading] = useState(true);
@@ -49,47 +49,49 @@ export default function Edit({ attributes, setAttributes }) {
                         products.map((product) => {
                             const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
                             return (
-                                <div key={product.id} className="myProduct">
+                                <div key={product.id} className={`ppb-product content-position-${contentPosition}`}>
                                     {featuredMedia && <img src={featuredMedia.source_url} alt={product.title.rendered} />}
-                                    <h2 className='product-name'>{product.title.rendered}</h2>
-                                    {exampleWooCommerceBlock.productsMeta.map( ( v, i) =>{
-													if( v.id === product.id){
-														return (
-                                                            <>
-                                                            <span className='price' dangerouslySetInnerHTML={{ __html: v.price }}></span>
-															{showAverageRatings &&
-                                                            (
-                                                            <>
-                                                            <div className="product-parade-block-rating-area">
-                                                                <div className='empty-icons'>
-                                                                    <i class="far fa-star"></i>
-                                                                    <i class="far fa-star"></i>
-                                                                    <i class="far fa-star"></i>
-                                                                    <i class="far fa-star"></i>
-                                                                    <i class="far fa-star"></i>
+                                    <div className='product-contents'>
+                                        <h2 className='product-name'>{product.title.rendered}</h2>
+                                        {exampleWooCommerceBlock.productsMeta.map( ( v, i) =>{
+									    				if( v.id === product.id){
+									    					return (
+                                                                <>
+                                                                <span className='price' dangerouslySetInnerHTML={{ __html: v.price }}></span>
+									    						{showAverageRatings &&
+                                                                (
+                                                                <>
+                                                                <div className="product-parade-block-rating-area">
+                                                                    <div className='empty-icons'>
+                                                                        <i class="far fa-star"></i>
+                                                                        <i class="far fa-star"></i>
+                                                                        <i class="far fa-star"></i>
+                                                                        <i class="far fa-star"></i>
+                                                                        <i class="far fa-star"></i>
+                                                                    </div>
+                                                                    <div style={{ width: `${(v.rating / 5) * 100}%` }} className="filled-icons">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                    </div>
                                                                 </div>
-                                                                <div style={{ width: `${(v.rating / 5) * 100}%` }} className="filled-icons">
-                                                                    <i class="fas fa-star"></i>
-                                                                    <i class="fas fa-star"></i>
-                                                                    <i class="fas fa-star"></i>
-                                                                    <i class="fas fa-star"></i>
-                                                                    <i class="fas fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                            </>
-                                                            )}
-                                                            {/* {v.add_to_cart} */}
-                                                            {(v.onSale && showOnSaleRibbon) && (
-                                                                <div className='on-sale-label'>
-                                                                    On Sale!
-                                                                </div>
-                                                            )}
-                                                            </>
-														);
-													}
-												})}
-                                    {/* The button will be dynamic */}
-                                    <button className='add_to_cart_button wp-element-button'>Add to cart</button>
+                                                                </>
+                                                                )}
+                                                                {/* {v.add_to_cart} */}
+                                                                {(v.onSale && showOnSaleRibbon) && (
+                                                                    <div className='on-sale-label'>
+                                                                        On Sale!
+                                                                    </div>
+                                                                )}
+                                                                </>
+									    					);
+									    				}
+									    			})}
+                                        {/* The button will be dynamic */}
+                                        <button className='add_to_cart_button wp-element-button'>Add to cart</button>
+                                    </div>
                                 </div>
                             );
                         })

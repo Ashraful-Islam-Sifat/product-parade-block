@@ -5,7 +5,7 @@ function dynamicCss(attributes) {
 
     let desktopCss = {
         [`.wp-block-wpdev-product-parade-block .myProduct h2`]: {
-            'color': '#ddd',
+            'color': '#000',
         },
         [`.wp-block-task-block-shapedplugin-accordion .accordion__item .accordion__title`]: {
             'background-color': 'red',

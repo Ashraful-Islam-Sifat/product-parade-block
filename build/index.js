@@ -220,61 +220,71 @@ const GeneralTab = ({
     orderBy,
     order,
     showOnSaleRibbon,
-    showAverageRatings
+    showAverageRatings,
+    contentPosition
   } = attributes;
   const [activeLayout, setActiveLayout] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_7__.useState)('bottom');
+  console.log(contentPosition);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Product Content Position', 'product-parade-block')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-layouts"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-layout",
-    onClick: () => setActiveLayout('bottom')
+    onClick: () => setAttributes({
+      contentPosition: "bottom"
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
-    className: "product-parade-block-layout-icon-area"
+    className: `product-parade-block-layout-icon-area ${contentPosition == 'bottom' ? 'active' : ''}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: _Icons_contentBottom_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
     alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('content-top', 'product-parade-block')
-  }), activeLayout == 'bottom' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+  }), contentPosition == 'bottom' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
     className: "layout-yes-icon",
     icon: "yes-alt"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "layout-label"
   }, "Bottom")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-layout",
-    onClick: () => setActiveLayout('top')
+    onClick: () => setAttributes({
+      contentPosition: 'top'
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
-    className: "product-parade-block-layout-icon-area"
+    className: `product-parade-block-layout-icon-area ${contentPosition == 'top' ? 'active' : ''}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: _Icons_contentTop_svg__WEBPACK_IMPORTED_MODULE_4__["default"],
     alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('content-top', 'product-parade-block')
-  }), activeLayout == 'top' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+  }), contentPosition == 'top' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
     className: "layout-yes-icon",
     icon: "yes-alt"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "layout-label"
   }, "Top")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-layout",
-    onClick: () => setActiveLayout('left')
+    onClick: () => setAttributes({
+      contentPosition: "left"
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
-    className: "product-parade-block-layout-icon-area"
+    className: `product-parade-block-layout-icon-area ${contentPosition == 'left' ? 'active' : ''}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: _Icons_contentLeft_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
     alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('content-left', 'product-parade-block')
-  }), activeLayout == 'left' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+  }), contentPosition == 'left' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
     className: "layout-yes-icon",
     icon: "yes-alt"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "layout-label"
   }, "Left")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-layout",
-    onClick: () => setActiveLayout('right')
+    onClick: () => setAttributes({
+      contentPosition: "right"
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
-    className: "product-parade-block-layout-icon-area"
+    className: `product-parade-block-layout-icon-area ${contentPosition == 'right' ? 'active' : ''}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: _Icons_contentRight_svg__WEBPACK_IMPORTED_MODULE_6__["default"],
     alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('content-right', 'product-parade-block')
-  }), activeLayout == 'right' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+  }), contentPosition == 'right' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
     className: "layout-yes-icon",
     icon: "yes-alt"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
@@ -517,7 +527,7 @@ function dynamicCss(attributes) {
   } = attributes;
   let desktopCss = {
     [`.wp-block-wpdev-product-parade-block .myProduct h2`]: {
-      'color': '#ddd'
+      'color': '#000'
     },
     [`.wp-block-task-block-shapedplugin-accordion .accordion__item .accordion__title`]: {
       'background-color': 'red',
@@ -574,7 +584,7 @@ function Edit({
     order,
     showOnSaleRibbon,
     showAverageRatings,
-    frontendCss
+    contentPosition
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
@@ -609,11 +619,13 @@ function Edit({
     const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       key: product.id,
-      className: "myProduct"
+      className: `ppb-product content-position-${contentPosition}`
     }, featuredMedia && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: featuredMedia.source_url,
       alt: product.title.rendered
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "product-contents"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
       className: "product-name"
     }, product.title.rendered), exampleWooCommerceBlock.productsMeta.map((v, i) => {
       if (v.id === product.id) {
@@ -657,7 +669,7 @@ function Edit({
       }
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       className: "add_to_cart_button wp-element-button"
-    }, "Add to cart"));
+    }, "Add to cart")));
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No products found"));
 }
 
@@ -811,7 +823,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":5},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":5},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"categories":{"type":"array","items":{"type":"object"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
