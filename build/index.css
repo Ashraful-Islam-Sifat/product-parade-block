@@ -105,5 +105,12 @@
   font-weight: 500;
   margin: 5px auto;
 }
+.product-parade-block-tab-panel .block-editor-panel-color-gradient-settings {
+  padding: 0px;
+  margin-bottom: 10px;
+}
+.product-parade-block-tab-panel .components-range-control {
+  margin-top: 20px;
+}
 
 /*# sourceMappingURL=index.css.map*/

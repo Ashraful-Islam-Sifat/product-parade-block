@@ -25,7 +25,7 @@
     },
     "postPerPage": {
       "type": "number",
-      "default": 5
+      "default": 88
     },
     "orderBy": {
       "type": "string",
@@ -46,6 +46,50 @@
     "contentPosition": {
       "type": "string",
       "default": "bottom"
+    },
+    "onSaleLabelText": {
+      "type": "string",
+      "default": "On Sale!"
+    },
+    "ribbonPosition": {
+      "type": "string",
+      "default": "topLeft"
+    },
+    "containerBgColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "containerHoverBgColor": {
+      "type": "string",
+      "default": "none"
+    },
+    "containerBorder": {
+      "type": "object",
+      "default": {
+        "color": "#e3e3e3",
+        "style": "solid",
+        "width": "1px"
+      }
+    },
+    "containerHoverBorder": {
+      "type": "object",
+      "default": {
+        "color": "none",
+        "style": "none",
+        "width": "0px"
+      }
+    },
+    "containerBorderRadius": {
+      "type": "string",
+      "default": "5"
+    },
+    "nameFontSize": {
+      "type": "string",
+      "default": "20"
+    },
+    "nameFontFamily": {
+      "type": "string",
+      "default": "'Times New Roman', Times, serif"
     },
     "categories": {
       "type": "array",

@@ -52,15 +52,14 @@ function product_parade_block_render_callback($attributes) {
 
         $content .= '<div class="ppb-product content-position-'.$attributes['contentPosition'].'">';
         if ($on_sale && $attributes['showOnSaleRibbon']) {
-            $content .= '<div class="on-sale-label"> On Sale </div>';
-        }
-
+            $content .= '<div class="on-sale-label position-'.$attributes['ribbonPosition'].'"><div>' . $attributes['onSaleLabelText'] . '</div></div>';
+        }  
         $content .= '<a href="' . get_the_permalink() . '">';
         $content .= woocommerce_get_product_thumbnail();
         $content .= '</a>';
         $content .= '<div class="product-contents">';
         $content .= '<a href="' . get_the_permalink() . '">';
-        $content .= '<h2>' . get_the_title() . '</h2>';
+        $content .= '<h2 class="product-name">' . get_the_title() . '</h2>';
         $content .= '</a>';
         $content .= '<span class="price">' . $price_html . '</span>';
         if ($attributes['showAverageRatings']) {

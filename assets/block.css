@@ -11,8 +11,6 @@
     overflow: hidden;
     margin-bottom: 20px;
     text-align: center;
-    border: 1px solid #e3e3e3;
-    border-radius: 5px;
     padding: 10px;
 }
 
@@ -68,7 +66,6 @@
 }
 
 .wp-block-wpdev-product-parade-block .ppb-product .product-contents h2 {
-    font-size: 16px;
     margin: 10px 0;
     text-decoration: none;
 }
@@ -95,15 +92,36 @@
 .wp-block-wpdev-product-parade-block .ppb-product .on-sale-label{
     position: absolute;
     color: #fff;
-    background-color: rgb(0, 128, 68);
+    background-color: rgb(1, 56, 14);
     padding: 2px 5px;
-    top: 20px;
-    left: -50px;
-    width: 170px;
-    transform: rotate(-35deg);
+    width: 164px;
     text-align: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 
     0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.wp-block-wpdev-product-parade-block .ppb-product .on-sale-label.position-topLeft{
+    top: 15px;
+    left: -48px;
+    transform: rotate(-35deg);
+}
+
+.wp-block-wpdev-product-parade-block .ppb-product .on-sale-label.position-topRight{
+    top: 15px;
+    right: -48px;
+    transform: rotate(35deg);
+}
+
+.wp-block-wpdev-product-parade-block .ppb-product .on-sale-label.position-bottomLeft{
+    bottom: 15px;
+    left: -48px;
+    transform: rotate(35deg);
+}
+
+.wp-block-wpdev-product-parade-block .ppb-product .on-sale-label.position-bottomRight{
+    bottom: 15px;
+    right: -48px;
+    transform: rotate(-35deg);
 }
 
 .wp-block-wpdev-product-parade-block .ppb-product .add-to-cart .add_to_cart_button{

@@ -1,4 +1,4 @@
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect, RawHTML } from '@wordpress/element';
@@ -8,7 +8,7 @@ import TabsContent from './components/tabsContents';
 
 export default function Edit({ attributes, setAttributes }) {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition } = attributes;
     
     const blockProps = useBlockProps();
     const [loading, setLoading] = useState(true);
@@ -81,8 +81,12 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 )}
                                                                 {/* {v.add_to_cart} */}
                                                                 {(v.onSale && showOnSaleRibbon) && (
-                                                                    <div className='on-sale-label'>
-                                                                        On Sale!
+                                                                    <div className={`on-sale-label position-${ribbonPosition}`}>
+                                                                        <RichText
+                                                                            value={ onSaleLabelText }
+                                                                            onChange={ (value)=> setAttributes({ onSaleLabelText: value }) }
+                                                                            placeholder={ __('On Sale!', 'product-parade-block') }
+                                                                        />
                                                                     </div>
                                                                 )}
                                                                 </>

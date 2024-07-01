@@ -1,17 +1,13 @@
-import { RangeControl, SelectControl, Button, TabPanel, Icon, ToggleControl, PanelBody } from '@wordpress/components';
+import { RangeControl, SelectControl, Button, TabPanel, Icon, ToggleControl, PanelBody, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import contentLeftIcon from '../Icons/contentLeft.svg';
 import contentTopIcon from '../Icons/contentTop.svg';
 import contentBottomIcon from '../Icons/contentBottom.svg';
 import contentRightIcon from '../Icons/contentRight.svg';
-import { useState } from '@wordpress/element';
 
 const GeneralTab = ({attributes, setAttributes}) => {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition } = attributes;
-
-    const [ activeLayout, setActiveLayout ] = useState('bottom');
-    console.log(contentPosition);
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition } = attributes;
 
     return (
         <>
@@ -52,56 +48,77 @@ const GeneralTab = ({attributes, setAttributes}) => {
 
                 </div>
             </PanelBody>
-        <div className='product-parade-block-tabs-content'>        
-            <RangeControl
-                label={__('Post per page', 'product-parade-block')}
-                value={ postPerPage }
-                onChange={ ( value ) => setAttributes( { postPerPage: value } ) }
-                min={ 2 }
-                max={ 100 }
-            />
-            <SelectControl
-                label={__('Orderby', 'product-parade-block')}
-                value={ orderBy }
-                onChange={ (value)=> setAttributes({ orderBy: value }) }
-                options={ [
-                    { value: '', label: 'Orderby', disabled: true },
-                    { value: 'date', label: 'Date' },
-                    { value: 'title', label: 'Name' },
-                    { value: 'rating', label: 'Rating' },
-                ] }
-            />
-            
-            <div className='product-parade-block-sidebar-label-text'>{__('Order', 'product-parade-block')}</div>
-            <div className='product-parade-block-button-group'>
-                <Button className={`product-parade-block-sidebar-button ${order == "asc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "asc"})}>Ascending</Button>
-                <Button className={`product-parade-block-sidebar-button ${order == "desc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "desc"})}>Descending</Button>
-            </div>
-            <ToggleControl
-                label={__('Show On Sale Ribbon', 'product-parade-block')}
-                help={
-                    showOnSaleRibbon
-                        ? 'Disable to hide on sale ribbon.'
-                        : 'Enable to show on sale ribbon.'
-                }
-                checked={ showOnSaleRibbon }
-                onChange={ (newValue) => {
-                    setAttributes( { showOnSaleRibbon: newValue } );
-                } }
-            />
-            <ToggleControl
-                label={__('Show Average Ratings', 'product-parade-block')}
-                help={
-                    showAverageRatings
-                        ? 'Disable to hide average ratings.'
-                        : 'Enable to show average ratings.'
-                }
-                checked={ showAverageRatings }
-                onChange={ (newValue) => {
-                    setAttributes( { showAverageRatings: newValue } );
-                } }
-            />
-        </div>
+
+            <PanelBody title={__('General', 'product-parade-block')} initialOpen={ false }>
+                <RangeControl
+                    label={__('Post per page', 'product-parade-block')}
+                    value={ postPerPage }
+                    onChange={ ( value ) => setAttributes( { postPerPage: value } ) }
+                    min={ 2 }
+                    max={ 100 }
+                />
+                <SelectControl
+                    label={__('Orderby', 'product-parade-block')}
+                    value={ orderBy }
+                    onChange={ (value)=> setAttributes({ orderBy: value }) }
+                    options={ [
+                        { value: '', label: 'Orderby', disabled: true },
+                        { value: 'date', label: 'Date' },
+                        { value: 'title', label: 'Name' },
+                        { value: 'rating', label: 'Rating' },
+                    ] }
+                />
+                
+                <div className='product-parade-block-sidebar-label-text'>{__('Order', 'product-parade-block')}</div>
+                <div className='product-parade-block-button-group'>
+                    <Button className={`product-parade-block-sidebar-button ${order == "asc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "asc"})}>Ascending</Button>
+                    <Button className={`product-parade-block-sidebar-button ${order == "desc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "desc"})}>Descending</Button>
+                </div>
+
+                <ToggleControl
+                    label={__('Show Average Ratings', 'product-parade-block')}
+                    help={
+                        showAverageRatings
+                            ? 'Disable to hide average ratings.'
+                            : 'Enable to show average ratings.'
+                    }
+                    checked={ showAverageRatings }
+                    onChange={ (newValue) => {
+                        setAttributes( { showAverageRatings: newValue } );
+                    } }
+                />
+            </PanelBody>
+
+            <PanelBody title={ __('On Sale Ribbon', 'product-parade-block') } initialOpen={ false }>
+                <ToggleControl
+                    label={__('Show On Sale Ribbon', 'product-parade-block')}
+                    help={
+                        showOnSaleRibbon
+                            ? 'Disable to hide on sale ribbon.'
+                            : 'Enable to show on sale ribbon.'
+                    }
+                    checked={ showOnSaleRibbon }
+                    onChange={ (newValue) => {
+                        setAttributes( { showOnSaleRibbon: newValue } );
+                    } }
+                />
+                <TextControl
+                    label={ __('Ribbon Text', 'product-parade-block') }
+                    value={ onSaleLabelText }
+                    onChange={ (v)=> setAttributes( { onSaleLabelText:v } ) }
+                />
+                <SelectControl
+                    label={__('Ribbon Position', 'product-parade-block')}
+                    value={ ribbonPosition }
+                    onChange={ (value)=> setAttributes({ ribbonPosition: value }) }
+                    options={ [
+                        { value: 'topLeft', label: 'Top Left' },
+                        { value: 'topRight', label: 'Top Right' },
+                        { value: 'bottomLeft', label: 'Bottom Left' },
+                        { value: 'bottomRight', label: 'Bottom Right' }
+                    ] }
+                />
+            </PanelBody>
         </>
     );
 }

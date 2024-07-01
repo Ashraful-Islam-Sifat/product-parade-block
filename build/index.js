@@ -201,9 +201,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Icons_contentTop_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Icons/contentTop.svg */ "./src/Icons/contentTop.svg");
 /* harmony import */ var _Icons_contentBottom_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Icons/contentBottom.svg */ "./src/Icons/contentBottom.svg");
 /* harmony import */ var _Icons_contentRight_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Icons/contentRight.svg */ "./src/Icons/contentRight.svg");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
-
 
 
 
@@ -221,10 +218,10 @@ const GeneralTab = ({
     order,
     showOnSaleRibbon,
     showAverageRatings,
-    contentPosition
+    contentPosition,
+    onSaleLabelText,
+    ribbonPosition
   } = attributes;
-  const [activeLayout, setActiveLayout] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_7__.useState)('bottom');
-  console.log(contentPosition);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Product Content Position', 'product-parade-block')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -289,8 +286,9 @@ const GeneralTab = ({
     icon: "yes-alt"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "layout-label"
-  }, "Right")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "product-parade-block-tabs-content"
+  }, "Right")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('General', 'product-parade-block'),
+    initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Post per page', 'product-parade-block'),
     value: postPerPage,
@@ -334,15 +332,6 @@ const GeneralTab = ({
       order: "desc"
     })
   }, "Descending")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show On Sale Ribbon', 'product-parade-block'),
-    help: showOnSaleRibbon ? 'Disable to hide on sale ribbon.' : 'Enable to show on sale ribbon.',
-    checked: showOnSaleRibbon,
-    onChange: newValue => {
-      setAttributes({
-        showOnSaleRibbon: newValue
-      });
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Average Ratings', 'product-parade-block'),
     help: showAverageRatings ? 'Disable to hide average ratings.' : 'Enable to show average ratings.',
     checked: showAverageRatings,
@@ -351,6 +340,43 @@ const GeneralTab = ({
         showAverageRatings: newValue
       });
     }
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('On Sale Ribbon', 'product-parade-block'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show On Sale Ribbon', 'product-parade-block'),
+    help: showOnSaleRibbon ? 'Disable to hide on sale ribbon.' : 'Enable to show on sale ribbon.',
+    checked: showOnSaleRibbon,
+    onChange: newValue => {
+      setAttributes({
+        showOnSaleRibbon: newValue
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ribbon Text', 'product-parade-block'),
+    value: onSaleLabelText,
+    onChange: v => setAttributes({
+      onSaleLabelText: v
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ribbon Position', 'product-parade-block'),
+    value: ribbonPosition,
+    onChange: value => setAttributes({
+      ribbonPosition: value
+    }),
+    options: [{
+      value: 'topLeft',
+      label: 'Top Left'
+    }, {
+      value: 'topRight',
+      label: 'Top Right'
+    }, {
+      value: 'bottomLeft',
+      label: 'Bottom Left'
+    }, {
+      value: 'bottomRight',
+      label: 'Bottom Right'
+    }]
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GeneralTab);
@@ -369,12 +395,184 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
 
 const StylesTab = ({
   attributes,
   setAttributes
 }) => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, "Hello from styles tab");
+  const {
+    containerBgColor,
+    containerBorder,
+    containerHoverBgColor,
+    containerHoverBorder,
+    containerBorderRadius,
+    nameFontSize,
+    nameFontFamily
+  } = attributes;
+  const [containerStyleType, setContainerStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
+  const colors = [{
+    name: 'Blue 20',
+    color: '#72aee6'
+  }
+  // ...
+  ];
+  const fontFamilyOptions = [{
+    label: 'Arial',
+    value: 'Arial, sans-serif'
+  }, {
+    label: 'Helvetica',
+    value: 'Helvetica, sans-serif'
+  }, {
+    label: 'Times New Roman',
+    value: '"Times New Roman", Times, serif'
+  }, {
+    label: 'Courier New',
+    value: '"Courier New", Courier, monospace'
+  }, {
+    label: 'Verdana',
+    value: 'Verdana, sans-serif'
+  }, {
+    label: 'Georgia',
+    value: 'Georgia, serif'
+  }, {
+    label: 'Palatino',
+    value: '"Palatino Linotype", "Book Antiqua", Palatino, serif'
+  }, {
+    label: 'Tahoma',
+    value: 'Tahoma, sans-serif'
+  }, {
+    label: 'Trebuchet MS',
+    value: '"Trebuchet MS", Helvetica, sans-serif'
+  }, {
+    label: 'Impact',
+    value: 'Impact, Charcoal, sans-serif'
+  }, {
+    label: 'Comic Sans MS',
+    value: '"Comic Sans MS", cursive, sans-serif'
+  }, {
+    label: 'Lucida Sans Unicode',
+    value: '"Lucida Sans Unicode", "Lucida Grande", sans-serif'
+  }, {
+    label: 'Arial Black',
+    value: '"Arial Black", Gadget, sans-serif'
+  }, {
+    label: 'Gill Sans',
+    value: '"Gill Sans", "Gill Sans MT", Calibri, sans-serif'
+  }, {
+    label: 'Geneva',
+    value: 'Geneva, sans-serif'
+  }, {
+    label: 'Calibri',
+    value: 'Calibri, sans-serif'
+  }, {
+    label: 'Candara',
+    value: 'Candara, sans-serif'
+  }, {
+    label: 'Optima',
+    value: 'Optima, sans-serif'
+  }, {
+    label: 'Cambria',
+    value: 'Cambria, Georgia, serif'
+  }, {
+    label: 'Baskerville',
+    value: 'Baskerville, "Times New Roman", serif'
+  }, {
+    label: 'Garamond',
+    value: 'Garamond, serif'
+  }, {
+    label: 'Bookman',
+    value: 'Bookman, serif'
+  }, {
+    label: 'Avant Garde',
+    value: '"Avant Garde", sans-serif'
+  }];
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Container', 'product-parade-block'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-parade-block-button-group"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${containerStyleType == "default" ? 'active-button' : ''}`,
+    onClick: () => setContainerStyleType('default')
+  }, "Default"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${containerStyleType == "hover" ? 'active-button' : ''}`,
+    onClick: () => setContainerStyleType('hover')
+  }, "Hover")), containerStyleType === "default" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Background', 'product-parade-block'),
+      value: containerBgColor,
+      onChange: value => {
+        setAttributes({
+          containerBgColor: value
+        });
+      }
+    }]
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBorderControl, {
+    colors: colors,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border'),
+    onChange: v => setAttributes({
+      containerBorder: v
+    }),
+    value: containerBorder
+  })), containerStyleType === "hover" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Background', 'product-parade-block'),
+      value: containerHoverBgColor,
+      onChange: value => {
+        setAttributes({
+          containerHoverBgColor: value
+        });
+      }
+    }]
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBorderControl, {
+    colors: colors,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border'),
+    onChange: v => setAttributes({
+      containerBorder: v
+    }),
+    value: containerHoverBorder
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border Radius(px)', 'product-parade-block'),
+    value: containerBorderRadius,
+    onChange: value => setAttributes({
+      containerBorderRadius: value
+    }),
+    min: 0,
+    max: 40
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Name', 'product-parade-block'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Size(px)', 'product-parade-block'),
+    value: nameFontSize,
+    onChange: value => setAttributes({
+      nameFontSize: value
+    }),
+    min: 10,
+    max: 40
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Family', 'product-parade-block'),
+    value: nameFontFamily,
+    options: fontFamilyOptions,
+    onChange: newValue => setAttributes({
+      nameFontFamily: newValue
+    })
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StylesTab);
 
@@ -509,25 +707,29 @@ __webpack_require__.r(__webpack_exports__);
 
 function dynamicCss(attributes) {
   const {
-    uniqueId,
-    itemsGap,
-    titlleBgColor,
-    contentBgColor,
-    contentHoverBgColor,
-    titleBgHover,
-    titlleTextColor,
-    titleTextHover,
-    titleTextAlingment,
-    iconPosition,
-    iconColor,
-    iconHoverColor,
-    titlePadding,
-    contentPadding,
-    titleFontFamily
+    containerBgColor,
+    containerBorder,
+    containerHoverBgColor,
+    containerHoverBorder,
+    containerBorderRadius,
+    nameFontSize,
+    nameFontFamily
   } = attributes;
   let desktopCss = {
-    [`.wp-block-wpdev-product-parade-block .myProduct h2`]: {
-      'color': '#000'
+    [`.wp-block-wpdev-product-parade-block .ppb-product`]: {
+      'background-color': containerBgColor,
+      'border': containerBorder.color + ' ' + containerBorder.style + ' ' + containerBorder.width,
+      'border-radius': containerBorderRadius + 'px',
+      'transition': '0.4s all'
+    },
+    [`.wp-block-wpdev-product-parade-block .ppb-product:hover`]: {
+      'background-color': containerHoverBgColor,
+      'border': containerHoverBorder.color + ' ' + containerHoverBorder.style + ' ' + containerHoverBorder.width
+    },
+    [`.wp-block-wpdev-product-parade-block .ppb-product .product-contents .product-name`]: {
+      'color': '#000',
+      'font-size': nameFontSize + 'px',
+      'font-family': nameFontFamily
     },
     [`.wp-block-task-block-shapedplugin-accordion .accordion__item .accordion__title`]: {
       'background-color': 'red',
@@ -584,7 +786,9 @@ function Edit({
     order,
     showOnSaleRibbon,
     showAverageRatings,
-    contentPosition
+    contentPosition,
+    onSaleLabelText,
+    ribbonPosition
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
@@ -664,8 +868,14 @@ function Edit({
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
           class: "fas fa-star"
         })))), v.onSale && showOnSaleRibbon && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-          className: "on-sale-label"
-        }, "On Sale!"));
+          className: `on-sale-label position-${ribbonPosition}`
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+          value: onSaleLabelText,
+          onChange: value => setAttributes({
+            onSaleLabelText: value
+          }),
+          placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('On Sale!', 'product-parade-block')
+        })));
       }
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       className: "add_to_cart_button wp-element-button"
@@ -823,7 +1033,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":5},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"categories":{"type":"array","items":{"type":"object"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"string","default":"5"},"nameFontSize":{"type":"string","default":"20"},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"categories":{"type":"array","items":{"type":"object"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
