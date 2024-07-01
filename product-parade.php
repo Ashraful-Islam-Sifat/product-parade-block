@@ -23,6 +23,12 @@ function enqueue_fontawesome() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_fontawesome');
 
+// Function to enqueue FontAwesome for the block editor
+function enqueue_fontawesome_editor() {
+    wp_enqueue_style('fontawesome-editor', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+}
+add_action('enqueue_block_editor_assets', 'enqueue_fontawesome_editor');
+
 function product_parade_block_render_callback($attributes) {
     $args = array(
         'post_type' => 'product',
@@ -91,7 +97,6 @@ function product_parade_block_render_callback($attributes) {
     return $content;
 }
 
-
 function fetch_product_data() {
     $args = array(
         'post_type'      => 'product',
@@ -120,8 +125,6 @@ function fetch_product_data() {
 
     return $products_data;
 }
-
-
 
 function wpdev_product_parade_block_block_init() {
     wp_register_style('blockCss', plugin_dir_url(__FILE__) . 'assets/block.css', [], '1.0', 'all');
