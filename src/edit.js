@@ -6,12 +6,15 @@ import './editor.scss';
 import dynamicCss from './dynamicCss';
 import TabsContent from './components/tabsContents';
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ clientId, attributes, setAttributes }) {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, uniqueId } = attributes;
     
-    const blockProps = useBlockProps();
     const [loading, setLoading] = useState(true);
+
+    useEffect(()=> {
+        setAttributes( { uniqueId: clientId } )
+    },[clientId]);
 
     useEffect(()=> {
         setAttributes({frontendCss: JSON.stringify(dynamicCss(attributes))})
@@ -36,7 +39,7 @@ export default function Edit({ attributes, setAttributes }) {
     }, [products]);
 
     return (
-        <div {...blockProps}>
+        <div {...useBlockProps({ className: `wp-block-wpdev-product-parade-block-${uniqueId}` })}>
             <InspectorControls>
                 <TabsContent attributes={attributes} setAttributes={setAttributes}/>            
             </InspectorControls>

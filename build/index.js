@@ -45,7 +45,7 @@ var SvgContentBottom = function SvgContentBottom(props) {
   })));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTQyMCAxNzQwIiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSIxMjgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCkiIGQ9Im0wIDBoMTQyMHYxNzQwaC0xNDIweiIgZmlsbD0iI0ZERkRGRCIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEzMiwxMDgpIiBkPSJtMCAwIDE0IDEgMTAgNCAxMCA5IDcgMTAgMiA2djY5OWwtNCAxMC03IDktOSA3LTkgNC03IDFoLTg4N2wtMTMtNC05LTYtOC05LTQtOC0yLTEzdi02ODFsMi0xMyA1LTkgNi03IDExLTcgNS0yeiIgZmlsbD0iIzcyODU5MSIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjA5LDI0OCkiIGQ9Im0wIDAgNCAxIDYgMjUgOCAxNiA4IDEwIDEwIDkgMTQgOCAxNiA2IDE3IDNoOWwxNy0zIDE2LTYgMTQtOCAxMC05IDctOCA4LTE0IDUtMTQgMi0xNCAxLTIgMTQgMiA0NiA4IDEyIDQgMTMgMTEgMTcgMTYgMTMgMTMgOCA3IDI4IDI4IDggNyA0OSA0OSAzIDJ2MmwzIDEtMSA1LTggNy0yNiAyNi04IDctMzIgMzItOCA3LTEzIDEzLTQtMi0xNi0xNi04LTctMTMtMTMtNS00djI3NWwtMjYgMWgtMjg0bC0xLTJ2LTI1OWwxLTIwLTggNy0xMiAxMS0xNSAxNC0xMiAxMi00LTItMTctMTctOC03LTI1LTI1LTgtNy0yNS0yNS04LTctNS01IDItNCAxNi0xNSA4LTcgNy03IDgtNyA5LTkgOC03IDE2LTE1IDEwLTkgMTUtMTQgMTMtMTIgNy03IDgtNyAxMS0xMCA5LTYgMTUtNHoiIGZpbGw9IiNGREZERkQiLz4NCjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM2NywxMzQ5KSIgZD0ibTAgMGg2NThsMTAgNCA4IDYgNiA3IDUgMTAgMSAzdjE3NmwtMyAxMC04IDExLTExIDgtOCAzLTggMWgtNjQzbC0xMi0zLTktNS05LTgtNi0xMi0yLTE4di0xNTJsMS0xMiA0LTEwIDYtOCAxMS04eiIgZmlsbD0iIzcyODU5MSIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzk0LDEwMjgpIiBkPSJtMCAwaDYxNGwxMyAyIDE0IDcgOCA3IDcgMTEgNSAxMiAxIDE0LTIgMTEtNCA5LTYgOS04IDgtMTEgNi04IDMtOSAxaC02MjZsLTEzLTMtMTMtNy0xMC0xMC03LTEyLTMtMTF2LTEzbDMtMTIgNi0xMSA5LTEwIDExLTcgOS0zeiIgZmlsbD0iIzcyODU5MSIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTQ4LDE0MjUpIiBkPSJtMCAwaDI5NmwxMSA0IDkgNiA2IDcgNSAxMCAxIDR2MTZsLTQgMTEtNiA5LTggNy04IDQtMTQgMmgtMjg4bC0xMS00LTktNy02LTctNS0xMC0xLTN2LTE5bDQtMTAgOC0xMCA5LTZ6IiBmaWxsPSIjRkRGREZEIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MDEsMTE2OCkiIGQ9Im0wIDBoMTk1bDEzIDIgMTQgNyA5IDggOCAxNCAzIDggMSA3djlsLTMgMTItNSAxMC0xMSAxMi0xMSA3LTkgMy04IDFoLTIwM2wtMTEtMi0xMi02LTktNy05LTEzLTQtMTAtMS01di0xM2wzLTEyIDgtMTQgOC04IDEwLTYgOS0zeiIgZmlsbD0iIzcyODU5MSIvPg0KPC9zdmc+DQo=");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNDIwIDE3NDAiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjEyODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIiBkPSJtMCAwaDE0MjB2MTc0MGgtMTQyMHoiIGZpbGw9IiNGREZERkQiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEzMiwxMDgpIiBkPSJtMCAwIDE0IDEgMTAgNCAxMCA5IDcgMTAgMiA2djY5OWwtNCAxMC03IDktOSA3LTkgNC03IDFoLTg4N2wtMTMtNC05LTYtOC05LTQtOC0yLTEzdi02ODFsMi0xMyA1LTkgNi03IDExLTcgNS0yeiIgZmlsbD0iIzcyODU5MSIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MDksMjQ4KSIgZD0ibTAgMCA0IDEgNiAyNSA4IDE2IDggMTAgMTAgOSAxNCA4IDE2IDYgMTcgM2g5bDE3LTMgMTYtNiAxNC04IDEwLTkgNy04IDgtMTQgNS0xNCAyLTE0IDEtMiAxNCAyIDQ2IDggMTIgNCAxMyAxMSAxNyAxNiAxMyAxMyA4IDcgMjggMjggOCA3IDQ5IDQ5IDMgMnYybDMgMS0xIDUtOCA3LTI2IDI2LTggNy0zMiAzMi04IDctMTMgMTMtNC0yLTE2LTE2LTgtNy0xMy0xMy01LTR2Mjc1bC0yNiAxaC0yODRsLTEtMnYtMjU5bDEtMjAtOCA3LTEyIDExLTE1IDE0LTEyIDEyLTQtMi0xNy0xNy04LTctMjUtMjUtOC03LTI1LTI1LTgtNy01LTUgMi00IDE2LTE1IDgtNyA3LTcgOC03IDktOSA4LTcgMTYtMTUgMTAtOSAxNS0xNCAxMy0xMiA3LTcgOC03IDExLTEwIDktNiAxNS00eiIgZmlsbD0iI0ZERkRGRCIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNjcsMTM0OSkiIGQ9Im0wIDBoNjU4bDEwIDQgOCA2IDYgNyA1IDEwIDEgM3YxNzZsLTMgMTAtOCAxMS0xMSA4LTggMy04IDFoLTY0M2wtMTItMy05LTUtOS04LTYtMTItMi0xOHYtMTUybDEtMTIgNC0xMCA2LTggMTEtOHoiIGZpbGw9IiM3Mjg1OTEiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzk0LDEwMjgpIiBkPSJtMCAwaDYxNGwxMyAyIDE0IDcgOCA3IDcgMTEgNSAxMiAxIDE0LTIgMTEtNCA5LTYgOS04IDgtMTEgNi04IDMtOSAxaC02MjZsLTEzLTMtMTMtNy0xMC0xMC03LTEyLTMtMTF2LTEzbDMtMTIgNi0xMSA5LTEwIDExLTcgOS0zeiIgZmlsbD0iIzcyODU5MSIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NDgsMTQyNSkiIGQ9Im0wIDBoMjk2bDExIDQgOSA2IDYgNyA1IDEwIDEgNHYxNmwtNCAxMS02IDktOCA3LTggNC0xNCAyaC0yODhsLTExLTQtOS03LTYtNy01LTEwLTEtM3YtMTlsNC0xMCA4LTEwIDktNnoiIGZpbGw9IiNGREZERkQiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjAxLDExNjgpIiBkPSJtMCAwaDE5NWwxMyAyIDE0IDcgOSA4IDggMTQgMyA4IDEgN3Y5bC0zIDEyLTUgMTAtMTEgMTItMTEgNy05IDMtOCAxaC0yMDNsLTExLTItMTItNi05LTctOS0xMy00LTEwLTEtNXYtMTNsMy0xMiA4LTE0IDgtOCAxMC02IDktM3oiIGZpbGw9IiM3Mjg1OTEiLz4KPC9zdmc+Cg==");
 
 /***/ }),
 
@@ -89,7 +89,7 @@ var SvgContentLeft = function SvgContentLeft(props) {
   })));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTQ1MiAxMTEyIiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSIxMjgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCkiIGQ9Im0wIDBoMTQ1MnYxMTEyaC0xNDUyeiIgZmlsbD0iI0ZFRkVGRSIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzM0LDE4OCkiIGQ9Im0wIDBoNjEwbDEzIDMgMTAgNSA5IDcgOSAxMCA3IDEyIDMgMTAgMSA2NTAtMSAxNi00IDEyLTcgMTEtNyA4LTEyIDktMTEgNS0xMCAyaC02MTZsLTEyLTMtMTItNi0xMC04LTgtOS04LTE2LTItMTN2LTY1M2wyLTExIDctMTQgMTEtMTIgNy02IDExLTYgNy0yeiIgZmlsbD0iIzczODY5MiIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTU3LDM2OSkiIGQ9Im0wIDBoOGw0IDE3IDUgMTIgNiAxMCAxMSAxMSAxMyA4IDExIDUgMTIgM2gyMmwxNS00IDE3LTkgMTItMTEgNy05IDYtMTIgNC0xMyAxLTggMTMgMSAzNyA2IDEzIDQgMTQgMTIgOSA5IDggNyA4IDggOCA3IDE1IDE1IDggNyAzNiAzNiA4IDcgMTAgMTAtMiA0LTIwIDIwLTggNy05IDktOCA3LTExIDExLTggNy0xNyAxNy00LTEtNy03LTgtNy04LTgtOC03LTctNiAxIDIzNy0xIDEtMjY4IDEtMi0ydi0xODRsMS01Ny04IDctMTYgMTUtMTcgMTctOC02LTIwLTIwLTgtNy0yNS0yNS04LTctMTctMTcgMS00IDEwLTkgOC03IDE3LTE2IDE2LTE1IDExLTEwIDgtNyAxNy0xNiAxNi0xNSAxMS0xMCAxMS04IDEzLTR6IiBmaWxsPSIjRkVGRUZFIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3Myw1NjgpIiBkPSJtMCAwaDQ0N2wxMiAzIDkgNiA3IDcgNSA4IDIgNiAxIDI0djEwNmwtMiAxMy01IDktOSAxMC05IDUtNSAyLTcgMWgtNDQ3bC0xMy00LTEwLTctNy04LTQtOC0yLTExdi0xMjdsMi05IDYtMTEgOS04IDEwLTV6IiBmaWxsPSIjNzM4NjkyIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MywyODgpIiBkPSJtMCAwaDQ0OGwxMiAzIDExIDggNiA4IDQgOCAyIDh2MTFsLTQgMTItNyA5LTkgOC05IDQtNiAxaC00NTJsLTExLTQtOC02LTctNy02LTEyLTEtNHYtMTRsNS0xNCA1LTcgMTEtOCA4LTN6IiBmaWxsPSIjNzM4NjkyIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2OSw0MDgpIiBkPSJtMCAwaDIxM2wxMyA0IDkgNyA2IDggNCA4IDIgN3YxMmwtNCAxMi03IDktOSA4LTkgNC02IDFoLTIxMmwtMTEtNC04LTYtNy03LTYtMTItMS00di0xM2w0LTEzIDgtMTEgMTEtN3oiIGZpbGw9IiM3Mzg2OTIiLz4NCjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3MSw2MzgpIiBkPSJtMCAwaDI1MGw5IDMgOCA2IDYgOSAyIDZ2MTJsLTYgMTItNCA1LTggNS0xMiAyaC0yNDRsLTEwLTMtOC02LTYtOS0yLTZ2LTEybDMtOCA2LTggOS02eiIgZmlsbD0iI0ZFRkVGRSIvPg0KPC9zdmc+DQo=");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNDUyIDExMTIiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjEyODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIiBkPSJtMCAwaDE0NTJ2MTExMmgtMTQ1MnoiIGZpbGw9IiNGRUZFRkUiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzM0LDE4OCkiIGQ9Im0wIDBoNjEwbDEzIDMgMTAgNSA5IDcgOSAxMCA3IDEyIDMgMTAgMSA2NTAtMSAxNi00IDEyLTcgMTEtNyA4LTEyIDktMTEgNS0xMCAyaC02MTZsLTEyLTMtMTItNi0xMC04LTgtOS04LTE2LTItMTN2LTY1M2wyLTExIDctMTQgMTEtMTIgNy02IDExLTYgNy0yeiIgZmlsbD0iIzczODY5MiIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5NTcsMzY5KSIgZD0ibTAgMGg4bDQgMTcgNSAxMiA2IDEwIDExIDExIDEzIDggMTEgNSAxMiAzaDIybDE1LTQgMTctOSAxMi0xMSA3LTkgNi0xMiA0LTEzIDEtOCAxMyAxIDM3IDYgMTMgNCAxNCAxMiA5IDkgOCA3IDggOCA4IDcgMTUgMTUgOCA3IDM2IDM2IDggNyAxMCAxMC0yIDQtMjAgMjAtOCA3LTkgOS04IDctMTEgMTEtOCA3LTE3IDE3LTQtMS03LTctOC03LTgtOC04LTctNy02IDEgMjM3LTEgMS0yNjggMS0yLTJ2LTE4NGwxLTU3LTggNy0xNiAxNS0xNyAxNy04LTYtMjAtMjAtOC03LTI1LTI1LTgtNy0xNy0xNyAxLTQgMTAtOSA4LTcgMTctMTYgMTYtMTUgMTEtMTAgOC03IDE3LTE2IDE2LTE1IDExLTEwIDExLTggMTMtNHoiIGZpbGw9IiNGRUZFRkUiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzMsNTY4KSIgZD0ibTAgMGg0NDdsMTIgMyA5IDYgNyA3IDUgOCAyIDYgMSAyNHYxMDZsLTIgMTMtNSA5LTkgMTAtOSA1LTUgMi03IDFoLTQ0N2wtMTMtNC0xMC03LTctOC00LTgtMi0xMXYtMTI3bDItOSA2LTExIDktOCAxMC01eiIgZmlsbD0iIzczODY5MiIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MywyODgpIiBkPSJtMCAwaDQ0OGwxMiAzIDExIDggNiA4IDQgOCAyIDh2MTFsLTQgMTItNyA5LTkgOC05IDQtNiAxaC00NTJsLTExLTQtOC02LTctNy02LTEyLTEtNHYtMTRsNS0xNCA1LTcgMTEtOCA4LTN6IiBmaWxsPSIjNzM4NjkyIi8+CjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY5LDQwOCkiIGQ9Im0wIDBoMjEzbDEzIDQgOSA3IDYgOCA0IDggMiA3djEybC00IDEyLTcgOS05IDgtOSA0LTYgMWgtMjEybC0xMS00LTgtNi03LTctNi0xMi0xLTR2LTEzbDQtMTMgOC0xMSAxMS03eiIgZmlsbD0iIzczODY5MiIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNzEsNjM4KSIgZD0ibTAgMGgyNTBsOSAzIDggNiA2IDkgMiA2djEybC02IDEyLTQgNS04IDUtMTIgMmgtMjQ0bC0xMC0zLTgtNi02LTktMi02di0xMmwzLTggNi04IDktNnoiIGZpbGw9IiNGRUZFRkUiLz4KPC9zdmc+Cg==");
 
 /***/ }),
 
@@ -133,7 +133,7 @@ var SvgContentRight = function SvgContentRight(props) {
   })));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMjA0OCAxMTY4IiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSIxMjgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCkiIGQ9Im0wIDBoMjA0OHYxMTY4aC0yMDQ4eiIgZmlsbD0iIzc0ODY5MCIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCkiIGQ9Im0wIDBoMjA0OHYxMTY4aC0yMDQ4em04NDcgMTgtNzcxIDItMTIgNS0xMSA2LTExIDgtMTAgMTAtMTEgMTUtNSAxMC0zIDEyLTIgMTZ2OTYxbDMgMjIgNyAxNyAxMiAxNiA4IDggMTEgOCAxNCA4IDIyIDZoOTIwbDE1LTQgMTktMTAgMTMtMTEgNy04IDgtMTEgNy0xNCA0LTE1di05ODZsLTUtMTYtNS0xMC03LTEwLTktMTAtOS04LTExLTctMTYtNy0xOC0zeiIgZmlsbD0iI2ZmZiIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDM4LDI4NSkiIGQ9Im0wIDAgMyAxIDcgMjQgNiAxNyA4IDE0IDkgMTAgNCA1IDE1IDExIDE2IDkgMTQgNSAxMyAzIDkgMWgxOGwxNi0zIDE1LTUgMTktMTAgMTMtMTAgMTAtMTAgMTAtMTUgNi0xMiA1LTE1IDMtMTUgMi00IDEyIDEgNDUgNyAyNSA1IDEwIDQgMTEgOCAxMSAxMCA4IDcgOCA4IDggNyAxNyAxNiAyNSAyNSAxMSA5IDQwIDQwIDExIDkgMTMgMTMgNyA4IDE2IDE2LTMgNi05IDEwLTI3IDI3LTExIDktMjIgMjItMTEgOS0xOSAxOS04IDctMTMgMTNoLTZsLTYtNC0yNS0yNS04LTctMTYtMTZoLTF2MzUzbC03IDEtMzggMWgtMzU3bC0xLTF2LTM1OWwtOCA3LTE3IDE2LTcgNi02IDctOCA3LTkgOC0zIDUtNy0yLTE4LTE4di0ybC00LTItMTctMTYtMzItMzItOC03LTEwLTktMjUtMjUtMTAtOCAxLTUgOS0xMCAxMi0xMSA4LTcgMTItMTEgMTMtMTIgOC04IDgtNyA5LTkgOC03IDEyLTExIDExLTkgMTAtMTAgOC03IDktOSA4LTcgMTAtMTAgOC03IDEwLTkgMTEtOCAxMS01IDQ0LTl6IiBmaWxsPSIjZmZmIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMzM5LDU4MykiIGQ9Im0wIDAgNjQ4IDEgMTUgNSAxMSA4IDkgOSA5IDE0IDIgNXYyMTNsLTkgMTctMTIgMTMtMTEgNy05IDQtMTAgMmgtNjY3bC0xNy01LTEyLTctMTAtOS04LTExLTQtOC0zLTE4di0xODZsMy0xNSA3LTEzIDExLTEyIDEwLTcgMTEtNSA2LTF6IiBmaWxsPSIjNzQ4NjkwIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMzI2LDE2NykiIGQ9Im0wIDBoNjU0bDEzIDIgMTQgNiAxMCA5IDcgOCA5IDE5IDIgOHYxNWwtMyAxMi05IDE1LTExIDEyLTEwIDctMTMgNS03IDFoLTY2OGwtMTctNS0xMC02LTEyLTExLTctMTAtNS0xMS0yLTd2LTE4bDQtMTUgOC0xMyAxMC0xMSAxNC04IDktM3oiIGZpbGw9IiM3NDg2OTAiLz4NCjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzMTEsMzQ2KSIgZD0ibTAgMGgzMTVsMTQgMyAxMyA3IDEzIDEzIDggMTYgNCAxM3YxM2wtMyAxMy03IDEzLTExIDEyLTggNy0xMiA2LTggMmgtMzE4bC0xMi00LTExLTYtMTAtOC03LTgtNi0xMS00LTEzdi0xN2w2LTE5IDgtMTIgMTAtMTAgMTAtNnoiIGZpbGw9IiM3NDg2OTAiLz4NCjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0NjAsNjg3KSIgZD0ibTAgMGgzNzdsMTMgNSAxMCA5IDYgNyA1IDExIDEgN3YxM2wtMyA5LTYgMTItOSA5LTggNS0xMiAzaC0zNzRsLTEyLTQtMTMtMTEtNi0xMC00LTh2LTI0bDQtMTAgOS0xMSA4LTcgOS00eiIgZmlsbD0iI2ZmZiIvPg0KPC9zdmc+DQo=");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDQ4IDExNjgiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjEyODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIiBkPSJtMCAwaDIwNDh2MTE2OGgtMjA0OHoiIGZpbGw9IiM3NDg2OTAiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCkiIGQ9Im0wIDBoMjA0OHYxMTY4aC0yMDQ4em04NDcgMTgtNzcxIDItMTIgNS0xMSA2LTExIDgtMTAgMTAtMTEgMTUtNSAxMC0zIDEyLTIgMTZ2OTYxbDMgMjIgNyAxNyAxMiAxNiA4IDggMTEgOCAxNCA4IDIyIDZoOTIwbDE1LTQgMTktMTAgMTMtMTEgNy04IDgtMTEgNy0xNCA0LTE1di05ODZsLTUtMTYtNS0xMC03LTEwLTktMTAtOS04LTExLTctMTYtNy0xOC0zeiIgZmlsbD0iI2ZmZiIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MzgsMjg1KSIgZD0ibTAgMCAzIDEgNyAyNCA2IDE3IDggMTQgOSAxMCA0IDUgMTUgMTEgMTYgOSAxNCA1IDEzIDMgOSAxaDE4bDE2LTMgMTUtNSAxOS0xMCAxMy0xMCAxMC0xMCAxMC0xNSA2LTEyIDUtMTUgMy0xNSAyLTQgMTIgMSA0NSA3IDI1IDUgMTAgNCAxMSA4IDExIDEwIDggNyA4IDggOCA3IDE3IDE2IDI1IDI1IDExIDkgNDAgNDAgMTEgOSAxMyAxMyA3IDggMTYgMTYtMyA2LTkgMTAtMjcgMjctMTEgOS0yMiAyMi0xMSA5LTE5IDE5LTggNy0xMyAxM2gtNmwtNi00LTI1LTI1LTgtNy0xNi0xNmgtMXYzNTNsLTcgMS0zOCAxaC0zNTdsLTEtMXYtMzU5bC04IDctMTcgMTYtNyA2LTYgNy04IDctOSA4LTMgNS03LTItMTgtMTh2LTJsLTQtMi0xNy0xNi0zMi0zMi04LTctMTAtOS0yNS0yNS0xMC04IDEtNSA5LTEwIDEyLTExIDgtNyAxMi0xMSAxMy0xMiA4LTggOC03IDktOSA4LTcgMTItMTEgMTEtOSAxMC0xMCA4LTcgOS05IDgtNyAxMC0xMCA4LTcgMTAtOSAxMS04IDExLTUgNDQtOXoiIGZpbGw9IiNmZmYiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMzOSw1ODMpIiBkPSJtMCAwIDY0OCAxIDE1IDUgMTEgOCA5IDkgOSAxNCAyIDV2MjEzbC05IDE3LTEyIDEzLTExIDctOSA0LTEwIDJoLTY2N2wtMTctNS0xMi03LTEwLTktOC0xMS00LTgtMy0xOHYtMTg2bDMtMTUgNy0xMyAxMS0xMiAxMC03IDExLTUgNi0xeiIgZmlsbD0iIzc0ODY5MCIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMzI2LDE2NykiIGQ9Im0wIDBoNjU0bDEzIDIgMTQgNiAxMCA5IDcgOCA5IDE5IDIgOHYxNWwtMyAxMi05IDE1LTExIDEyLTEwIDctMTMgNS03IDFoLTY2OGwtMTctNS0xMC02LTEyLTExLTctMTAtNS0xMS0yLTd2LTE4bDQtMTUgOC0xMyAxMC0xMSAxNC04IDktM3oiIGZpbGw9IiM3NDg2OTAiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMxMSwzNDYpIiBkPSJtMCAwaDMxNWwxNCAzIDEzIDcgMTMgMTMgOCAxNiA0IDEzdjEzbC0zIDEzLTcgMTMtMTEgMTItOCA3LTEyIDYtOCAyaC0zMThsLTEyLTQtMTEtNi0xMC04LTctOC02LTExLTQtMTN2LTE3bDYtMTkgOC0xMiAxMC0xMCAxMC02eiIgZmlsbD0iIzc0ODY5MCIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDYwLDY4NykiIGQ9Im0wIDBoMzc3bDEzIDUgMTAgOSA2IDcgNSAxMSAxIDd2MTNsLTMgOS02IDEyLTkgOS04IDUtMTIgM2gtMzc0bC0xMi00LTEzLTExLTYtMTAtNC04di0yNGw0LTEwIDktMTEgOC03IDktNHoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==");
 
 /***/ }),
 
@@ -177,7 +177,7 @@ var SvgContentTop = function SvgContentTop(props) {
   })));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTUxMiAxODI0IiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSIxMjgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCkiIGQ9Im0wIDBoMTUxMnYxODI0aC0xNTEyeiIgZmlsbD0iI0ZGRkZGRSIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzI5LDkwOCkiIGQ9Im0wIDBoODg4bDkgMiA5IDUgNiA1IDcgMTAgMyA3IDEgNjgzLTEgMTgtNCAxMC0xMSAxMi0xMCA2LTkgMmgtODkxbC0xMS00LTExLTctOC0xMS0zLTgtMS02di02OTBsMi05IDYtMTAgNy03IDgtNSA1LTJ6IiBmaWxsPSIjNzI4NTkxIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4NTgsMTA0OCkiIGQ9Im0wIDAgNTcgMTAgMTMgNCA5IDcgMTIgMTEgMTMgMTIgMTggMTggOCA3IDM2IDM2IDggNyAzOSAzOS0yIDQtMTYgMTUtNDUgNDUtOCA3LTI1IDI1LTctNi04LTctMTMtMTMtOC03LTktOS0yLTEgMSA1djIwNWwtMSA2Ni0zMDggMS0xLTEtMS01MHYtMjMwbC0xNSAxNC0xMyAxMi0xNyAxNi0zIDItMjQtMjQtOC03LTMyLTMyLTgtNy0yMC0yMC01LTQgMS00IDExLTExIDgtNyA3LTcgOC03IDgtOGgydi0ybDgtNyAxNi0xNSAxMC05IDE1LTE0IDEzLTEyIDE1LTE0IDEzLTEyIDExLTggMTYtNCA0Ni04aDhsNCAxOSA2IDE2IDkgMTMgMTAgMTAgMTUgOSAxNCA2IDEyIDMgNyAxaDE0bDE1LTMgMTYtNiAxMi03IDktNyA4LTkgNy0xMSA2LTE1IDQtMTl6IiBmaWxsPSIjRkZGRkZFIi8+DQo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NTUsNTA4KSIgZD0ibTAgMGg2NDBsMTEgMiAxMCA2IDggOCA1IDggMiA2IDEgMTYwLTEgMTktNCAxMC03IDktNyA2LTggNC05IDJoLTY0OGwtMTMtNC05LTYtOC05LTQtOC0yLTExdi0xNjZsMi0xMCA1LTkgNy04IDEwLTYgNi0yeiIgZmlsbD0iIzcyODU5MSIvPg0KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDU4LDE4OCkiIGQ9Im0wIDBoNjMwbDEzIDMgMTIgNyA3IDcgNyAxMSA0IDExIDEgNHYxNGwtNCAxMy03IDExLTMgNGgtMnYybC0xMCA3LTEyIDUtNyAxaC02MzJsLTEzLTQtMTEtNy03LTYtOS0xNC0zLTExdi0xNmw0LTEzIDYtMTAgMTAtMTAgMTQtN3oiIGZpbGw9IiM3Mjg1OTEiLz4NCjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY2OCwzMjgpIiBkPSJtMCAwaDIwOWwxMiAzIDEyIDcgOCA4IDggMTQgMyAxMXYxNGwtNCAxMy03IDExLTYgNy0xMCA3LTExIDQtNiAxaC0yMTBsLTEwLTMtMTEtNi05LTgtOS0xNC0zLTExdi0xNmw0LTEzIDYtMTAgNi03IDExLTcgMTAtNHoiIGZpbGw9IiM3Mjg1OTEiLz4NCjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYyNiw1ODUpIiBkPSJtMCAwaDI5MWw5IDIgMTAgNSA5IDkgNiAxMiAxIDV2MTNsLTQgMTItOCAxMS0xMCA3LTExIDMtMTggMWgtMjc1bC0xMC0zLTEwLTYtNy04LTYtMTItMS00di0xNGwzLTEwIDYtOSA3LTcgOS01eiIgZmlsbD0iI0ZGRkZGRSIvPg0KPC9zdmc+DQo=");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNTEyIDE4MjQiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjEyODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIiBkPSJtMCAwaDE1MTJ2MTgyNGgtMTUxMnoiIGZpbGw9IiNGRkZGRkUiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzI5LDkwOCkiIGQ9Im0wIDBoODg4bDkgMiA5IDUgNiA1IDcgMTAgMyA3IDEgNjgzLTEgMTgtNCAxMC0xMSAxMi0xMCA2LTkgMmgtODkxbC0xMS00LTExLTctOC0xMS0zLTgtMS02di02OTBsMi05IDYtMTAgNy03IDgtNSA1LTJ6IiBmaWxsPSIjNzI4NTkxIi8+CjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDg1OCwxMDQ4KSIgZD0ibTAgMCA1NyAxMCAxMyA0IDkgNyAxMiAxMSAxMyAxMiAxOCAxOCA4IDcgMzYgMzYgOCA3IDM5IDM5LTIgNC0xNiAxNS00NSA0NS04IDctMjUgMjUtNy02LTgtNy0xMy0xMy04LTctOS05LTItMSAxIDV2MjA1bC0xIDY2LTMwOCAxLTEtMS0xLTUwdi0yMzBsLTE1IDE0LTEzIDEyLTE3IDE2LTMgMi0yNC0yNC04LTctMzItMzItOC03LTIwLTIwLTUtNCAxLTQgMTEtMTEgOC03IDctNyA4LTcgOC04aDJ2LTJsOC03IDE2LTE1IDEwLTkgMTUtMTQgMTMtMTIgMTUtMTQgMTMtMTIgMTEtOCAxNi00IDQ2LThoOGw0IDE5IDYgMTYgOSAxMyAxMCAxMCAxNSA5IDE0IDYgMTIgMyA3IDFoMTRsMTUtMyAxNi02IDEyLTcgOS03IDgtOSA3LTExIDYtMTUgNC0xOXoiIGZpbGw9IiNGRkZGRkUiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDU1LDUwOCkiIGQ9Im0wIDBoNjQwbDExIDIgMTAgNiA4IDggNSA4IDIgNiAxIDE2MC0xIDE5LTQgMTAtNyA5LTcgNi04IDQtOSAyaC02NDhsLTEzLTQtOS02LTgtOS00LTgtMi0xMXYtMTY2bDItMTAgNS05IDctOCAxMC02IDYtMnoiIGZpbGw9IiM3Mjg1OTEiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDU4LDE4OCkiIGQ9Im0wIDBoNjMwbDEzIDMgMTIgNyA3IDcgNyAxMSA0IDExIDEgNHYxNGwtNCAxMy03IDExLTMgNGgtMnYybC0xMCA3LTEyIDUtNyAxaC02MzJsLTEzLTQtMTEtNy03LTYtOS0xNC0zLTExdi0xNmw0LTEzIDYtMTAgMTAtMTAgMTQtN3oiIGZpbGw9IiM3Mjg1OTEiLz4KPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjY4LDMyOCkiIGQ9Im0wIDBoMjA5bDEyIDMgMTIgNyA4IDggOCAxNCAzIDExdjE0bC00IDEzLTcgMTEtNiA3LTEwIDctMTEgNC02IDFoLTIxMGwtMTAtMy0xMS02LTktOC05LTE0LTMtMTF2LTE2bDQtMTMgNi0xMCA2LTcgMTEtNyAxMC00eiIgZmlsbD0iIzcyODU5MSIvPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MjYsNTg1KSIgZD0ibTAgMGgyOTFsOSAyIDEwIDUgOSA5IDYgMTIgMSA1djEzbC00IDEyLTggMTEtMTAgNy0xMSAzLTE4IDFoLTI3NWwtMTAtMy0xMC02LTctOC02LTEyLTEtNHYtMTRsMy0xMCA2LTkgNy03IDktNXoiIGZpbGw9IiNGRkZGRkUiLz4KPC9zdmc+Cg==");
 
 /***/ }),
 
@@ -420,9 +420,22 @@ const StylesTab = ({
     containerHoverBorder,
     containerBorderRadius,
     nameFontSize,
-    nameFontFamily
+    nameFontFamily,
+    nameColor,
+    nameHoverColor,
+    priceFontSize,
+    priceColor,
+    priceHoverColor,
+    iconSize,
+    filledIconsColor,
+    emptyIconsColor,
+    filledIconsHoverColor,
+    emptyIconsHoverColor
   } = attributes;
   const [containerStyleType, setContainerStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
+  const [nameStyleType, setNameStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
+  const [priceStyleType, setPriceStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
+  const [iconsStyleType, setIconsStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const colors = [{
     name: 'Blue 20',
     color: '#72aee6'
@@ -572,7 +585,135 @@ const StylesTab = ({
     onChange: newValue => setAttributes({
       nameFontFamily: newValue
     })
-  })));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-parade-block-button-group"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${nameStyleType == "default" ? 'active-button' : ''}`,
+    onClick: () => setNameStyleType('default')
+  }, "Default"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${nameStyleType == "hover" ? 'active-button' : ''}`,
+    onClick: () => setNameStyleType('hover')
+  }, "Hover")), nameStyleType === "default" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Color', 'product-parade-block'),
+      value: nameColor,
+      onChange: value => {
+        setAttributes({
+          nameColor: value
+        });
+      }
+    }]
+  })), nameStyleType === "hover" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Color', 'product-parade-block'),
+      value: nameHoverColor,
+      onChange: value => {
+        setAttributes({
+          nameHoverColor: value
+        });
+      }
+    }]
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Price', 'product-parade-block'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Size(px)', 'product-parade-block'),
+    value: priceFontSize,
+    onChange: value => setAttributes({
+      priceFontSize: value
+    }),
+    min: 10,
+    max: 40
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-parade-block-button-group"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${priceStyleType == "default" ? 'active-button' : ''}`,
+    onClick: () => setPriceStyleType('default')
+  }, "Default"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${priceStyleType == "hover" ? 'active-button' : ''}`,
+    onClick: () => setPriceStyleType('hover')
+  }, "Hover")), priceStyleType === "default" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Color', 'product-parade-block'),
+      value: priceColor,
+      onChange: value => {
+        setAttributes({
+          priceColor: value
+        });
+      }
+    }]
+  })), priceStyleType === "hover" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Color', 'product-parade-block'),
+      value: priceHoverColor,
+      onChange: value => {
+        setAttributes({
+          priceHoverColor: value
+        });
+      }
+    }]
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Rating', 'product-parade-block'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Icon Size Size(px)', 'product-parade-block'),
+    value: iconSize,
+    onChange: value => setAttributes({
+      iconSize: value
+    }),
+    min: 5,
+    max: 40
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-parade-block-button-group"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${iconsStyleType == "default" ? 'active-button' : ''}`,
+    onClick: () => setIconsStyleType('default')
+  }, "Default"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: `product-parade-block-sidebar-button ${iconsStyleType == "hover" ? 'active-button' : ''}`,
+    onClick: () => setIconsStyleType('hover')
+  }, "Hover")), iconsStyleType === "default" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Filled Stars', 'product-parade-block'),
+      value: filledIconsColor,
+      onChange: value => {
+        setAttributes({
+          filledIconsColor: value
+        });
+      }
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Empty Stars', 'product-parade-block'),
+      value: emptyIconsColor,
+      onChange: value => {
+        setAttributes({
+          emptyIconsColor: value
+        });
+      }
+    }]
+  })), iconsStyleType === "hover" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Filled Stars', 'product-parade-block'),
+      value: filledIconsHoverColor,
+      onChange: value => {
+        setAttributes({
+          filledIconsHoverColor: value
+        });
+      }
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Empty Stars', 'product-parade-block'),
+      value: filledIconsHoverColor,
+      onChange: value => {
+        setAttributes({
+          emptyIconsHoverColor: value
+        });
+      }
+    }]
+  }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StylesTab);
 
@@ -713,27 +854,58 @@ function dynamicCss(attributes) {
     containerHoverBorder,
     containerBorderRadius,
     nameFontSize,
-    nameFontFamily
+    nameFontFamily,
+    nameColor,
+    nameHoverColor,
+    priceFontSize,
+    priceColor,
+    priceHoverColor,
+    iconSize,
+    filledIconsColor,
+    emptyIconsColor,
+    filledIconsHoverColor,
+    emptyIconsHoverColor,
+    uniqueId
   } = attributes;
   let desktopCss = {
-    [`.wp-block-wpdev-product-parade-block .ppb-product`]: {
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
       'background-color': containerBgColor,
       'border': containerBorder.color + ' ' + containerBorder.style + ' ' + containerBorder.width,
       'border-radius': containerBorderRadius + 'px',
       'transition': '0.4s all'
     },
-    [`.wp-block-wpdev-product-parade-block .ppb-product:hover`]: {
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover`]: {
       'background-color': containerHoverBgColor,
       'border': containerHoverBorder.color + ' ' + containerHoverBorder.style + ' ' + containerHoverBorder.width
     },
-    [`.wp-block-wpdev-product-parade-block .ppb-product .product-contents .product-name`]: {
-      'color': '#000',
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .product-name`]: {
+      'color': nameHoverColor
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
+      'color': nameColor,
       'font-size': nameFontSize + 'px',
       'font-family': nameFontFamily
     },
-    [`.wp-block-task-block-shapedplugin-accordion .accordion__item .accordion__title`]: {
-      'background-color': 'red',
-      'padding': '44px'
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
+      'color': priceColor,
+      'font-size': priceFontSize + 'px'
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .price`]: {
+      'color': priceHoverColor
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .filled-icons`]: {
+      'font-size': iconSize + 'px',
+      'color': filledIconsColor
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .empty-icons`]: {
+      'font-size': iconSize + 'px',
+      'color': emptyIconsColor
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .product-parade-block-rating-area .filled-icons`]: {
+      'color': filledIconsHoverColor
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .product-parade-block-rating-area .empty-icons`]: {
+      'color': emptyIconsHoverColor
     }
   };
   desktopCss = (0,_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(desktopCss);
@@ -777,6 +949,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Edit({
+  clientId,
   attributes,
   setAttributes
 }) {
@@ -788,10 +961,15 @@ function Edit({
     showAverageRatings,
     contentPosition,
     onSaleLabelText,
-    ribbonPosition
+    ribbonPosition,
+    uniqueId
   } = attributes;
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+    setAttributes({
+      uniqueId: clientId
+    });
+  }, [clientId]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     setAttributes({
       frontendCss: JSON.stringify((0,_dynamicCss__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes))
@@ -815,7 +993,9 @@ function Edit({
     }
   }, [products]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...blockProps
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+      className: `wp-block-wpdev-product-parade-block-${uniqueId}`
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_tabsContents__WEBPACK_IMPORTED_MODULE_7__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
@@ -1033,7 +1213,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"string","default":"5"},"nameFontSize":{"type":"string","default":"20"},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"categories":{"type":"array","items":{"type":"object"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"string","default":"5"},"nameFontSize":{"type":"string","default":"20"},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"string","default":"14"},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"string","default":"14"},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"categories":{"type":"array","items":{"type":"object"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

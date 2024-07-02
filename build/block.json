@@ -15,6 +15,9 @@
     ]
   },
   "attributes": {
+    "uniqueId": {
+      "type": "string"
+    },
     "frontendCss": {
       "type": "string",
       "default": ""
@@ -90,6 +93,44 @@
     "nameFontFamily": {
       "type": "string",
       "default": "'Times New Roman', Times, serif"
+    },
+    "nameColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "nameHoverColor": {
+      "type": "string",
+      "default": ""
+    },
+    "priceFontSize": {
+      "type": "string",
+      "default": "14"
+    },
+    "priceColor": {
+      "type": "string",
+      "default": "#888"
+    },
+    "priceHoverColor": {
+      "type": "string",
+      "default": ""
+    },
+    "iconSize": {
+      "type": "string",
+      "default": "14"
+    },
+    "filledIconsColor": {
+      "type": "string",
+      "default": "rgb(146, 124, 0)"
+    },
+    "emptyIconsColor": {
+      "type": "string",
+      "default": "#888"
+    },
+    "filledIconsHoverColor": {
+      "type": "string"
+    },
+    "emptyIconsHoverColor": {
+      "type": "string"
     },
     "categories": {
       "type": "array",

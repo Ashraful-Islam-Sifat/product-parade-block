@@ -6,9 +6,12 @@ import { __ } from '@wordpress/i18n';
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
+    const [nameStyleType, setNameStyleType] = useState('default');
+    const [priceStyleType, setPriceStyleType] = useState('default');
+    const [iconsStyleType, setIconsStyleType] = useState('default');
 
     const colors = [
         { name: 'Blue 20', color: '#72aee6' },
@@ -119,6 +122,149 @@ const StylesTab = ({attributes, setAttributes}) => {
                 onChange={(newValue)=> setAttributes({ nameFontFamily: newValue })}
             />
 
+            <div className='product-parade-block-button-group'>
+                <Button className={`product-parade-block-sidebar-button ${nameStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setNameStyleType('default')}>Default</Button>
+                <Button className={`product-parade-block-sidebar-button ${nameStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setNameStyleType('hover')}>Hover</Button>
+            </div>
+            {nameStyleType === "default" && (
+                <>
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Color', 'product-parade-block'),
+                                value: nameColor,
+                                onChange: (value) => {
+                                    setAttributes({ nameColor: value });
+                                }
+                            }
+                        ]}
+                    />
+                </>
+            )}
+            {nameStyleType === "hover" && (
+                <>
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Color', 'product-parade-block'),
+                                value: nameHoverColor,
+                                onChange: (value) => {
+                                    setAttributes({ nameHoverColor: value });
+                                }
+                            }
+                        ]}
+                    />
+                </>
+            )}
+
+        </PanelBody>
+
+        <PanelBody title={ __('Price', 'product-parade-block') } initialOpen={ false }>
+            <RangeControl
+                label={ __('Font Size(px)', 'product-parade-block') }
+                value={ priceFontSize }
+                onChange={ (value)=> setAttributes( { priceFontSize: value } ) }
+                min={ 10 }
+                max={ 40 }
+            />
+            <div className='product-parade-block-button-group'>
+                <Button className={`product-parade-block-sidebar-button ${priceStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setPriceStyleType('default')}>Default</Button>
+                <Button className={`product-parade-block-sidebar-button ${priceStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setPriceStyleType('hover')}>Hover</Button>
+            </div>
+            {priceStyleType === "default" && (
+                <>
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Color', 'product-parade-block'),
+                                value: priceColor,
+                                onChange: (value) => {
+                                    setAttributes({ priceColor: value });
+                                }
+                            }
+                        ]}
+                    />
+                </>
+            )}
+            {priceStyleType === "hover" && (
+                <>
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Color', 'product-parade-block'),
+                                value: priceHoverColor,
+                                onChange: (value) => {
+                                    setAttributes({ priceHoverColor: value });
+                                }
+                            }
+                        ]}
+                    />
+                </>
+            )}
+        </PanelBody>
+
+        <PanelBody title={ __('Rating', 'product-parade-block') } initialOpen={ false }>
+             <RangeControl
+                label={ __('Icon Size Size(px)', 'product-parade-block') }
+                value={ iconSize }
+                onChange={ (value)=> setAttributes( { iconSize: value } ) }
+                min={ 5 }
+                max={ 40 }
+            />
+            <div className='product-parade-block-button-group'>
+                <Button className={`product-parade-block-sidebar-button ${iconsStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setIconsStyleType('default')}>Default</Button>
+                <Button className={`product-parade-block-sidebar-button ${iconsStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setIconsStyleType('hover')}>Hover</Button>
+            </div>
+            {iconsStyleType === "default" && (
+                <>
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Filled Stars', 'product-parade-block'),
+                                value: filledIconsColor,
+                                onChange: (value) => {
+                                    setAttributes({ filledIconsColor: value });
+                                }
+                            },
+                            {
+                                label: __('Empty Stars', 'product-parade-block'),
+                                value: emptyIconsColor,
+                                onChange: (value) => {
+                                    setAttributes({ emptyIconsColor: value });
+                                }
+                            }
+                        ]}
+                    />
+                </>
+            )}
+            {iconsStyleType === "hover" && (
+                <>
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Filled Stars', 'product-parade-block'),
+                                value: filledIconsHoverColor,
+                                onChange: (value) => {
+                                    setAttributes({ filledIconsHoverColor: value });
+                                }
+                            },
+                            {
+                                label: __('Empty Stars', 'product-parade-block'),
+                                value: filledIconsHoverColor,
+                                onChange: (value) => {
+                                    setAttributes({ emptyIconsHoverColor: value });
+                                }
+                            }
+                        ]}
+                    />
+                </>
+            )}
         </PanelBody>
         </>
      );

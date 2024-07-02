@@ -75,11 +75,6 @@
     outline: none;
 }
 
-.wp-block-wpdev-product-parade-block .ppb-product .price {
-    font-size: 14px;
-    color: #888;
-}
-
 .wp-block-wpdev-product-parade-block .ppb-product .add-to-cart{
     display: flex;
     flex-direction: column;
@@ -124,15 +119,17 @@
     transform: rotate(-35deg);
 }
 
-.wp-block-wpdev-product-parade-block .ppb-product .add-to-cart .add_to_cart_button{
+.wp-block-wpdev-product-parade-block .ppb-product .add-to-cart a{
     outline: none;
     width: 100px;
+    background-color: rgb(1, 83, 83);
 }
 
 .wp-block-wpdev-product-parade-block .ppb-product .add-to-cart .added_to_cart{
     margin: 0;
     padding: 0;
     text-decoration: underline;
+    background: none;
 }
 
 
@@ -143,12 +140,10 @@
 }
 
 .product-parade-block-rating-area .filled-icons{
-    color: rgb(120, 102, 1);
     display: flex;
 }
 
 .product-parade-block-rating-area .empty-icons{
-    color: #888;
     display: flex;
 }
 

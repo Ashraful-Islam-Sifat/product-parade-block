@@ -44,7 +44,10 @@ function product_parade_block_render_callback($attributes) {
 
     $cssString = str_replace('"', '', $attributes['frontendCss']);
 
-    $content = '<div ' . get_block_wrapper_attributes() . '>';
+    $unique_id = $attributes['uniqueId'];
+    $class_name = 'wp-block-wpdev-product-parade-block-' . esc_attr($unique_id);
+
+    $content = '<div ' . get_block_wrapper_attributes(['class' => $class_name]) . '>';
     $content .= '<style>' . $cssString . '</style>';
 
     while ($query->have_posts()) {
