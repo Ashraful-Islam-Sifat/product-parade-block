@@ -24,14 +24,14 @@
                 position: relative;
 
                 &.active{
-                    border: 2px solid rgb(1, 56, 14);
+                    border: 2px solid rgb(1, 83, 83);
                 }
 
                 img{
                     width: 80px;
                 }
                 .layout-yes-icon{
-                    color: rgb(1, 56, 14);
+                    color: rgb(1, 83, 83);
                     position: absolute;
                     right: 5px;
                     top: 5px;
@@ -39,7 +39,7 @@
             }
             .layout-label{
                 text-align: center;
-                color: rgb(0, 47, 47);
+                color: rgb(1, 83, 83);
                 font-weight: 500;
                 margin: 0;
             }
@@ -50,7 +50,7 @@
 		.components-button{
 			background-color: #e8e8e8;
 			color: #000000;
-			border-bottom: 2px solid rgb(25, 0, 79);
+			border-bottom: 2px solid rgb(1, 83, 83);
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -62,7 +62,7 @@
 				gap: 5px;
 			}
 			&.product-parade-block-active-tab{
-				background-color: rgb(1, 56, 14);
+				background-color: rgb(1, 83, 83);
 				color: white;
 			}
 		}
@@ -87,11 +87,11 @@
         margin-bottom: 20px;
         >.product-parade-block-sidebar-button{
             &.active-button{
-                background-color: rgb(1, 56, 14);;
+                background-color: rgb(1, 83, 83);
                 color: #fff;
                 outline: none;
             }
-            color: rgb(1, 56, 14);;
+            color: rgb(1, 83, 83);
             font-weight: 500;
             text-align: center;
             width: 50%;

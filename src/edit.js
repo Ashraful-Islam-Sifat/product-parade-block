@@ -8,7 +8,7 @@ import TabsContent from './components/tabsContents';
 
 export default function Edit({ clientId, attributes, setAttributes }) {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, uniqueId } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, uniqueId, buttonBgColor, buttonTextColor } = attributes;
     
     const [loading, setLoading] = useState(true);
 
@@ -44,69 +44,66 @@ export default function Edit({ clientId, attributes, setAttributes }) {
                 <TabsContent attributes={attributes} setAttributes={setAttributes}/>            
             </InspectorControls>
             <style>{dynamicCss(attributes)}</style>
-            
-                {loading ? (
-                    <p>Loading...</p>
-                ) : (
-                    products && products.length > 0 ? (
-                        products.map((product) => {
-                            const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                products && products.length > 0 ? (
+                    <div className='product-container'>
+                        {products.map((product) => {
+                            const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded        ['wp:featuredmedia'][0];
                             return (
                                 <div key={product.id} className={`ppb-product content-position-${contentPosition}`}>
                                     {featuredMedia && <img src={featuredMedia.source_url} alt={product.title.rendered} />}
                                     <div className='product-contents'>
                                         <h2 className='product-name'>{product.title.rendered}</h2>
-                                        {exampleWooCommerceBlock.productsMeta.map( ( v, i) =>{
-									    				if( v.id === product.id){
-									    					return (
-                                                                <>
-                                                                <span className='price' dangerouslySetInnerHTML={{ __html: v.price }}></span>
-									    						{showAverageRatings &&
-                                                                (
-                                                                <>
+                                        {exampleWooCommerceBlock.productsMeta.map((v, i) => {
+                                            if (v.id === product.id) {
+                                                return (
+                                                    <React.Fragment key={i}>
+                                                        <span className='price' dangerouslySetInnerHTML={{ __html: v.price }}></span>
+                                                        {showAverageRatings && (
+                                                            <>
                                                                 <div className="product-parade-block-rating-area">
                                                                     <div className='empty-icons'>
-                                                                        <i class="far fa-star"></i>
-                                                                        <i class="far fa-star"></i>
-                                                                        <i class="far fa-star"></i>
-                                                                        <i class="far fa-star"></i>
-                                                                        <i class="far fa-star"></i>
+                                                                        <i className="far fa-star"></i>
+                                                                        <i className="far fa-star"></i>
+                                                                        <i className="far fa-star"></i>
+                                                                        <i className="far fa-star"></i>
+                                                                        <i className="far fa-star"></i>
                                                                     </div>
-                                                                    <div style={{ width: `${(v.rating / 5) * 100}%` }} className="filled-icons">
-                                                                        <i class="fas fa-star"></i>
-                                                                        <i class="fas fa-star"></i>
-                                                                        <i class="fas fa-star"></i>
-                                                                        <i class="fas fa-star"></i>
-                                                                        <i class="fas fa-star"></i>
+                                                                    <div style={{ width: `${(v.rating / 5) * 100}%` }}         className="filled-icons">
+                                                                        <i className="fas fa-star"></i>
+                                                                        <i className="fas fa-star"></i>
+                                                                        <i className="fas fa-star"></i>
+                                                                        <i className="fas fa-star"></i>
+                                                                        <i className="fas fa-star"></i>
                                                                     </div>
                                                                 </div>
-                                                                </>
-                                                                )}
-                                                                {/* {v.add_to_cart} */}
-                                                                {(v.onSale && showOnSaleRibbon) && (
-                                                                    <div className={`on-sale-label position-${ribbonPosition}`}>
-                                                                        <RichText
-                                                                            value={ onSaleLabelText }
-                                                                            onChange={ (value)=> setAttributes({ onSaleLabelText: value }) }
-                                                                            placeholder={ __('On Sale!', 'product-parade-block') }
-                                                                        />
-                                                                    </div>
-                                                                )}
-                                                                </>
-									    					);
-									    				}
-									    			})}
-                                        {/* The button will be dynamic */}
-                                        <button className='add_to_cart_button wp-element-button'>Add to cart</button>
+                                                            </>
+                                                        )}
+                                                        {(v.onSale && showOnSaleRibbon) && (
+                                                            <div className={`on-sale-label position-${ribbonPosition}`}>
+                                                                <RichText
+                                                                    value={onSaleLabelText}
+                                                                    onChange={(value) => setAttributes({ onSaleLabelText: value })}
+                                                                    placeholder={__('On Sale!', 'product-parade-block')}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                    </React.Fragment>
+                                                );
+                                            }
+                                        })}
+                                        <button className='add_to_cart_button wp-element-button' style={{ backgroundColor: buttonBgColor,         color: buttonTextColor }}>Add to cart</button>
                                     </div>
                                 </div>
                             );
-                        })
-                    ) : (
-                        <p>No products found</p>
-                    )
-                )}
-
+                        })}
+                    </div>
+                ) : (
+                    <p>No products found</p>
+                )
+            )}
         </div>
     );
 }

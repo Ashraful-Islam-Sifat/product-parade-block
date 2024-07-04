@@ -430,12 +430,15 @@ const StylesTab = ({
     filledIconsColor,
     emptyIconsColor,
     filledIconsHoverColor,
-    emptyIconsHoverColor
+    emptyIconsHoverColor,
+    buttonBgColor,
+    buttonTextColor
   } = attributes;
   const [containerStyleType, setContainerStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const [nameStyleType, setNameStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const [priceStyleType, setPriceStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const [iconsStyleType, setIconsStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
+  const [buttonStyleType, setButtonStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const colors = [{
     name: 'Blue 20',
     color: '#72aee6'
@@ -706,10 +709,32 @@ const StylesTab = ({
       }
     }, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Empty Stars', 'product-parade-block'),
-      value: filledIconsHoverColor,
+      value: emptyIconsHoverColor,
       onChange: value => {
         setAttributes({
           emptyIconsHoverColor: value
+        });
+      }
+    }]
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Button', 'product-parade-block'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+    disableCustomColors: false,
+    colorSettings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Background', 'product-parade-block'),
+      value: buttonBgColor,
+      onChange: value => {
+        setAttributes({
+          buttonBgColor: value
+        });
+      }
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Text Color', 'product-parade-block'),
+      value: buttonTextColor,
+      onChange: value => {
+        setAttributes({
+          buttonTextColor: value
         });
       }
     }]
@@ -865,7 +890,9 @@ function dynamicCss(attributes) {
     emptyIconsColor,
     filledIconsHoverColor,
     emptyIconsHoverColor,
-    uniqueId
+    uniqueId,
+    buttonBgColor,
+    buttonTextColor
   } = attributes;
   let desktopCss = {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -906,6 +933,10 @@ function dynamicCss(attributes) {
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .product-parade-block-rating-area .empty-icons`]: {
       'color': emptyIconsHoverColor
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart a`]: {
+      'background-color': buttonBgColor,
+      'color': buttonTextColor
     }
   };
   desktopCss = (0,_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(desktopCss);
@@ -962,7 +993,9 @@ function Edit({
     contentPosition,
     onSaleLabelText,
     ribbonPosition,
-    uniqueId
+    uniqueId,
+    buttonBgColor,
+    buttonTextColor
   } = attributes;
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
@@ -999,7 +1032,9 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_tabsContents__WEBPACK_IMPORTED_MODULE_7__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, (0,_dynamicCss__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes)), loading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Loading...") : products && products.length > 0 ? products.map(product => {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, (0,_dynamicCss__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes)), loading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Loading...") : products && products.length > 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-container"
+  }, products.map(product => {
     const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded['wp:featuredmedia'][0];
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       key: product.id,
@@ -1013,7 +1048,9 @@ function Edit({
       className: "product-name"
     }, product.title.rendered), exampleWooCommerceBlock.productsMeta.map((v, i) => {
       if (v.id === product.id) {
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(React.Fragment, {
+          key: i
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
           className: "price",
           dangerouslySetInnerHTML: {
             __html: v.price
@@ -1023,30 +1060,30 @@ function Edit({
         }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: "empty-icons"
         }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "far fa-star"
+          className: "far fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "far fa-star"
+          className: "far fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "far fa-star"
+          className: "far fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "far fa-star"
+          className: "far fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "far fa-star"
+          className: "far fa-star"
         })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           style: {
             width: `${v.rating / 5 * 100}%`
           },
           className: "filled-icons"
         }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "fas fa-star"
+          className: "fas fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "fas fa-star"
+          className: "fas fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "fas fa-star"
+          className: "fas fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "fas fa-star"
+          className: "fas fa-star"
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-          class: "fas fa-star"
+          className: "fas fa-star"
         })))), v.onSale && showOnSaleRibbon && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: `on-sale-label position-${ribbonPosition}`
         }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
@@ -1058,9 +1095,13 @@ function Edit({
         })));
       }
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "add_to_cart_button wp-element-button"
+      className: "add_to_cart_button wp-element-button",
+      style: {
+        backgroundColor: buttonBgColor,
+        color: buttonTextColor
+      }
     }, "Add to cart")));
-  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No products found"));
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No products found"));
 }
 
 /***/ }),
@@ -1213,7 +1254,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"string","default":"5"},"nameFontSize":{"type":"string","default":"20"},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"string","default":"14"},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"string","default":"14"},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"categories":{"type":"array","items":{"type":"object"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"string","default":"5"},"nameFontSize":{"type":"string","default":"20"},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"string","default":"14"},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"string","default":"14"},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"categories":{"type":"array","items":{"type":"object"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

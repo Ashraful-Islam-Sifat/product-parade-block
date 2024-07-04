@@ -6,12 +6,13 @@ import { __ } from '@wordpress/i18n';
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
     const [nameStyleType, setNameStyleType] = useState('default');
     const [priceStyleType, setPriceStyleType] = useState('default');
     const [iconsStyleType, setIconsStyleType] = useState('default');
+    const [buttonStyleType, setButtonStyleType] = useState('default');
 
     const colors = [
         { name: 'Blue 20', color: '#72aee6' },
@@ -256,7 +257,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                             },
                             {
                                 label: __('Empty Stars', 'product-parade-block'),
-                                value: filledIconsHoverColor,
+                                value: emptyIconsHoverColor,
                                 onChange: (value) => {
                                     setAttributes({ emptyIconsHoverColor: value });
                                 }
@@ -265,6 +266,30 @@ const StylesTab = ({attributes, setAttributes}) => {
                     />
                 </>
             )}
+        </PanelBody>
+
+        <PanelBody title={ __('Button', 'product-parade-block') } initialOpen={ false }>
+                <>
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Background', 'product-parade-block'),
+                                value: buttonBgColor,
+                                onChange: (value) => {
+                                    setAttributes({ buttonBgColor: value });
+                                }
+                            },
+                            {
+                                label: __('Text Color', 'product-parade-block'),
+                                value: buttonTextColor,
+                                onChange: (value) => {
+                                    setAttributes({ buttonTextColor: value });
+                                }
+                            }
+                        ]}
+                    />
+                </>
         </PanelBody>
         </>
      );

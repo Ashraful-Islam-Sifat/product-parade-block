@@ -121,6 +121,14 @@
 		"emptyIconsHoverColor": {
 			"type": "string"
 		},
+		"buttonBgColor": {
+			"type": "string",
+			"default": "rgb(1, 83, 83)"
+		},
+		"buttonTextColor": {
+			"type": "string",
+			"default": "#fff"
+		},
 		"categories": {
 			"type": "array",
 			"items": {

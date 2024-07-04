@@ -30,25 +30,33 @@ function enqueue_fontawesome_editor() {
 add_action('enqueue_block_editor_assets', 'enqueue_fontawesome_editor');
 
 function product_parade_block_render_callback($attributes) {
+    $cssString = str_replace('"', '', $attributes['frontendCss']);
+    $unique_id = $attributes['uniqueId'];
+    $class_name = 'wp-block-wpdev-product-parade-block-' . esc_attr($unique_id);
+
+    // Fetch all products
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => $attributes['postPerPage'],
-        'orderby' => $attributes['orderBy'],
-        'order' => $attributes['order']
     );
+
     $query = new WP_Query($args);
 
     if (!$query->have_posts()) {
         return '<p>No products found</p>';
     }
 
-    $cssString = str_replace('"', '', $attributes['frontendCss']);
-
-    $unique_id = $attributes['uniqueId'];
-    $class_name = 'wp-block-wpdev-product-parade-block-' . esc_attr($unique_id);
-
+    // Add sorting dropdown
     $content = '<div ' . get_block_wrapper_attributes(['class' => $class_name]) . '>';
     $content .= '<style>' . $cssString . '</style>';
+    $content .= '<select id="product-sort">
+                    <option value="date">Sort by Date</option>
+                    <option value="price">Sort by Price (Low to High)</option>
+                    <option value="price-desc">Sort by Price (High to Low)</option>
+                    <option value="rating">Sort by Rating</option>
+                    <option value="popularity">Sort by Popularity</option>
+                </select>';
+    $content .= '<div class="product-container">';
 
     while ($query->have_posts()) {
         $query->the_post();
@@ -59,10 +67,10 @@ function product_parade_block_render_callback($attributes) {
         $add_to_cart = do_shortcode('[add_to_cart id="' . get_the_ID() . '" show_price="false" style="" class="add-to-cart"]');
         $on_sale = $product->is_on_sale();
 
-        $content .= '<div class="ppb-product content-position-'.$attributes['contentPosition'].'">';
+        $content .= '<div class="ppb-product content-position-'.$attributes['contentPosition'].'" data-price="' . esc_attr($product->get_price()) . '" data-rating="' . esc_attr($average_rating) . '" data-sales="' . esc_attr($product->get_total_sales()) . '" data-date="' . get_the_date('U') . '">';
         if ($on_sale && $attributes['showOnSaleRibbon']) {
-            $content .= '<div class="on-sale-label position-'.$attributes['ribbonPosition'].'"><div>' . $attributes['onSaleLabelText'] . '</div></div>';
-        }  
+            $content .= '<div class="on-sale-label position-' . esc_attr($attributes['ribbonPosition']) . '"><div>' . esc_html($attributes['onSaleLabelText']) . '</div></div>';
+        }
         $content .= '<a href="' . get_the_permalink() . '">';
         $content .= woocommerce_get_product_thumbnail();
         $content .= '</a>';
@@ -93,12 +101,25 @@ function product_parade_block_render_callback($attributes) {
         $content .= '</div>'; // Closing product-contents div
         $content .= '</div>'; // Closing ppb-product div
     }
-    $content .= '</div>'; // Closing the main div
+
+    $content .= '</div>'; // Closing product-container div
+    $content .= '</div>'; // Closing main wrapper div
 
     wp_reset_postdata();
 
     return $content;
 }
+
+function enqueue_sorting_script() {
+    wp_enqueue_script(
+        'product-parade-sorting',
+        plugin_dir_url(__FILE__) . 'assets/sorting.js',
+        array('jquery'),
+        '1.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_sorting_script');
 
 function fetch_product_data() {
     $args = array(
@@ -150,6 +171,7 @@ function wpdev_product_parade_block_block_init() {
     wp_localize_script('product-parade-block-editor', 'exampleWooCommerceBlock', array(
         'productsMeta' => fetch_product_data()
     ));
+
 }
 
 add_action('init', 'wpdev_product_parade_block_block_init');
