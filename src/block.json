@@ -129,10 +129,15 @@
 			"type": "string",
 			"default": "#fff"
 		},
-		"categories": {
-			"type": "array",
-			"items": {
-				"type": "object"
+		"showSortingDropdown": {
+			"type": "boolean",
+			"default": true
+		},
+		"gapBetweenProducts": {
+			"type": "object",
+			"default": {
+				"value": "15",
+				"unit": "px"
 			}
 		}
     },

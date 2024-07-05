@@ -4,14 +4,15 @@ import contentLeftIcon from '../Icons/contentLeft.svg';
 import contentTopIcon from '../Icons/contentTop.svg';
 import contentBottomIcon from '../Icons/contentBottom.svg';
 import contentRightIcon from '../Icons/contentRight.svg';
+import MyRangeControl from './myRangeControl';
 
 const GeneralTab = ({attributes, setAttributes}) => {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, showSortingDropdown } = attributes;
 
     return (
         <>
-            <PanelBody title={__('Product Content Position', 'product-parade-block')}>
+            <PanelBody title={__('Product Content Position', 'product-parade-block')} initialOpen={false}>
                 <div className='product-parade-block-layouts'>
 
                     <div className='product-parade-block-layout' onClick={ ()=> setAttributes({contentPosition: "bottom"}) }>
@@ -49,13 +50,25 @@ const GeneralTab = ({attributes, setAttributes}) => {
                 </div>
             </PanelBody>
 
-            <PanelBody title={__('General', 'product-parade-block')} initialOpen={ false }>
+            <PanelBody title={__('General', 'product-parade-block')} initialOpen={ true }>
+                <MyRangeControl
+                    label={__('Gap between items', 'product-parade-block')}
+                    setAttributes={setAttributes}
+                    attributes={attributes}
+                    defaultValue={{ unit: 'px', value: 18 }}
+                    units= {['Px', '%', 'Em']}
+                    attributesKey={'gapBetweenProducts'}
+                    min={0}
+                    max={80}
+                    step={1}
+                />
                 <RangeControl
                     label={__('Post per page', 'product-parade-block')}
                     value={ postPerPage }
                     onChange={ ( value ) => setAttributes( { postPerPage: value } ) }
                     min={ 2 }
                     max={ 100 }
+                    units= {['Px', 'rem', 'Em']}
                 />
                 <SelectControl
                     label={__('Orderby', 'product-parade-block')}
@@ -87,6 +100,20 @@ const GeneralTab = ({attributes, setAttributes}) => {
                         setAttributes( { showAverageRatings: newValue } );
                     } }
                 />
+
+                <ToggleControl
+                    label={__('Show Sorting Dropdown', 'product-parade-block')}
+                    help={
+                        showAverageRatings
+                            ? 'Disable to hide sorting dropdown.'
+                            : 'Enable to show sorting dropdown.'
+                    }
+                    checked={ showSortingDropdown }
+                    onChange={ (newValue) => {
+                        setAttributes( { showSortingDropdown: newValue } );
+                    } }
+                />
+                
             </PanelBody>
 
             <PanelBody title={ __('On Sale Ribbon', 'product-parade-block') } initialOpen={ false }>

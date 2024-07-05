@@ -72,10 +72,9 @@
 }
 .product-parade-block-tab-panel .product-parade-block-button-group {
   background-color: #f3f3f3;
-  padding: 10px;
+  padding: 0;
   display: flex;
   border: 1px solid grey;
-  padding: 0;
   justify-content: space-between;
   margin-bottom: 20px;
 }
@@ -111,6 +110,56 @@
 }
 .product-parade-block-tab-panel .components-range-control {
   margin-top: 20px;
+}
+.product-parade-block-tab-panel .my-range-control-header-area {
+  display: flex;
+  justify-content: space-between;
+}
+.product-parade-block-tab-panel .my-range-control-header-area .my-range-control-label {
+  color: #757575;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.product-parade-block-tab-panel .ppb-units {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.product-parade-block-tab-panel .ppb-units span {
+  border: 1px solid #8c8f94;
+  color: #8c8f94;
+  height: 20px;
+  width: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-size: 11px;
+}
+.product-parade-block-tab-panel .ppb-units .ppb-units-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.15);
+  width: 23px;
+  position: absolute;
+  top: 23px;
+  z-index: 999;
+  background-color: #f3f3f3;
+  padding: 0;
+  gap: 2px;
+}
+.product-parade-block-tab-panel .ppb-units .ppb-units-btn button {
+  font-size: 11px;
+  padding: 0;
+  margin: 0;
 }
 
 /*# sourceMappingURL=index.css.map*/

@@ -16,9 +16,9 @@
 .wp-block-wpdev-product-parade-block .product-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     margin: 0;
-    gap: 5px;
+    gap: 20px;
 }
 
 .wp-block-wpdev-product-parade-block .product-container .ppb-product {

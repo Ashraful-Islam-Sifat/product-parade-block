@@ -48,6 +48,10 @@ export default function Edit({ clientId, attributes, setAttributes }) {
                 <p>Loading...</p>
             ) : (
                 products && products.length > 0 ? (
+                    <>
+                    <select id="product-sort">
+                        <option value="date" disabled>Sort by Date</option>
+                    </select>
                     <div className='product-container'>
                         {products.map((product) => {
                             const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded        ['wp:featuredmedia'][0];
@@ -100,6 +104,7 @@ export default function Edit({ clientId, attributes, setAttributes }) {
                             );
                         })}
                     </div>
+                    </>
                 ) : (
                     <p>No products found</p>
                 )
