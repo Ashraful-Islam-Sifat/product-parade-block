@@ -3,6 +3,7 @@ import { SelectControl } from "@wordpress/components";
 import { RangeControl, PanelBody,  __experimentalBorderControl as BorderControl, Button } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import { __ } from '@wordpress/i18n';
+import MyRangeControl from "./myRangeControl";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
@@ -97,25 +98,32 @@ const StylesTab = ({attributes, setAttributes}) => {
                     />
                 </>
             )}
-            <RangeControl
-                label={ __('Border Radius(px)', 'product-parade-block')}
-                value={ containerBorderRadius }
-                onChange={ (value)=> setAttributes( { containerBorderRadius: value } ) }
-                min={ 0 }
-                max={ 40 }
+            <MyRangeControl
+                label={__('Border Radius', 'product-parade-block')}
+                setAttributes={setAttributes}
+                attributes={attributes}
+                units= {['px', '%', 'em']}
+                attributesKey={'containerBorderRadius'}
+                min={0}
+                max={40}
+                step={1}
             />
 
         </PanelBody>
 
         <PanelBody title={ __('Name', 'product-parade-block') } initialOpen={ false }>
 
-            <RangeControl
-                label={ __('Font Size(px)', 'product-parade-block') }
-                value={ nameFontSize }
-                onChange={ (value)=> setAttributes( { nameFontSize: value } ) }
-                min={ 10 }
-                max={ 40 }
+            <MyRangeControl
+                label={__('Font Size', 'product-parade-block')}
+                setAttributes={setAttributes}
+                attributes={attributes}
+                units= {['px', '%', 'em']}
+                attributesKey={'nameFontSize'}
+                min={0}
+                max={60}
+                step={1}
             />
+            
             <SelectControl
                 label={__('Font Family', 'product-parade-block')}
                 value={nameFontFamily}

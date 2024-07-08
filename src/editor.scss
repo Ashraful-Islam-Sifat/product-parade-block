@@ -1,4 +1,14 @@
 .wp-block-wpdev-product-parade-block {
+    #product-sort{
+        pointer-events: none;
+        background-color: rgb(255, 255, 255);
+        width: 200px;
+        color: rgb(1, 83, 83);
+        border: rgb(1, 83, 83) 1px solid;
+        padding: 5px;
+        height: 40px;
+        border-radius: 5px;
+    }
     .add_to_cart_button{
         margin-top: 16px;
         outline: none;
@@ -48,9 +58,9 @@
 
 	> .components-tab-panel__tabs{
 		.components-button{
-			background-color: #e8e8e8;
-			color: #000000;
-			border-bottom: 2px solid rgb(1, 83, 83);
+			background-color: rgb(1, 83, 83);
+			color: #f0f0f0;
+			border-top: 2px solid rgb(1, 83, 83);
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -62,17 +72,19 @@
 				gap: 5px;
 			}
 			&.product-parade-block-active-tab{
-				background-color: rgb(1, 83, 83);
-				color: white;
+				background-color: rgb(255, 255, 255);
+				color: rgb(1, 83, 83);
 			}
 		}
 	}
     .product-parade-block-tabs-content{
         padding: 20px;        
     }
-    .components-panel__body .components-button:focus {
-    outline: none;
-    box-shadow: none;
+    .components-panel__body {
+        .components-button:focus{
+            outline: none;
+            box-shadow: none;
+        }
     }
     .components-form-toggle:focus{
             outline: none;
@@ -134,61 +146,72 @@
 
     }
 
-    .ppb-units{
+    .ppb-units {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         position: relative;
-        
-        span{
-            border: 1px solid #8c8f94;
-            color: #8c8f94;
-            height: 20px;
-            width: 23px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 2px;
-            cursor: pointer;
-            text-transform: capitalize;
-            font-size: 11px;
+    }
+    
+    .ppb-units span {
+        border: 1px solid #8c8f94;
+        color: #8c8f94;
+        height: 20px;
+        width: 23px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2px;
+        cursor: pointer;
+        text-transform: capitalize;
+        font-size: 11px;
+    }
+    
+    .ppb-units span:hover {
+        color: rgb(1, 83, 83);
+        border-color: rgb(1, 83, 83);
+    }
+    
+    .ppb-units-btn {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.15);
+        width: 23px;
+        position: absolute;
+        top: 23px;
+        z-index: 999;
+        background-color: #f3f3f3;
+        padding: 0;
+        width: 23px;
+    }
+    
+    .ppb-units:hover .ppb-units-btn {
+        display: flex;
+    }
+    
+    .ppb-units-btn button {
+        height: fit-content;
+        font-size: 11px;
+        padding: 0px 3px;
+        margin: 0;
+        text-transform: capitalize;
+        &.active{
+            background-color: rgb(1, 83, 83);
+            color: #fff;
         }
-
-        span:hover{
-            color: rgb(1, 83, 83);
-            border-color: rgb(1, 83, 83);
-            .ppb-units-btn{
-                visibility: visible;
-            }
-        }
-
-        .ppb-units-btn{
-            opacity: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, .15);
-            width: 23px;
-            position: absolute;
-            top: 23px;
-            z-index: 999;
-            background-color: #f3f3f3;
-            padding: 0;
-            gap: 2px;
-            button{
-                height: fit-content;
-                font-size: 11px;
-                padding: 0px 3px;
-                margin: 0;
-            }
-            button:hover{
-                background-color: rgb(1, 83, 83);
-                color: white;
-            }
+        &.active:hover{
+            color: #fff;
+            background-color: rgb(1, 83, 83);
         }
     }
-
+    
+    .ppb-units-btn button:hover {
+        color: rgb(1, 83, 83);
+        background-color: #8c8f9470;
+    }
+        
     .components-range-control__wrapper{
         .components-range-control__track{
             background-color: rgb(1, 83, 83);
@@ -200,9 +223,12 @@
         }
     }
 
-    // .block-editor-panel-color-gradient-settings{
-    //     padding: 0px;
-    //     margin-bottom: 40px;
-    // }
+    .components-form-toggle{
+        &.is-checked{
+            .components-form-toggle__track{
+                background-color: rgb(1, 83, 83);
+            }
+        }
+    }
 
 }

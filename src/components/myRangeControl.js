@@ -20,7 +20,7 @@ const MyRangeControl = (props) => {
                             <span>{attributes[attributesKey].unit}</span>
                             <div className='ppb-units-btn'>
                                 {units.map((item, i)=>(
-                                    <Button className="each-unit-btn" key={i}> {item} </Button>
+                                    <Button className={attributes[attributesKey].unit === item ? "active" : ""} key={i} onClick={() => setAttributes({ ...attributes, [attributesKey]: { unit: item, value: attributes[attributesKey].value } })}> {item} </Button>
                                 ))}
                             </div>
                         </div>}

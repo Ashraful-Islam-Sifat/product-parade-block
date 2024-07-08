@@ -8,9 +8,11 @@ import TabsContent from './components/tabsContents';
 
 export default function Edit({ clientId, attributes, setAttributes }) {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, uniqueId, buttonBgColor, buttonTextColor } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, uniqueId, buttonBgColor, buttonTextColor, showSortingDropdown, categories } = attributes;
     
     const [loading, setLoading] = useState(true);
+
+    const catIDs = categories && categories.length > 0 ? categories.map((cat)=> cat.id) : [];
 
     useEffect(()=> {
         setAttributes( { uniqueId: clientId } )
@@ -26,9 +28,19 @@ export default function Edit({ clientId, attributes, setAttributes }) {
             per_page: postPerPage,
             orderby: orderBy,
             order: order,
-            _embed: true
+            _embed: true,
+            tax_query: [
+                {
+                    taxonomy: 'product_cat',
+                    field: 'term_id',
+                    terms: catIDs,
+                },
+            ],
         });
-    }, [postPerPage, orderBy, order]);
+    }, [postPerPage, orderBy, order, catIDs]);
+    
+
+    // console.log(catIDs);
 
     useEffect(() => {
         if (products === null) {
@@ -49,9 +61,13 @@ export default function Edit({ clientId, attributes, setAttributes }) {
             ) : (
                 products && products.length > 0 ? (
                     <>
+                    {showSortingDropdown && 
                     <select id="product-sort">
-                        <option value="date" disabled>Sort by Date</option>
+                        <option value="date">Sort by Date</option>
+                        <option>Sort by Price</option>
+                        <option>Sort by Rating</option>
                     </select>
+                    }
                     <div className='product-container'>
                         {products.map((product) => {
                             const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded        ['wp:featuredmedia'][0];

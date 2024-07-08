@@ -1,13 +1,16 @@
 import { cssString } from "./controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts } = attributes;
 
     let desktopCss = {
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .product-container`]: {
+            'gap': gapBetweenProducts.value+gapBetweenProducts.unit,
+        },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
             'background-color': containerBgColor,
             'border': containerBorder.color+' ' + containerBorder.style +' '+ containerBorder.width,
-            'border-radius':  containerBorderRadius+'px',
+            'border-radius':  containerBorderRadius.value+containerBorderRadius.unit,
             'transition': '0.4s all'
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover`]: {
@@ -19,7 +22,7 @@ function dynamicCss(attributes) {
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
             'color': nameColor,
-            'font-size': nameFontSize+'px',
+            'font-size': nameFontSize.value+nameFontSize.unit,
             'font-family': nameFontFamily
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {

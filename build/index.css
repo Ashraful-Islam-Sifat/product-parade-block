@@ -1,6 +1,16 @@
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
   \****************************************************************************************************************************************************************************************************************************************/
+.wp-block-wpdev-product-parade-block #product-sort {
+  pointer-events: none;
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  color: rgb(1, 83, 83);
+  border: rgb(1, 83, 83) 1px solid;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px;
+}
 .wp-block-wpdev-product-parade-block .add_to_cart_button {
   margin-top: 16px;
   outline: none;
@@ -42,9 +52,9 @@
   margin: 0;
 }
 .product-parade-block-tab-panel > .components-tab-panel__tabs .components-button {
-  background-color: #e8e8e8;
-  color: #000000;
-  border-bottom: 2px solid rgb(1, 83, 83);
+  background-color: rgb(1, 83, 83);
+  color: #f0f0f0;
+  border-top: 2px solid rgb(1, 83, 83);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,8 +67,8 @@
   gap: 5px;
 }
 .product-parade-block-tab-panel > .components-tab-panel__tabs .components-button.product-parade-block-active-tab {
-  background-color: rgb(1, 83, 83);
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(1, 83, 83);
 }
 .product-parade-block-tab-panel .product-parade-block-tabs-content {
   padding: 20px;
@@ -147,12 +157,8 @@
   color: rgb(1, 83, 83);
   border-color: rgb(1, 83, 83);
 }
-.product-parade-block-tab-panel .ppb-units span:hover .ppb-units-btn {
-  visibility: visible;
-}
-.product-parade-block-tab-panel .ppb-units .ppb-units-btn {
-  opacity: 0;
-  display: flex;
+.product-parade-block-tab-panel .ppb-units-btn {
+  display: none;
   flex-direction: column;
   align-items: center;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.15);
@@ -162,23 +168,38 @@
   z-index: 999;
   background-color: #f3f3f3;
   padding: 0;
-  gap: 2px;
+  width: 23px;
 }
-.product-parade-block-tab-panel .ppb-units .ppb-units-btn button {
+.product-parade-block-tab-panel .ppb-units:hover .ppb-units-btn {
+  display: flex;
+}
+.product-parade-block-tab-panel .ppb-units-btn button {
   height: -moz-fit-content;
   height: fit-content;
   font-size: 11px;
   padding: 0px 3px;
   margin: 0;
+  text-transform: capitalize;
 }
-.product-parade-block-tab-panel .ppb-units .ppb-units-btn button:hover {
+.product-parade-block-tab-panel .ppb-units-btn button.active {
   background-color: rgb(1, 83, 83);
-  color: white;
+  color: #fff;
+}
+.product-parade-block-tab-panel .ppb-units-btn button.active:hover {
+  color: #fff;
+  background-color: rgb(1, 83, 83);
+}
+.product-parade-block-tab-panel .ppb-units-btn button:hover {
+  color: rgb(1, 83, 83);
+  background-color: rgba(140, 143, 148, 0.4392156863);
 }
 .product-parade-block-tab-panel .components-range-control__wrapper .components-range-control__track {
   background-color: rgb(1, 83, 83);
 }
 .product-parade-block-tab-panel .components-range-control__wrapper .components-range-control__thumb-wrapper span {
+  background-color: rgb(1, 83, 83);
+}
+.product-parade-block-tab-panel .components-form-toggle.is-checked .components-form-toggle__track {
   background-color: rgb(1, 83, 83);
 }
 

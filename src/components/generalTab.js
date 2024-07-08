@@ -1,14 +1,40 @@
-import { RangeControl, SelectControl, Button, TabPanel, Icon, ToggleControl, PanelBody, TextControl } from '@wordpress/components';
+import { RangeControl, SelectControl, Button, TabPanel, Icon, ToggleControl, PanelBody, TextControl, QueryControls } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import contentLeftIcon from '../Icons/contentLeft.svg';
 import contentTopIcon from '../Icons/contentTop.svg';
 import contentBottomIcon from '../Icons/contentBottom.svg';
 import contentRightIcon from '../Icons/contentRight.svg';
 import MyRangeControl from './myRangeControl';
+import { useSelect } from '@wordpress/data';
 
 const GeneralTab = ({attributes, setAttributes}) => {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, showSortingDropdown } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, showSortingDropdown, categories } = attributes;
+
+    const allCats = useSelect((select) => {
+		return select('core').getEntityRecords('taxonomy', 'product_cat', {
+			per_page: -1,
+		});
+	}, []);
+
+    const catSuggestions = {};
+	if (allCats) {
+		for (let i = 0; i < allCats.length; i++) {
+			const cat = allCats[i];
+			catSuggestions[cat.name] = cat;
+		}
+	};
+
+	const onCategoryChange = (values) => {
+		const hasNoSuggestions = values.some((value) => typeof value == 'string' && !catSuggestions[value]);
+		if (hasNoSuggestions) return;
+
+		const updateCats = values.map((token)=> {
+			return typeof token == 'string' ? catSuggestions[token] : token;
+		})
+		
+		setAttributes({categories: updateCats})
+	}
 
     return (
         <>
@@ -55,22 +81,41 @@ const GeneralTab = ({attributes, setAttributes}) => {
                     label={__('Gap between items', 'product-parade-block')}
                     setAttributes={setAttributes}
                     attributes={attributes}
-                    defaultValue={{ unit: 'px', value: 18 }}
-                    units= {['Px', '%', 'Em']}
+                    units= {['px', '%', 'em']}
                     attributesKey={'gapBetweenProducts'}
                     min={0}
                     max={80}
                     step={1}
                 />
-                <RangeControl
+
+                <QueryControls 
+				    numberOfItems={postPerPage} 
+					onNumberOfItemsChange={ ( value ) => setAttributes( { postPerPage: value } ) }
+					maxItems={100}
+					minItems={2}
+					orderBy={orderBy}
+					onOrderByChange= { (value)=> setAttributes({ orderBy: value }) }
+					order={order}
+					onOrderChange= {(v)=> setAttributes({ order: v })}
+					categorySuggestions= {catSuggestions}
+					selectedCategories={categories}					
+					onCategoryChange={onCategoryChange}
+				/>
+
+
+
+
+                {/* <RangeControl
                     label={__('Post per page', 'product-parade-block')}
                     value={ postPerPage }
                     onChange={ ( value ) => setAttributes( { postPerPage: value } ) }
                     min={ 2 }
                     max={ 100 }
                     units= {['Px', 'rem', 'Em']}
-                />
-                <SelectControl
+                /> */}
+
+
+                {/* <SelectControl
                     label={__('Orderby', 'product-parade-block')}
                     value={ orderBy }
                     onChange={ (value)=> setAttributes({ orderBy: value }) }
@@ -80,13 +125,13 @@ const GeneralTab = ({attributes, setAttributes}) => {
                         { value: 'title', label: 'Name' },
                         { value: 'rating', label: 'Rating' },
                     ] }
-                />
+                /> */}
                 
-                <div className='product-parade-block-sidebar-label-text'>{__('Order', 'product-parade-block')}</div>
+                {/* <div className='product-parade-block-sidebar-label-text'>{__('Order', 'product-parade-block')}</div>
                 <div className='product-parade-block-button-group'>
                     <Button className={`product-parade-block-sidebar-button ${order == "asc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "asc"})}>Ascending</Button>
                     <Button className={`product-parade-block-sidebar-button ${order == "desc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "desc"})}>Descending</Button>
-                </div>
+                </div> */}
 
                 <ToggleControl
                     label={__('Show Average Ratings', 'product-parade-block')}

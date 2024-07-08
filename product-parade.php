@@ -49,13 +49,15 @@ function product_parade_block_render_callback($attributes) {
     // Add sorting dropdown
     $content = '<div ' . get_block_wrapper_attributes(['class' => $class_name]) . '>';
     $content .= '<style>' . $cssString . '</style>';
-    $content .= '<select id="product-sort">
+    if( $attributes['showSortingDropdown'] ){
+        $content .= '<select id="product-sort">
                     <option value="date">Sort by Date</option>
                     <option value="price">Sort by Price (Low to High)</option>
                     <option value="price-desc">Sort by Price (High to Low)</option>
                     <option value="rating">Sort by Rating</option>
                     <option value="popularity">Sort by Popularity</option>
-                </select>';
+                    </select>';
+    }
     $content .= '<div class="product-container">';
 
     while ($query->have_posts()) {

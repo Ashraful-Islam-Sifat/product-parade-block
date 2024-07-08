@@ -22,6 +22,12 @@
       "type": "string",
       "default": ""
     },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
     "productPrices": {
       "type": "array",
       "default": []
@@ -83,12 +89,18 @@
       }
     },
     "containerBorderRadius": {
-      "type": "string",
-      "default": "5"
+      "type": "object",
+      "default": {
+        "value": "5",
+        "unit": "px"
+      }
     },
     "nameFontSize": {
-      "type": "string",
-      "default": "20"
+      "type": "object",
+      "default": {
+        "value": "20",
+        "unit": "px"
+      }
     },
     "nameFontFamily": {
       "type": "string",
