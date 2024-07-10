@@ -77,6 +77,12 @@
   outline: none;
   box-shadow: none;
 }
+.product-parade-block-tab-panel .components-panel__body.is-opened .components-panel__body-title button {
+  background-color: rgba(1, 83, 83, 0.116);
+}
+.product-parade-block-tab-panel .components-panel__body .components-panel__body-title:hover {
+  background-color: rgba(1, 83, 83, 0.116);
+}
 .product-parade-block-tab-panel .components-form-toggle:focus {
   outline: none;
 }

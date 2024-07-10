@@ -38,7 +38,7 @@ const GeneralTab = ({attributes, setAttributes}) => {
 
     return (
         <>
-            <PanelBody title={__('Product Content Position', 'product-parade-block')} initialOpen={false}>
+            <PanelBody title={__('Product Content Position', 'product-parade-block')} initialOpen={true}>
                 <div className='product-parade-block-layouts'>
 
                     <div className='product-parade-block-layout' onClick={ ()=> setAttributes({contentPosition: "bottom"}) }>
@@ -76,7 +76,7 @@ const GeneralTab = ({attributes, setAttributes}) => {
                 </div>
             </PanelBody>
 
-            <PanelBody title={__('General', 'product-parade-block')} initialOpen={ true }>
+            <PanelBody title={__('General', 'product-parade-block')} initialOpen={ false }>
                 <MyRangeControl
                     label={__('Gap between items', 'product-parade-block')}
                     setAttributes={setAttributes}
@@ -93,10 +93,6 @@ const GeneralTab = ({attributes, setAttributes}) => {
 					onNumberOfItemsChange={ ( value ) => setAttributes( { postPerPage: value } ) }
 					maxItems={100}
 					minItems={2}
-					orderBy={orderBy}
-					onOrderByChange= { (value)=> setAttributes({ orderBy: value }) }
-					order={order}
-					onOrderChange= {(v)=> setAttributes({ order: v })}
 					categorySuggestions= {catSuggestions}
 					selectedCategories={categories}					
 					onCategoryChange={onCategoryChange}

@@ -104,8 +104,11 @@
 			"default": ""
 		},
 		"priceFontSize": {
-			"type": "string",
-			"default": "14"
+			"type": "object",
+			"default": {
+				"value": "14",
+				"unit": "px"
+			}
 		},
 		"priceColor": {
 			"type": "string",

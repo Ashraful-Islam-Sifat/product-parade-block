@@ -85,6 +85,16 @@
             outline: none;
             box-shadow: none;
         }
+        &.is-opened{
+            .components-panel__body-title{
+                button{
+                    background-color: rgba(1, 83, 83, 0.116);
+                }
+            }
+        }
+        .components-panel__body-title:hover{
+            background-color: rgba(1, 83, 83, 0.116);;
+        }
     }
     .components-form-toggle:focus{
             outline: none;

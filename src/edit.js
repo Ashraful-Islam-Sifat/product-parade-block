@@ -1,54 +1,51 @@
 import { useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect, RawHTML } from '@wordpress/element';
-import './editor.scss';
+import { useState, useEffect } from '@wordpress/element';
 import dynamicCss from './dynamicCss';
 import TabsContent from './components/tabsContents';
+import './editor.scss';
 
 export default function Edit({ clientId, attributes, setAttributes }) {
-
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, uniqueId, buttonBgColor, buttonTextColor, showSortingDropdown, categories } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, uniqueId, buttonBgColor, buttonTextColor, showSortingDropdown, categories, productCatIDs } = attributes;
     
     const [loading, setLoading] = useState(true);
 
-    const catIDs = categories && categories.length > 0 ? categories.map((cat)=> cat.id) : [];
-
-    useEffect(()=> {
-        setAttributes( { uniqueId: clientId } )
-    },[clientId]);
-
-    useEffect(()=> {
-        setAttributes({frontendCss: JSON.stringify(dynamicCss(attributes))})
-    },[attributes]);
-
-    // Fetch product data using wp.data.select
-    const products = useSelect((select) => {
-        return select('core').getEntityRecords('postType', 'product', {
-            per_page: postPerPage,
-            orderby: orderBy,
-            order: order,
-            _embed: true,
-            tax_query: [
-                {
-                    taxonomy: 'product_cat',
-                    field: 'term_id',
-                    terms: catIDs,
-                },
-            ],
-        });
-    }, [postPerPage, orderBy, order, catIDs]);
-    
-
-    // console.log(catIDs);
+    const catIDs = categories && categories.length > 0 ? categories.map((cat) => cat.id) : [];
 
     useEffect(() => {
-        if (products === null) {
+        setAttributes({ uniqueId: clientId });
+    }, [clientId]);
+
+    useEffect(() => {
+        setAttributes({ frontendCss: JSON.stringify(dynamicCss(attributes)) });
+    }, [attributes]); 
+
+    const allProducts = useSelect((select) => {
+        return select('core').getEntityRecords('postType', 'product', {
+            per_page: postPerPage,
+            _embed: true,
+        });
+    }, [postPerPage, orderBy, order]);
+
+    let filteredProducts = allProducts;
+
+    if (catIDs.length > 0) {
+        filteredProducts = allProducts && allProducts.length > 0 
+            ? allProducts.filter(product => {
+                const productCategories = product.product_cat || [];
+                return productCategories.some(category => catIDs.includes(category));
+            }) 
+            : [];
+    }
+
+    useEffect(() => {
+        if (allProducts === null) {
             setLoading(true);
         } else {
             setLoading(false);
         }
-    }, [products]);
+    }, [allProducts]);
 
     return (
         <div {...useBlockProps({ className: `wp-block-wpdev-product-parade-block-${uniqueId}` })}>
@@ -59,17 +56,17 @@ export default function Edit({ clientId, attributes, setAttributes }) {
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                products && products.length > 0 ? (
+                filteredProducts && filteredProducts.length > 0 ? (
                     <>
                     {showSortingDropdown && 
                     <select id="product-sort">
-                        <option value="date">Sort by Date</option>
+                        <option value="date">Latest</option>
                         <option>Sort by Price</option>
                         <option>Sort by Rating</option>
                     </select>
                     }
                     <div className='product-container'>
-                        {products.map((product) => {
+                        {filteredProducts.map((product) => {
                             const featuredMedia = product._embedded && product._embedded['wp:featuredmedia'] && product._embedded        ['wp:featuredmedia'][0];
                             return (
                                 <div key={product.id} className={`ppb-product content-position-${contentPosition}`}>
@@ -114,7 +111,7 @@ export default function Edit({ clientId, attributes, setAttributes }) {
                                                 );
                                             }
                                         })}
-                                        <button className='add_to_cart_button wp-element-button' style={{ backgroundColor: buttonBgColor,         color: buttonTextColor }}>Add to cart</button>
+                                        <button className='add_to_cart_button wp-element-button' style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}>Add to cart</button>
                                     </div>
                                 </div>
                             );

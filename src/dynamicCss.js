@@ -27,7 +27,7 @@ function dynamicCss(attributes) {
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
             'color': priceColor,
-            'font-size': priceFontSize+'px',
+            'font-size': priceFontSize.value+priceFontSize.unit,
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .price`]: {
             'color': priceHoverColor,

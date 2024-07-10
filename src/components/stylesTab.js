@@ -171,12 +171,15 @@ const StylesTab = ({attributes, setAttributes}) => {
         </PanelBody>
 
         <PanelBody title={ __('Price', 'product-parade-block') } initialOpen={ false }>
-            <RangeControl
-                label={ __('Font Size(px)', 'product-parade-block') }
-                value={ priceFontSize }
-                onChange={ (value)=> setAttributes( { priceFontSize: value } ) }
-                min={ 10 }
-                max={ 40 }
+            <MyRangeControl
+                label={__('Font Size', 'product-parade-block')}
+                setAttributes={setAttributes}
+                attributes={attributes}
+                units= {['px', '%', 'em']}
+                attributesKey={'priceFontSize'}
+                min={0}
+                max={40}
+                step={0.5}
             />
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${priceStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setPriceStyleType('default')}>Default</Button>

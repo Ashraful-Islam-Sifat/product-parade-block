@@ -33,12 +33,26 @@ function product_parade_block_render_callback($attributes) {
     $cssString = str_replace('"', '', $attributes['frontendCss']);
     $unique_id = $attributes['uniqueId'];
     $class_name = 'wp-block-wpdev-product-parade-block-' . esc_attr($unique_id);
+    $category_ids = !empty($attributes['categories']) ? array_map(function($cat) { return $cat['id']; }, $attributes['categories']) : [];
 
     // Fetch all products
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => $attributes['postPerPage'],
     );
+
+    if (!empty($category_ids)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field' => 'term_id',
+                'terms' => $category_ids,
+                'operator' => 'IN',
+            ),
+        );
+    }
+
+    
 
     $query = new WP_Query($args);
 
@@ -51,7 +65,7 @@ function product_parade_block_render_callback($attributes) {
     $content .= '<style>' . $cssString . '</style>';
     if( $attributes['showSortingDropdown'] ){
         $content .= '<select id="product-sort">
-                    <option value="date">Sort by Date</option>
+                    <option value="date">Latest</option>
                     <option value="price">Sort by Price (Low to High)</option>
                     <option value="price-desc">Sort by Price (High to Low)</option>
                     <option value="rating">Sort by Rating</option>
