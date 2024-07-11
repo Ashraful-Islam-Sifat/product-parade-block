@@ -111,7 +111,9 @@ export default function Edit({ clientId, attributes, setAttributes }) {
                                                 );
                                             }
                                         })}
-                                        <button className='add_to_cart_button wp-element-button' style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}>Add to cart</button>
+                                        <p className='add-to-cart'>
+                                        <button className='button wp-element-button'>Add to cart</button>
+                                        </p>
                                     </div>
                                 </div>
                             );

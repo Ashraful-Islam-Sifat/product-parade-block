@@ -7,7 +7,7 @@ import MyRangeControl from "./myRangeControl";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
     const [nameStyleType, setNameStyleType] = useState('default');
@@ -48,7 +48,6 @@ const StylesTab = ({attributes, setAttributes}) => {
     return ( 
         <>
         <PanelBody title={ __('Container','product-parade-block') } initialOpen={ false }>
-            {/* <div className='product-parade-block-sidebar-label-text'>Color Settings</div> */}
 
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${containerStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setContainerStyleType('default')}>Default</Button>
@@ -131,6 +130,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                 onChange={(newValue)=> setAttributes({ nameFontFamily: newValue })}
             />
 
+            <div className="product-parade-block-sidebar-label-text">Color Settings</div>
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${nameStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setNameStyleType('default')}>Default</Button>
                 <Button className={`product-parade-block-sidebar-button ${nameStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setNameStyleType('hover')}>Hover</Button>
@@ -181,6 +181,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                 max={40}
                 step={0.5}
             />
+            <div className="product-parade-block-sidebar-label-text">Color Settings</div>
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${priceStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setPriceStyleType('default')}>Default</Button>
                 <Button className={`product-parade-block-sidebar-button ${priceStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setPriceStyleType('hover')}>Hover</Button>
@@ -220,12 +221,15 @@ const StylesTab = ({attributes, setAttributes}) => {
         </PanelBody>
 
         <PanelBody title={ __('Rating', 'product-parade-block') } initialOpen={ false }>
-             <RangeControl
-                label={ __('Icon Size Size(px)', 'product-parade-block') }
-                value={ iconSize }
-                onChange={ (value)=> setAttributes( { iconSize: value } ) }
-                min={ 5 }
-                max={ 40 }
+            <MyRangeControl
+                label={__('Icon Size', 'product-parade-block')}
+                setAttributes={setAttributes}
+                attributes={attributes}
+                units= {['px', '%', 'em']}
+                attributesKey={'iconSize'}
+                min={0}
+                max={40}
+                step={0.5}
             />
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${iconsStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setIconsStyleType('default')}>Default</Button>
@@ -281,6 +285,28 @@ const StylesTab = ({attributes, setAttributes}) => {
 
         <PanelBody title={ __('Button', 'product-parade-block') } initialOpen={ false }>
                 <>
+                    <MyRangeControl
+                        label={__('Border Radius', 'product-parade-block')}
+                        setAttributes={setAttributes}
+                        attributes={attributes}
+                        units= {['px', '%', 'em']}
+                        attributesKey={'buttonBorderRadius'}
+                        min={0}
+                        max={100}
+                        step={1}
+                    />
+                    <SelectControl
+                        label={__('Font Family', 'product-parade-block')}
+                        value={buttonFontFamily}
+                        options={fontFamilyOptions}
+                        onChange={(newValue)=> setAttributes({ buttonFontFamily: newValue })}
+                    />
+                    <div className="product-parade-block-sidebar-label-text">Color Settings</div>
+                    <div className='product-parade-block-button-group'>
+                        <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setButtonStyleType('default')}>Default</Button>
+                        <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setButtonStyleType('hover')}>Hover</Button>
+                    </div>
+                    {buttonStyleType === 'default'&&
                     <PanelColorSettings
                         disableCustomColors={false}
                         colorSettings={[
@@ -299,7 +325,27 @@ const StylesTab = ({attributes, setAttributes}) => {
                                 }
                             }
                         ]}
-                    />
+                    />}
+                    {buttonStyleType === 'hover'&&
+                    <PanelColorSettings
+                        disableCustomColors={false}
+                        colorSettings={[
+                            {
+                                label: __('Background', 'product-parade-block'),
+                                value: buttonHoverBgColor,
+                                onChange: (value) => {
+                                    setAttributes({ buttonHoverBgColor: value });
+                                }
+                            },
+                            {
+                                label: __('Text Color', 'product-parade-block'),
+                                value: buttonHoverTextColor,
+                                onChange: (value) => {
+                                    setAttributes({ buttonHoverTextColor: value });
+                                }
+                            }
+                        ]}
+                    />}
                 </>
         </PanelBody>
         </>

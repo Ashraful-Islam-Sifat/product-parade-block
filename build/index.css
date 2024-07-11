@@ -11,7 +11,7 @@
   height: 40px;
   border-radius: 5px;
 }
-.wp-block-wpdev-product-parade-block .add_to_cart_button {
+.wp-block-wpdev-product-parade-block .ppb-product .product-contents .add-to-cart .button {
   margin-top: 16px;
   outline: none;
   width: 132px;
@@ -77,7 +77,7 @@
   outline: none;
   box-shadow: none;
 }
-.product-parade-block-tab-panel .components-panel__body.is-opened .components-panel__body-title button {
+.product-parade-block-tab-panel .components-panel__body.is-opened .components-panel__body-title {
   background-color: rgba(1, 83, 83, 0.116);
 }
 .product-parade-block-tab-panel .components-panel__body .components-panel__body-title:hover {

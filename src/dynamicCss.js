@@ -1,17 +1,22 @@
 import { cssString } from "./controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily } = attributes;
 
     let desktopCss = {
-        [`.wp-block-wpdev-product-parade-block-${uniqueId} .product-container`]: {
-            'gap': gapBetweenProducts.value+gapBetweenProducts.unit,
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
+            'background-color': containerBgColor,
+            'border': containerBorder.color+' ' + containerBorder.style +' '+ containerBorder.width,
+            'border-radius':  containerBorderRadius.value+containerBorderRadius.unit,
+            'transition': '0.4s all',
+            'margin-right': gapBetweenProducts.value+gapBetweenProducts.unit
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
             'background-color': containerBgColor,
             'border': containerBorder.color+' ' + containerBorder.style +' '+ containerBorder.width,
             'border-radius':  containerBorderRadius.value+containerBorderRadius.unit,
-            'transition': '0.4s all'
+            'transition': '0.4s all',
+            'margin-left': gapBetweenProducts.value+gapBetweenProducts.unit
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover`]: {
             'background-color': containerHoverBgColor,
@@ -33,11 +38,11 @@ function dynamicCss(attributes) {
             'color': priceHoverColor,
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .filled-icons`]: {
-            'font-size': iconSize+'px',
+            'font-size': iconSize.value+iconSize.unit,
             'color': filledIconsColor
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .empty-icons`]: {
-            'font-size': iconSize+'px',
+            'font-size': iconSize.value+iconSize.unit,
             'color': emptyIconsColor
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .product-parade-block-rating-area .filled-icons`]: {
@@ -46,9 +51,15 @@ function dynamicCss(attributes) {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .product-parade-block-rating-area .empty-icons`]: {
             'color': emptyIconsHoverColor,
         },
-        [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart a`]: {
+        [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
             'background-color': buttonBgColor,
-            'color': buttonTextColor
+            'color': buttonTextColor,
+            'border-radius': buttonBorderRadius.value+buttonBorderRadius.unit,
+            'font-family': buttonFontFamily
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button:hover`]: {
+            'background-color': buttonHoverBgColor,
+            'color': buttonHoverTextColor
         },
         
     };

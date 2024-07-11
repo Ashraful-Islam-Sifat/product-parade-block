@@ -52,6 +52,7 @@
 
 .wp-block-wpdev-product-parade-block .product-container .ppb-product.content-position-right{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -59,6 +60,7 @@
 
 .wp-block-wpdev-product-parade-block .product-container .ppb-product.content-position-left{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -137,9 +139,10 @@
     transform: rotate(-35deg);
 }
 
-.wp-block-wpdev-product-parade-block .product-container .ppb-product .add-to-cart a{
+.wp-block-wpdev-product-parade-block .product-container .ppb-product .add-to-cart .button{
     outline: none;
     width: 100px;
+    transition: all 0.3s;
 }
 
 .wp-block-wpdev-product-parade-block .product-container .ppb-product .add-to-cart .added_to_cart{
@@ -147,7 +150,6 @@
     padding: 0;
     text-decoration: underline;
     background: none;
-    color: rgb(1, 83, 83);
 }
 
 

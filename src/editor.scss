@@ -9,10 +9,16 @@
         height: 40px;
         border-radius: 5px;
     }
-    .add_to_cart_button{
-        margin-top: 16px;
-        outline: none;
-        width: 132px;
+    .ppb-product{
+        .product-contents{
+            .add-to-cart{
+                .button{
+                    margin-top: 16px;
+                    outline: none;
+                    width: 132px;
+                }
+            }
+        }
     }
 }
 
@@ -87,9 +93,8 @@
         }
         &.is-opened{
             .components-panel__body-title{
-                button{
                     background-color: rgba(1, 83, 83, 0.116);
-                }
+
             }
         }
         .components-panel__body-title:hover{

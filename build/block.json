@@ -130,8 +130,11 @@
       "default": ""
     },
     "iconSize": {
-      "type": "string",
-      "default": "14"
+      "type": "object",
+      "default": {
+        "value": "14",
+        "unit": "px"
+      }
     },
     "filledIconsColor": {
       "type": "string",
@@ -154,6 +157,25 @@
     "buttonTextColor": {
       "type": "string",
       "default": "#fff"
+    },
+    "buttonHoverBgColor": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonHoverTextColor": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonBorderRadius": {
+      "type": "object",
+      "default": {
+        "value": "5",
+        "unit": "px"
+      }
+    },
+    "buttonFontFamily": {
+      "type": "string",
+      "default": "'Times New Roman', Times, serif"
     },
     "showSortingDropdown": {
       "type": "boolean",
