@@ -181,6 +181,30 @@ var SvgContentTop = function SvgContentTop(props) {
 
 /***/ }),
 
+/***/ "./src/Icons/myIcons.js":
+/*!******************************!*\
+  !*** ./src/Icons/myIcons.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TypographyIcon: () => (/* binding */ TypographyIcon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const TypographyIcon = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "10",
+  height: "12",
+  fill: "none"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M7.577 11.256H2.409v-.608c.458 0 .8-.032 1.024-.096a.635.635 0 0 0 .432-.464c.074-.235.112-.592.112-1.072v-7.44h-.832c-.587 0-1.03.064-1.328.192-.288.128-.496.357-.624.688-.128.32-.25.768-.368 1.344H.137L.313.744H9.72L9.865 3.8h-.688c-.118-.576-.246-1.024-.384-1.344-.128-.33-.336-.56-.624-.688-.288-.128-.731-.192-1.328-.192h-.816v7.44c0 .48.037.837.112 1.072.074.235.218.39.432.464.224.064.56.096 1.008.096v.608Z"
+}));
+
+/***/ }),
+
 /***/ "./src/components/generalTab.js":
 /*!**************************************!*\
   !*** ./src/components/generalTab.js ***!
@@ -488,6 +512,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _myRangeControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./myRangeControl */ "./src/components/myRangeControl.js");
+/* harmony import */ var _Icons_myIcons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Icons/myIcons */ "./src/Icons/myIcons.js");
+/* harmony import */ var _typography__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./typography */ "./src/components/typography.js");
+
+
 
 
 
@@ -528,6 +556,10 @@ const StylesTab = ({
   const [priceStyleType, setPriceStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const [iconsStyleType, setIconsStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const [buttonStyleType, setButtonStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
+  const [isOpen, setIsOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
   const colors = [{
     name: 'Blue 20',
     color: '#72aee6'
@@ -663,22 +695,11 @@ const StylesTab = ({
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Name', 'product-parade-block'),
     initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_myRangeControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Size', 'product-parade-block'),
-    setAttributes: setAttributes,
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    fontSize: "nameFontSize",
     attributes: attributes,
-    units: ['px', '%', 'em'],
-    attributesKey: 'nameFontSize',
-    min: 0,
-    max: 60,
-    step: 1
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Family', 'product-parade-block'),
-    value: nameFontFamily,
-    options: fontFamilyOptions,
-    onChange: newValue => setAttributes({
-      nameFontFamily: newValue
-    })
+    setAttributes: setAttributes,
+    fontFamily: "nameFontFamily"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-sidebar-label-text"
   }, "Color Settings"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -972,6 +993,145 @@ const TabsContent = ({
   })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TabsContent);
+
+/***/ }),
+
+/***/ "./src/components/typography.js":
+/*!**************************************!*\
+  !*** ./src/components/typography.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _myRangeControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./myRangeControl */ "./src/components/myRangeControl.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+const Typography = props => {
+  const {
+    attributes,
+    setAttributes,
+    fontSize,
+    fontFamily,
+    fontWeight
+  } = props;
+  const [isOpen, setIsOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+  const fontFamilyOptions = [{
+    label: 'Arial',
+    value: 'Arial, sans-serif'
+  }, {
+    label: 'Helvetica',
+    value: 'Helvetica, sans-serif'
+  }, {
+    label: 'Times New Roman',
+    value: '"Times New Roman", Times, serif'
+  }, {
+    label: 'Courier New',
+    value: '"Courier New", Courier, monospace'
+  }, {
+    label: 'Verdana',
+    value: 'Verdana, sans-serif'
+  }, {
+    label: 'Georgia',
+    value: 'Georgia, serif'
+  }, {
+    label: 'Palatino',
+    value: '"Palatino Linotype", "Book Antiqua", Palatino, serif'
+  }, {
+    label: 'Tahoma',
+    value: 'Tahoma, sans-serif'
+  }, {
+    label: 'Trebuchet MS',
+    value: '"Trebuchet MS", Helvetica, sans-serif'
+  }, {
+    label: 'Impact',
+    value: 'Impact, Charcoal, sans-serif'
+  }, {
+    label: 'Comic Sans MS',
+    value: '"Comic Sans MS", cursive, sans-serif'
+  }, {
+    label: 'Lucida Sans Unicode',
+    value: '"Lucida Sans Unicode", "Lucida Grande", sans-serif'
+  }, {
+    label: 'Arial Black',
+    value: '"Arial Black", Gadget, sans-serif'
+  }, {
+    label: 'Gill Sans',
+    value: '"Gill Sans", "Gill Sans MT", Calibri, sans-serif'
+  }, {
+    label: 'Geneva',
+    value: 'Geneva, sans-serif'
+  }, {
+    label: 'Calibri',
+    value: 'Calibri, sans-serif'
+  }, {
+    label: 'Candara',
+    value: 'Candara, sans-serif'
+  }, {
+    label: 'Optima',
+    value: 'Optima, sans-serif'
+  }, {
+    label: 'Cambria',
+    value: 'Cambria, Georgia, serif'
+  }, {
+    label: 'Baskerville',
+    value: 'Baskerville, "Times New Roman", serif'
+  }, {
+    label: 'Garamond',
+    value: 'Garamond, serif'
+  }, {
+    label: 'Bookman',
+    value: 'Bookman, serif'
+  }, {
+    label: 'Avant Garde',
+    value: '"Avant Garde", sans-serif'
+  }];
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-editor-typography"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-editor-typography-header"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "product-parade-block-sidebar-label-text"
+  }, "Typography"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: isOpen ? "active" : "",
+    onClick: toggleDropdown
+  }, "T")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: isOpen ? "typography-area open" : "typography-area"
+  }, fontSize && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_myRangeControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Size', 'product-parade-block'),
+    setAttributes: setAttributes,
+    attributes: attributes,
+    units: ['px', '%', 'em'],
+    attributesKey: fontSize,
+    min: 0,
+    max: 60,
+    step: 1
+  }), fontFamily && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Family', 'product-parade-block'),
+    value: attributes[fontFamily],
+    options: fontFamilyOptions,
+    onChange: newValue => setAttributes({
+      [fontFamily]: newValue
+    })
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Typography);
 
 /***/ }),
 

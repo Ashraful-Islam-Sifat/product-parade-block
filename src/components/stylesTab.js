@@ -1,9 +1,11 @@
 import { PanelColorSettings } from "@wordpress/block-editor";
-import { SelectControl } from "@wordpress/components";
+import { Dropdown, SelectControl } from "@wordpress/components";
 import { RangeControl, PanelBody,  __experimentalBorderControl as BorderControl, Button } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import { __ } from '@wordpress/i18n';
 import MyRangeControl from "./myRangeControl";
+import {TypographyIcon} from '../Icons/myIcons';
+import Typography from "./typography";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
@@ -14,6 +16,12 @@ const StylesTab = ({attributes, setAttributes}) => {
     const [priceStyleType, setPriceStyleType] = useState('default');
     const [iconsStyleType, setIconsStyleType] = useState('default');
     const [buttonStyleType, setButtonStyleType] = useState('default');
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      setIsOpen(!isOpen);
+    };
 
     const colors = [
         { name: 'Blue 20', color: '#72aee6' },
@@ -112,23 +120,40 @@ const StylesTab = ({attributes, setAttributes}) => {
 
         <PanelBody title={ __('Name', 'product-parade-block') } initialOpen={ false }>
 
-            <MyRangeControl
-                label={__('Font Size', 'product-parade-block')}
-                setAttributes={setAttributes}
-                attributes={attributes}
-                units= {['px', '%', 'em']}
-                attributesKey={'nameFontSize'}
-                min={0}
-                max={60}
-                step={1}
+            <Typography
+                fontSize = 'nameFontSize' 
+                attributes ={ attributes }
+                setAttributes={ setAttributes }
+                fontFamily='nameFontFamily'
             />
-            
-            <SelectControl
-                label={__('Font Family', 'product-parade-block')}
-                value={nameFontFamily}
-                options={fontFamilyOptions}
-                onChange={(newValue)=> setAttributes({ nameFontFamily: newValue })}
-            />
+
+        {/* <div className="ppb-editor-typography">
+            <div className="ppb-editor-typography-header">
+              <p className="product-parade-block-sidebar-label-text">Typography</p>
+              <button className={ isOpen ? "active" : ""} onClick={toggleDropdown}>T</button>
+            </div>
+            {isOpen && (
+            <div className="typography-area">
+                <MyRangeControl
+                  label={__('Font Size', 'product-parade-block')}
+                  setAttributes={setAttributes}
+                  attributes={attributes}
+                  units={['px', '%', 'em']}
+                  attributesKey='nameFontSize'
+                  min={0}
+                  max={60}
+                  step={1}
+                />
+    
+                <SelectControl
+                  label={__('Font Family', 'product-parade-block')}
+                  value={nameFontFamily}
+                  options={fontFamilyOptions}
+                  onChange={(newValue) => setAttributes({ nameFontFamily: newValue })}
+                />
+            </div>
+            )}
+        </div> */}
 
             <div className="product-parade-block-sidebar-label-text">Color Settings</div>
             <div className='product-parade-block-button-group'>

@@ -137,7 +137,7 @@
         font-size: 13px;
         color: #444444;
         font-weight: 500;
-        margin: 5px auto;
+        margin: 5px 0px;
     }
     .block-editor-panel-color-gradient-settings{
         padding: 0px;
@@ -242,6 +242,48 @@
         &.is-checked{
             .components-form-toggle__track{
                 background-color: rgb(1, 83, 83);
+            }
+        }
+    }
+    .ppb-editor-typography{
+        margin: 20px 0px;
+        .ppb-editor-typography-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button {
+                width: 35px;
+                height: 35px;
+                border: 1px solid rgb(1, 83, 83);
+                border-radius: 5px;
+                background-color: #fff;
+                color: rgb(1, 83, 83);
+                font-size: 25px;
+                font-family: 'Courier New', Courier, monospace;
+                cursor: pointer;
+                transition: all 0.2s;
+              }
+              button:hover {
+                background-color: rgb(1, 83, 83); 
+                color: #fff;
+              }    
+              button{
+                &.active{
+                    background-color: rgb(1, 83, 83); 
+                    color: #fff;
+                    border-bottom-left-radius: 0px;
+                    border-bottom-right-radius: 0px;
+                }
+              }         
+        }
+        .typography-area{
+            display: none;
+            border: 2px solid rgb(1, 83, 83);
+            padding: 10px;
+            border-radius: 5px 0px 5px 5px;
+            box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.15);
+            &.open{
+                display: block;
             }
         }
     }
