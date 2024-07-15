@@ -438,6 +438,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _controls_controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../controls/controls */ "./src/controls/controls.js");
+
 
 
 const MyRangeControl = props => {
@@ -451,6 +453,8 @@ const MyRangeControl = props => {
     step,
     units
   } = props;
+  const deviceType = (0,_controls_controls__WEBPACK_IMPORTED_MODULE_2__.useDeviceType)();
+  console.log(deviceType);
   const onChangeRangeValue = value => {
     setAttributes({
       [attributesKey]: {
@@ -699,7 +703,8 @@ const StylesTab = ({
     fontSize: "nameFontSize",
     attributes: attributes,
     setAttributes: setAttributes,
-    fontFamily: "nameFontFamily"
+    fontFamily: "nameFontFamily",
+    fontWeight: "nameFontWeight"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-sidebar-label-text"
   }, "Color Settings"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1102,6 +1107,25 @@ const Typography = props => {
     label: 'Avant Garde',
     value: '"Avant Garde", sans-serif'
   }];
+  const fontWeightOptions = [{
+    label: '300',
+    value: '300'
+  }, {
+    label: '400',
+    value: '400'
+  }, {
+    label: '500',
+    value: '500'
+  }, {
+    label: '600',
+    value: '600'
+  }, {
+    label: '700',
+    value: '700'
+  }, {
+    label: '800',
+    value: '800'
+  }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ppb-editor-typography"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1128,6 +1152,13 @@ const Typography = props => {
     options: fontFamilyOptions,
     onChange: newValue => setAttributes({
       [fontFamily]: newValue
+    })
+  }), fontWeight && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Weight', 'product-parade-block'),
+    value: attributes[fontWeight],
+    options: fontWeightOptions,
+    onChange: newValue => setAttributes({
+      [fontWeight]: newValue
     })
   })));
 };
@@ -1157,6 +1188,23 @@ const cssString = css => {
     result += '' !== cssProps ? selector + '{' + cssProps + '}' : '';
   }
   return result;
+};
+
+/***/ }),
+
+/***/ "./src/controls/controls.js":
+/*!**********************************!*\
+  !*** ./src/controls/controls.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useDeviceType: () => (/* binding */ useDeviceType)
+/* harmony export */ });
+const useDeviceType = () => {
+  const deviceType = wp.data.select('core/editor').getDeviceType();
+  return deviceType || 'Desktop';
 };
 
 /***/ }),
@@ -1199,7 +1247,8 @@ function dynamicCss(attributes) {
     buttonHoverBgColor,
     buttonHoverTextColor,
     buttonBorderRadius,
-    buttonFontFamily
+    buttonFontFamily,
+    nameFontWeight
   } = attributes;
   let desktopCss = {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -1226,7 +1275,8 @@ function dynamicCss(attributes) {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
       'color': nameColor,
       'font-size': nameFontSize.value + nameFontSize.unit,
-      'font-family': nameFontFamily
+      'font-family': nameFontFamily,
+      'font-weight': nameFontWeight
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
       'color': priceColor,
@@ -1436,70 +1486,10 @@ function Edit({
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
-/**
- * Registers a new block provided a unique name and an object defining its behavior.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * All files containing `style` keyword are bundled together. The code used
- * gets applied both to the front of your site and to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
-
-/**
- * Internal dependencies
- */
-
-
-
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_3__.name, {
-  /**
-   * @see ./edit.js
-   */
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
-});
-
-/***/ }),
-
 /***/ "./src/editor.scss":
 /*!*************************!*\
   !*** ./src/editor.scss ***!
   \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/style.scss":
-/*!************************!*\
-  !*** ./src/style.scss ***!
-  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1584,7 +1574,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"nameFontSize":{"type":"object","default":{"value":"20","unit":"px"}},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"value":"14","unit":"px"}},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"value":"14","unit":"px"}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"buttonFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"value":"15","unit":"px"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"nameFontSize":{"type":"object","default":{"value":"20","unit":"px"}},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"nameFontWeight":{"type":"string","default":"400"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"value":"14","unit":"px"}},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"value":"14","unit":"px"}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"buttonFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"value":"15","unit":"px"}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
@@ -1614,42 +1604,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -1690,68 +1645,26 @@ module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"index": 0,
-/******/ 			"./style-index": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 					}
-/******/ 				}
-/******/ 				if(runtime) var result = runtime(__webpack_require__);
-/******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkId] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkexample_dynamic_block"] = globalThis["webpackChunkexample_dynamic_block"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index"], () => (__webpack_require__("./src/index.js")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_2__.name, {
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map

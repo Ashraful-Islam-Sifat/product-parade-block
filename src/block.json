@@ -95,6 +95,10 @@
 			"type": "string",
 			"default": "'Times New Roman', Times, serif"
 		},
+		"nameFontWeight": {
+			"type": "string",
+			"default": "400"
+		},
 		"nameColor": {
 			"type": "string",
 			"default": "#000"

@@ -1,7 +1,7 @@
 import { cssString } from "./controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight } = attributes;
 
     let desktopCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -28,7 +28,8 @@ function dynamicCss(attributes) {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
             'color': nameColor,
             'font-size': nameFontSize.value+nameFontSize.unit,
-            'font-family': nameFontFamily
+            'font-family': nameFontFamily,
+            'font-weight': nameFontWeight
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
             'color': priceColor,
@@ -64,7 +65,6 @@ function dynamicCss(attributes) {
         
     };
     
-
     desktopCss = cssString(desktopCss);
     const styling = `${desktopCss}`;
     return styling;

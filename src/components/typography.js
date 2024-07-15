@@ -38,6 +38,15 @@ const Typography = (props) => {
     { label: 'Avant Garde', value: '"Avant Garde", sans-serif' }
   ];
 
+  const fontWeightOptions = [
+    { label: '300', value: '300' },
+    { label: '400', value: '400' },
+    { label: '500', value: '500' },
+    { label: '600', value: '600' },
+    { label: '700', value: '700' },
+    { label: '800', value: '800' }
+  ];
+
   return (
     <div className="ppb-editor-typography">
       <div className="ppb-editor-typography-header">
@@ -67,13 +76,14 @@ const Typography = (props) => {
         />
         }
 
-        {/* { fontWeight &&
+        { fontWeight &&
         <SelectControl
            label={__('Font Weight', 'product-parade-block')}
            value={attributes[fontWeight]}
-           options={}
+           options={fontWeightOptions}
+           onChange={(newValue) => setAttributes({ [fontWeight]: newValue })} 
         />
-        } */}
+        }
       </div>
     </div>
   );

@@ -1,7 +1,12 @@
 import { Button, RangeControl, SelectControl } from "@wordpress/components";
+import { useDeviceType } from "../controls/controls";
 
 const MyRangeControl = (props) => {
     const { attributes, attributesKey, setAttributes, label, min, max, step, units } = props;
+
+    const deviceType = useDeviceType();
+
+    console.log(deviceType);
 
     const onChangeRangeValue = (value) => {
         setAttributes({

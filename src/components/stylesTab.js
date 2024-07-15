@@ -125,6 +125,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                 attributes ={ attributes }
                 setAttributes={ setAttributes }
                 fontFamily='nameFontFamily'
+                fontWeight='nameFontWeight'
             />
 
         {/* <div className="ppb-editor-typography">
