@@ -9,7 +9,7 @@ import { useSelect } from '@wordpress/data';
 
 const GeneralTab = ({attributes, setAttributes}) => {
 
-    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, showSortingDropdown, categories } = attributes;
+    const { postPerPage, orderBy, order, showOnSaleRibbon, showAverageRatings, contentPosition, onSaleLabelText, ribbonPosition, showSortingDropdown, categories, gapBetweenProducts } = attributes;
 
     const allCats = useSelect((select) => {
 		return select('core').getEntityRecords('taxonomy', 'product_cat', {
@@ -80,12 +80,13 @@ const GeneralTab = ({attributes, setAttributes}) => {
                 <MyRangeControl
                     label={__('Gap between items', 'product-parade-block')}
                     setAttributes={setAttributes}
-                    attributes={attributes}
+                    attributes={gapBetweenProducts}
                     units= {['px', '%', 'em']}
                     attributesKey={'gapBetweenProducts'}
                     min={0}
                     max={80}
                     step={1}
+                    defaultValue = {{unit: 'px', value: 15}}
                 />
 
                 <QueryControls 

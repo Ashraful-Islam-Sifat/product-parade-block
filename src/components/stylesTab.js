@@ -105,7 +105,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                     />
                 </>
             )}
-            <MyRangeControl
+            {/* <MyRangeControl
                 label={__('Border Radius', 'product-parade-block')}
                 setAttributes={setAttributes}
                 attributes={attributes}
@@ -114,7 +114,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                 min={0}
                 max={40}
                 step={1}
-            />
+            /> */}
 
         </PanelBody>
 
@@ -197,7 +197,7 @@ const StylesTab = ({attributes, setAttributes}) => {
         </PanelBody>
 
         <PanelBody title={ __('Price', 'product-parade-block') } initialOpen={ false }>
-            <MyRangeControl
+            {/* <MyRangeControl
                 label={__('Font Size', 'product-parade-block')}
                 setAttributes={setAttributes}
                 attributes={attributes}
@@ -206,7 +206,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                 min={0}
                 max={40}
                 step={0.5}
-            />
+            /> */}
             <div className="product-parade-block-sidebar-label-text">Color Settings</div>
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${priceStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setPriceStyleType('default')}>Default</Button>
@@ -247,7 +247,7 @@ const StylesTab = ({attributes, setAttributes}) => {
         </PanelBody>
 
         <PanelBody title={ __('Rating', 'product-parade-block') } initialOpen={ false }>
-            <MyRangeControl
+            {/* <MyRangeControl
                 label={__('Icon Size', 'product-parade-block')}
                 setAttributes={setAttributes}
                 attributes={attributes}
@@ -256,7 +256,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                 min={0}
                 max={40}
                 step={0.5}
-            />
+            /> */}
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${iconsStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setIconsStyleType('default')}>Default</Button>
                 <Button className={`product-parade-block-sidebar-button ${iconsStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setIconsStyleType('hover')}>Hover</Button>
@@ -311,7 +311,7 @@ const StylesTab = ({attributes, setAttributes}) => {
 
         <PanelBody title={ __('Button', 'product-parade-block') } initialOpen={ false }>
                 <>
-                    <MyRangeControl
+                    {/* <MyRangeControl
                         label={__('Border Radius', 'product-parade-block')}
                         setAttributes={setAttributes}
                         attributes={attributes}
@@ -320,7 +320,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                         min={0}
                         max={100}
                         step={1}
-                    />
+                    /> */}
                     <SelectControl
                         label={__('Font Family', 'product-parade-block')}
                         value={buttonFontFamily}

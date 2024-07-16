@@ -16,7 +16,7 @@ function dynamicCss(attributes) {
             'border': containerBorder.color+' ' + containerBorder.style +' '+ containerBorder.width,
             'border-radius':  containerBorderRadius.value+containerBorderRadius.unit,
             'transition': '0.4s all',
-            'margin-left': gapBetweenProducts.value+gapBetweenProducts.unit
+            'margin-left': '20px'
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover`]: {
             'background-color': containerHoverBgColor,

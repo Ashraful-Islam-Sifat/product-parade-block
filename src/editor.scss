@@ -159,73 +159,78 @@
             text-transform: uppercase;
         }
 
+        .ppb-units {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .ppb-units span {
+            border: 1px solid #8c8f94;
+            color: #8c8f94;
+            height: 20px;
+            width: 23px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2px;
+            cursor: pointer;
+            text-transform: capitalize;
+            font-size: 11px;
+        }
+        
+        .ppb-units span:hover {
+            color: rgb(1, 83, 83);
+            border-color: rgb(1, 83, 83);
+        }
+        
+        .ppb-units-btn {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.15);
+            position: absolute;
+            top: 20px;
+            z-index: 999;
+            background-color: #f3f3f3;
+            padding: 0;
+            width: 23px;
+        }
+        
+        .ppb-units:hover .ppb-units-btn {
+            display: flex;
+        }
+        
+        .ppb-units-btn button {
+            height: 18px;
+            width: 23px;
+            font-size: 11px;
+            padding: 0px 3px;
+            margin: 0;
+            text-transform: capitalize;
+            text-align: center;
+            &.active{
+                background-color: rgb(1, 83, 83);
+                color: #fff;
+            }
+            &.active:hover{
+                color: #fff;
+                background-color: rgb(1, 83, 83);
+            }
+        }
+        
+        .ppb-units-btn button:hover {
+            color: rgb(1, 83, 83);
+            background-color: #8c8f9470;
+        }
+
     }
 
-    .ppb-units {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-    }
     
-    .ppb-units span {
-        border: 1px solid #8c8f94;
-        color: #8c8f94;
-        height: 20px;
-        width: 23px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 2px;
-        cursor: pointer;
-        text-transform: capitalize;
-        font-size: 11px;
-    }
-    
-    .ppb-units span:hover {
-        color: rgb(1, 83, 83);
-        border-color: rgb(1, 83, 83);
-    }
-    
-    .ppb-units-btn {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.15);
-        width: 23px;
-        position: absolute;
-        top: 23px;
-        z-index: 999;
-        background-color: #f3f3f3;
-        padding: 0;
-        width: 23px;
-    }
-    
-    .ppb-units:hover .ppb-units-btn {
-        display: flex;
-    }
-    
-    .ppb-units-btn button {
-        height: fit-content;
-        font-size: 11px;
-        padding: 0px 3px;
-        margin: 0;
-        text-transform: capitalize;
-        &.active{
-            background-color: rgb(1, 83, 83);
-            color: #fff;
-        }
-        &.active:hover{
-            color: #fff;
-            background-color: rgb(1, 83, 83);
-        }
-    }
-    
-    .ppb-units-btn button:hover {
-        color: rgb(1, 83, 83);
-        background-color: #8c8f9470;
-    }
         
     .components-range-control__wrapper{
         .components-range-control__track{

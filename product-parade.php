@@ -187,7 +187,6 @@ function wpdev_product_parade_block_block_init() {
     wp_localize_script('product-parade-block-editor', 'exampleWooCommerceBlock', array(
         'productsMeta' => fetch_product_data()
     ));
-
-}
+};
 
 add_action('init', 'wpdev_product_parade_block_block_init');
