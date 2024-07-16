@@ -5,9 +5,7 @@ const MyRangeControl = (props) => {
     const { attributes, attributesKey, setAttributes, label, min, max, step, units } = props;
 
     const deviceType = useDeviceType();
-
-    console.log(deviceType);
-
+    
     const onChangeRangeValue = (value) => {
         setAttributes({
             [attributesKey]: {

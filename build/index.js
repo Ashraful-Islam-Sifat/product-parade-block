@@ -454,7 +454,6 @@ const MyRangeControl = props => {
     units
   } = props;
   const deviceType = (0,_controls_controls__WEBPACK_IMPORTED_MODULE_2__.useDeviceType)();
-  console.log(deviceType);
   const onChangeRangeValue = value => {
     setAttributes({
       [attributesKey]: {

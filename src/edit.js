@@ -28,6 +28,7 @@ export default function Edit({ clientId, attributes, setAttributes }) {
         });
     }, [postPerPage, orderBy, order]);
 
+
     let filteredProducts = allProducts;
 
     if (catIDs.length > 0) {
