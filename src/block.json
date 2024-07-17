@@ -95,8 +95,16 @@
 		"nameFontSize": {
 			"type": "object",
 			"default": {
-				"value": "20",
-				"unit": "px"
+				"device": {
+					"Desktop": 20,
+					"Tablet": 20,
+					"Mobile": 20	
+				},
+				"unit": {
+					"Desktop": "px",
+					"Tablet": "px",
+					"Mobile": "px"
+				}
 			}
 		},
 		"nameFontFamily": {

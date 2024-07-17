@@ -4,7 +4,7 @@ import { SelectControl } from "@wordpress/components";
 import { __ } from '@wordpress/i18n';
 
 const Typography = (props) => {
-  const { attributes, setAttributes, fontSize, fontFamily, fontWeight } = props;
+  const { attributes, setAttributes, fontSize, fontFamily, fontWeight, fontSizeKey } = props;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -58,9 +58,9 @@ const Typography = (props) => {
         <MyRangeControl
           label={__('Font Size', 'product-parade-block')}
           setAttributes={setAttributes}
-          attributes={attributes}
+          attributes={fontSize}
           units={['px', '%', 'em']}
-          attributesKey={fontSize}
+          attributesKey={fontSizeKey}
           min={0}
           max={60}
           step={1}

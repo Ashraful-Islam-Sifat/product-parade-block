@@ -20,7 +20,7 @@ function dynamicCss(attributes) {
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
             'color': nameColor,
-            'font-size': nameFontSize.value+nameFontSize.unit,
+            'font-size': cssDataCheck(nameFontSize.device.Desktop, unit(nameFontSize, 'Desktop')),
             'font-family': nameFontFamily,
             'font-weight': nameFontWeight
         },
@@ -63,6 +63,9 @@ function dynamicCss(attributes) {
             'margin-right': cssDataCheck(gapBetweenProducts.device.Tablet, unit(gapBetweenProducts, 'Tablet')),
             'border-radius':  cssDataCheck(containerBorderRadius.device.Tablet, unit(containerBorderRadius, 'Tablet')),
         },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
+            'font-size': cssDataCheck(nameFontSize.device.Tablet, unit(nameFontSize, 'Tablet')),
+        }
     };
 
     let mobileCss = {
@@ -70,6 +73,9 @@ function dynamicCss(attributes) {
             'margin-right': cssDataCheck(gapBetweenProducts.device.Mobile, unit(gapBetweenProducts, 'Mobile')),
             'border-radius':  cssDataCheck(containerBorderRadius.device.Mobile, unit(containerBorderRadius, 'Mobile')),
         },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
+            'font-size': cssDataCheck(nameFontSize.device.Mobile, unit(nameFontSize, 'Mobile')),
+        }
     };
     
     desktopCss = cssString(desktopCss);

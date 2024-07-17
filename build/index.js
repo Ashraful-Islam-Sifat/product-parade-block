@@ -856,7 +856,8 @@ const StylesTab = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Name', 'product-parade-block'),
     initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    fontSize: "nameFontSize",
+    fontSize: nameFontSize,
+    fontSizeKey: "nameFontSize",
     attributes: attributes,
     setAttributes: setAttributes,
     fontFamily: "nameFontFamily",
@@ -1160,7 +1161,8 @@ const Typography = props => {
     setAttributes,
     fontSize,
     fontFamily,
-    fontWeight
+    fontWeight,
+    fontSizeKey
   } = props;
   const [isOpen, setIsOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const toggleDropdown = () => {
@@ -1269,9 +1271,9 @@ const Typography = props => {
   }, fontSize && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_myRangeControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Size', 'product-parade-block'),
     setAttributes: setAttributes,
-    attributes: attributes,
+    attributes: fontSize,
     units: ['px', '%', 'em'],
-    attributesKey: fontSize,
+    attributesKey: fontSizeKey,
     min: 0,
     max: 60,
     step: 1
@@ -1976,7 +1978,7 @@ function dynamicCss(attributes) {
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
       'color': nameColor,
-      'font-size': nameFontSize.value + nameFontSize.unit,
+      'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(nameFontSize.device.Desktop, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(nameFontSize, 'Desktop')),
       'font-family': nameFontFamily,
       'font-weight': nameFontWeight
     },
@@ -2016,12 +2018,18 @@ function dynamicCss(attributes) {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
       'margin-right': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(gapBetweenProducts.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(gapBetweenProducts, 'Tablet')),
       'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(containerBorderRadius.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(containerBorderRadius, 'Tablet'))
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
+      'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(nameFontSize.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(nameFontSize, 'Tablet'))
     }
   };
   let mobileCss = {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
       'margin-right': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(gapBetweenProducts.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(gapBetweenProducts, 'Mobile')),
       'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(containerBorderRadius.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(containerBorderRadius, 'Mobile'))
+    },
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
+      'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(nameFontSize.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(nameFontSize, 'Mobile'))
     }
   };
   desktopCss = (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(desktopCss);
@@ -2290,7 +2298,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontSize":{"type":"object","default":{"value":"20","unit":"px"}},"nameFontFamily":{"type":"string","default":""},"nameFontWeight":{"type":"string","default":"400"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"value":"14","unit":"px"}},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"value":"14","unit":"px"}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"buttonFontFamily":{"type":"string","default":""},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontSize":{"type":"object","default":{"device":{"Desktop":20,"Tablet":20,"Mobile":20},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontFamily":{"type":"string","default":""},"nameFontWeight":{"type":"string","default":"400"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"value":"14","unit":"px"}},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"value":"14","unit":"px"}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"buttonFontFamily":{"type":"string","default":""},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

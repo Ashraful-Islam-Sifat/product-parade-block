@@ -121,7 +121,8 @@ const StylesTab = ({attributes, setAttributes}) => {
         <PanelBody title={ __('Name', 'product-parade-block') } initialOpen={ false }>
 
             <Typography
-                fontSize = 'nameFontSize' 
+                fontSize = {nameFontSize} 
+                fontSizeKey = "nameFontSize"
                 attributes ={ attributes }
                 setAttributes={ setAttributes }
                 fontFamily='nameFontFamily'
