@@ -125,11 +125,21 @@
   margin-bottom: 10px;
 }
 .product-parade-block-tab-panel .components-range-control {
-  margin-top: 20px;
+  margin-top: 0px;
+}
+.product-parade-block-tab-panel .my-range-control {
+  padding-bottom: 20px;
 }
 .product-parade-block-tab-panel .my-range-control-header-area {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.product-parade-block-tab-panel .my-range-control-header-area > .left-area, .product-parade-block-tab-panel .my-range-control-header-area .right-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .product-parade-block-tab-panel .my-range-control-header-area .my-range-control-label {
   color: #757575;
@@ -147,8 +157,8 @@
   position: relative;
 }
 .product-parade-block-tab-panel .my-range-control-header-area .ppb-units span {
-  border: 1px solid #8c8f94;
-  color: #8c8f94;
+  border: 1px solid #7e7e7f;
+  color: #7e7e7f;
   height: 20px;
   width: 23px;
   display: flex;
@@ -187,6 +197,9 @@
   padding: 0px 3px;
   margin: 0;
   text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 .product-parade-block-tab-panel .my-range-control-header-area .ppb-units-btn button.active {
@@ -200,6 +213,9 @@
 .product-parade-block-tab-panel .my-range-control-header-area .ppb-units-btn button:hover {
   color: rgb(1, 83, 83);
   background-color: rgba(140, 143, 148, 0.4392156863);
+}
+.product-parade-block-tab-panel .ppb-header-control-reset:hover {
+  color: rgb(1, 83, 83);
 }
 .product-parade-block-tab-panel .components-range-control__wrapper .components-range-control__track {
   background-color: rgb(1, 83, 83);

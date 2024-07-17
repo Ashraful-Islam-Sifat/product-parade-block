@@ -1,4 +1,4 @@
-import { cssString } from "./controls";
+import { cssDataCheck, cssString, unit } from "./controls/controls";
 
 function dynamicCss(attributes) {
     const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight } = attributes;
@@ -7,16 +7,9 @@ function dynamicCss(attributes) {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
             'background-color': containerBgColor,
             'border': containerBorder.color+' ' + containerBorder.style +' '+ containerBorder.width,
-            'border-radius':  containerBorderRadius.value+containerBorderRadius.unit,
+            'border-radius':  cssDataCheck(containerBorderRadius.device.Desktop, unit(containerBorderRadius, 'Desktop')),
             'transition': '0.4s all',
-            'margin-right': gapBetweenProducts.value+gapBetweenProducts.unit
-        },
-        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
-            'background-color': containerBgColor,
-            'border': containerBorder.color+' ' + containerBorder.style +' '+ containerBorder.width,
-            'border-radius':  containerBorderRadius.value+containerBorderRadius.unit,
-            'transition': '0.4s all',
-            'margin-left': '20px'
+            'margin-right': cssDataCheck(gapBetweenProducts.device.Desktop, unit(gapBetweenProducts, 'Desktop')),
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover`]: {
             'background-color': containerHoverBgColor,
@@ -64,9 +57,26 @@ function dynamicCss(attributes) {
         },
         
     };
+
+    let tabletCss = {
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
+            'margin-right': cssDataCheck(gapBetweenProducts.device.Tablet, unit(gapBetweenProducts, 'Tablet')),
+            'border-radius':  cssDataCheck(containerBorderRadius.device.Tablet, unit(containerBorderRadius, 'Tablet')),
+        },
+    };
+
+    let mobileCss = {
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
+            'margin-right': cssDataCheck(gapBetweenProducts.device.Mobile, unit(gapBetweenProducts, 'Mobile')),
+            'border-radius':  cssDataCheck(containerBorderRadius.device.Mobile, unit(containerBorderRadius, 'Mobile')),
+        },
+    };
     
     desktopCss = cssString(desktopCss);
-    const styling = `${desktopCss}`;
+    tabletCss = '' !== cssString( tabletCss ) ? `@media only screen and (max-width: 780px) {${cssString( tabletCss )}}` : '';
+    mobileCss = '' !== cssString( mobileCss ) ? `@media only screen and (max-width: 360px){${cssString( mobileCss )}}` : '';
+
+    const styling = `${desktopCss + tabletCss + mobileCss}`;
     return styling;
 };
 export default dynamicCss;

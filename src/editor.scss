@@ -144,12 +144,23 @@
         margin-bottom: 10px;
     }
     .components-range-control{
-        margin-top: 20px;
+        margin-top: 0px;
+    }
+
+    .my-range-control{
+        padding-bottom: 20px;
     }
 
     .my-range-control-header-area{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        >.left-area, .right-area{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
         .my-range-control-label{
             color: #757575;
             display: inline-block;
@@ -168,8 +179,8 @@
         }
         
         .ppb-units span {
-            border: 1px solid #8c8f94;
-            color: #8c8f94;
+            border: 1px solid #7e7e7f;
+            color: #7e7e7f;
             height: 20px;
             width: 23px;
             display: flex;
@@ -212,6 +223,9 @@
             padding: 0px 3px;
             margin: 0;
             text-transform: capitalize;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             &.active{
                 background-color: rgb(1, 83, 83);
@@ -228,6 +242,10 @@
             background-color: #8c8f9470;
         }
 
+    }
+
+    .ppb-header-control-reset:hover{
+        color: rgb(1, 83, 83);
     }
 
     

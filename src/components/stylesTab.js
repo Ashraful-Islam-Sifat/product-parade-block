@@ -105,16 +105,16 @@ const StylesTab = ({attributes, setAttributes}) => {
                     />
                 </>
             )}
-            {/* <MyRangeControl
+            <MyRangeControl
                 label={__('Border Radius', 'product-parade-block')}
                 setAttributes={setAttributes}
-                attributes={attributes}
+                attributes={containerBorderRadius}
                 units= {['px', '%', 'em']}
                 attributesKey={'containerBorderRadius'}
                 min={0}
                 max={40}
                 step={1}
-            /> */}
+            />
 
         </PanelBody>
 

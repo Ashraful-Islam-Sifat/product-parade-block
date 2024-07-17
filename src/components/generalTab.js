@@ -84,9 +84,9 @@ const GeneralTab = ({attributes, setAttributes}) => {
                     units= {['px', '%', 'em']}
                     attributesKey={'gapBetweenProducts'}
                     min={0}
-                    max={80}
+                    max={100}
                     step={1}
-                    defaultValue = {{unit: 'px', value: 15}}
+                    defaultValue = {{unit: 'px', value: 5}}
                 />
 
                 <QueryControls 

@@ -352,11 +352,11 @@ const GeneralTab = ({
     units: ['px', '%', 'em'],
     attributesKey: 'gapBetweenProducts',
     min: 0,
-    max: 80,
+    max: 100,
     step: 1,
     defaultValue: {
       unit: 'px',
-      value: 15
+      value: 5
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.QueryControls, {
     numberOfItems: postPerPage,
@@ -445,6 +445,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _controls_controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../controls/controls */ "./src/controls/controls.js");
 /* harmony import */ var _responsive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./responsive */ "./src/components/responsive.js");
+/* harmony import */ var _controls_svgIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../controls/svgIcon */ "./src/controls/svgIcon.js");
+
 
 
 
@@ -554,9 +556,16 @@ const MyRangeControl = props => {
     className: "my-range-control"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "my-range-control-header-area"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "left-area"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     className: "my-range-control-label"
-  }, label), attributes.device && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_responsive__WEBPACK_IMPORTED_MODULE_3__["default"], null), units && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, label), attributes.device && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_responsive__WEBPACK_IMPORTED_MODULE_3__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "right-area"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    className: "ppb-header-control-reset",
+    onClick: () => setDefault()
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_svgIcon__WEBPACK_IMPORTED_MODULE_4__.ResetIcon, null)), units && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ppb-units"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, 'object' !== typeof attributes.unit ? attributes?.unit : attributes.unit[deviceType]), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ppb-units-btn"
@@ -565,7 +574,7 @@ const MyRangeControl = props => {
     key: i,
     value: item,
     onClick: e => setUnit(e.target.value)
-  }, " ", item, " "))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+  }, " ", item, " ")))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     value: value,
     onChange: newValue => setValue(newValue),
     min: min,
@@ -616,7 +625,7 @@ const Responsive = () => {
     if ('Mobile' === deviceType) {
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_svgIcon__WEBPACK_IMPORTED_MODULE_3__.MobileIcon, null);
     }
-    return null; // Add a return for null case to avoid undefined return.
+    return null;
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ppb-responsive"
@@ -834,7 +843,16 @@ const StylesTab = ({
       containerBorder: v
     }),
     value: containerHoverBorder
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_myRangeControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border Radius', 'product-parade-block'),
+    setAttributes: setAttributes,
+    attributes: containerBorderRadius,
+    units: ['px', '%', 'em'],
+    attributesKey: 'containerBorderRadius',
+    min: 0,
+    max: 40,
+    step: 1
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Name', 'product-parade-block'),
     initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -1277,16 +1295,23 @@ const Typography = props => {
 
 /***/ }),
 
-/***/ "./src/controls.js":
-/*!*************************!*\
-  !*** ./src/controls.js ***!
-  \*************************/
+/***/ "./src/controls/controls.js":
+/*!**********************************!*\
+  !*** ./src/controls/controls.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   cssString: () => (/* binding */ cssString)
+/* harmony export */   cssDataCheck: () => (/* binding */ cssDataCheck),
+/* harmony export */   cssString: () => (/* binding */ cssString),
+/* harmony export */   unit: () => (/* binding */ unit),
+/* harmony export */   useDeviceType: () => (/* binding */ useDeviceType)
 /* harmony export */ });
+const useDeviceType = () => {
+  const deviceType = wp.data.select('core/editor').getDeviceType();
+  return deviceType || 'Desktop';
+};
 const cssString = css => {
   let result = '';
   for (const selector in css) {
@@ -1301,21 +1326,29 @@ const cssString = css => {
   return result;
 };
 
-/***/ }),
+// Remove empty css.
+const cssDataCheck = (value, unit = '') => {
+  let data = '';
+  if ('object' === typeof value) {
+    for (let single in value) {
+      if (value[single].length > 0) {
+        data += ` ${value[single]}${unit}`;
+      }
+    }
+  } else {
+    if (value && value.toString().length > 0) {
+      data = `${value}${unit}`;
+    }
+  }
+  return data;
+};
 
-/***/ "./src/controls/controls.js":
-/*!**********************************!*\
-  !*** ./src/controls/controls.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   useDeviceType: () => (/* binding */ useDeviceType)
-/* harmony export */ });
-const useDeviceType = () => {
-  const deviceType = wp.data.select('core/editor').getDeviceType();
-  return deviceType || 'Desktop';
+// Check unit single or object.
+const unit = (attributes, deviceType) => {
+  if ('object' !== typeof attributes.unit) {
+    return attributes.unit;
+  }
+  return attributes.unit[deviceType];
 };
 
 /***/ }),
@@ -1417,7 +1450,7 @@ const ResetIcon = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("sv
   xmlns: "http://www.w3.org/2000/svg",
   width: 12,
   height: 20,
-  fill: "none"
+  fill: "#7e7e7f"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
   fillRule: "evenodd",
   d: "M2.335 6.69A4.965 4.965 0 1 1 1.07 10h-1a5.965 5.965 0 1 0 1.556-4.018L.57 4.926v2.732h2.733l-.968-.968Z",
@@ -1429,7 +1462,7 @@ const DesktopIcon = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("
   xmlns: "http://www.w3.org/2000/svg",
   width: 14,
   height: 12,
-  fill: "none"
+  fill: "#7e7e7f"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
   d: "M12.714 0H1.286C.655 0 .143.504.143 1.125v7.5c0 .621.512 1.125 1.143 1.125h4.571l-.38 1.125H3.761a.566.566 0 0 0-.571.563c0 .311.254.562.571.562h6.476c.317 0 .572-.25.572-.563a.566.566 0 0 0-.572-.562H8.524l-.38-1.125h4.57c.631 0 1.143-.504 1.143-1.125v-7.5C13.857.504 13.346 0 12.714 0Zm-.38 8.25H1.667V1.5h10.667v6.75Z"
 }));
@@ -1439,7 +1472,7 @@ const TabletIcon = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("s
   xmlns: "http://www.w3.org/2000/svg",
   width: 12,
   height: 12,
-  fill: "none"
+  fill: "#7e7e7f"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
   d: "M9.428 0H2.571C1.623 0 .857.67.857 1.5v9c0 .83.766 1.5 1.714 1.5h6.857c.949 0 1.715-.67 1.715-1.5v-9c0-.83-.766-1.5-1.715-1.5ZM7.143 11H4.857v-.5h2.286v.5Zm3-1.5H1.857v-8h8.286v8Z"
 }));
@@ -1449,7 +1482,7 @@ const MobileIcon = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("s
   xmlns: "http://www.w3.org/2000/svg",
   width: 8,
   height: 12,
-  fill: "none"
+  fill: "#7e7e7f"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
   d: "M6.286 0H1.714C1.082 0 .571.67.571 1.5v9c0 .83.51 1.5 1.143 1.5h4.572c.632 0 1.142-.67 1.142-1.5v-9c0-.83-.51-1.5-1.142-1.5ZM4.762 11H3.238v-.5h1.524v.5Zm2-1.5H1.238v-8h5.524v8Z"
 }));
@@ -1895,7 +1928,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls */ "./src/controls.js");
+/* harmony import */ var _controls_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls/controls */ "./src/controls/controls.js");
 
 function dynamicCss(attributes) {
   const {
@@ -1930,16 +1963,9 @@ function dynamicCss(attributes) {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
       'background-color': containerBgColor,
       'border': containerBorder.color + ' ' + containerBorder.style + ' ' + containerBorder.width,
-      'border-radius': containerBorderRadius.value + containerBorderRadius.unit,
+      'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(containerBorderRadius.device.Desktop, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(containerBorderRadius, 'Desktop')),
       'transition': '0.4s all',
-      'margin-right': gapBetweenProducts.value + gapBetweenProducts.unit
-    },
-    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
-      'background-color': containerBgColor,
-      'border': containerBorder.color + ' ' + containerBorder.style + ' ' + containerBorder.width,
-      'border-radius': containerBorderRadius.value + containerBorderRadius.unit,
-      'transition': '0.4s all',
-      'margin-left': '20px'
+      'margin-right': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(gapBetweenProducts.device.Desktop, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(gapBetweenProducts, 'Desktop'))
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover`]: {
       'background-color': containerHoverBgColor,
@@ -1986,8 +2012,22 @@ function dynamicCss(attributes) {
       'color': buttonHoverTextColor
     }
   };
-  desktopCss = (0,_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(desktopCss);
-  const styling = `${desktopCss}`;
+  let tabletCss = {
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
+      'margin-right': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(gapBetweenProducts.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(gapBetweenProducts, 'Tablet')),
+      'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(containerBorderRadius.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(containerBorderRadius, 'Tablet'))
+    }
+  };
+  let mobileCss = {
+    [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
+      'margin-right': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(gapBetweenProducts.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(gapBetweenProducts, 'Mobile')),
+      'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(containerBorderRadius.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(containerBorderRadius, 'Mobile'))
+    }
+  };
+  desktopCss = (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(desktopCss);
+  tabletCss = '' !== (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(tabletCss) ? `@media only screen and (max-width: 780px) {${(0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(tabletCss)}}` : '';
+  mobileCss = '' !== (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(mobileCss) ? `@media only screen and (max-width: 360px){${(0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(mobileCss)}}` : '';
+  const styling = `${desktopCss + tabletCss + mobileCss}`;
   return styling;
 }
 ;
@@ -2155,7 +2195,7 @@ function Edit({
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
       className: "add-to-cart"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "button wp-element-button"
+      className: "button"
     }, "Add to cart"))));
   }))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No products found"));
 }
@@ -2250,7 +2290,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"nameFontSize":{"type":"object","default":{"value":"20","unit":"px"}},"nameFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"nameFontWeight":{"type":"string","default":"400"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"value":"14","unit":"px"}},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"value":"14","unit":"px"}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"buttonFontFamily":{"type":"string","default":"\'Times New Roman\', Times, serif"},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontSize":{"type":"object","default":{"value":"20","unit":"px"}},"nameFontFamily":{"type":"string","default":""},"nameFontWeight":{"type":"string","default":"400"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"value":"14","unit":"px"}},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"value":"14","unit":"px"}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"buttonFontFamily":{"type":"string","default":""},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

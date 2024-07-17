@@ -22,7 +22,7 @@ const Responsive = () => {
         if('Mobile' === deviceType) {
             return <MobileIcon />
         }
-        return null; // Add a return for null case to avoid undefined return.
+        return null;
     };
 
     return (

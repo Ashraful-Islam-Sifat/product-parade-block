@@ -1,6 +1,7 @@
 import { Button, RangeControl, SelectControl } from "@wordpress/components";
 import { useDeviceType } from "../controls/controls";
 import Responsive from "./responsive";
+import { ResetIcon } from "../controls/svgIcon";
 
 const MyRangeControl = (props) => {
 
@@ -69,17 +70,26 @@ const MyRangeControl = (props) => {
     return (
         <div className="my-range-control">
             <div className="my-range-control-header-area">
-                <label className="my-range-control-label">{label}</label>
-                {attributes.device && <Responsive />}
+                <div className="left-area">
+                    <label className="my-range-control-label">{label}</label>
+                    {attributes.device && <Responsive />}
+                </div>
 
-                {units && <div className='ppb-units'>
-                            <span>{( 'object' !== typeof attributes.unit) ? attributes?.unit : attributes.unit[deviceType]}</span>
-                            <div className='ppb-units-btn'>
-                                {units.map((item, i)=>(
-                                    <Button className={attributes.unit[deviceType] === item.toLowerCase() ? 'active' : ''} key={i} value={item} onClick={(e) => setUnit(e.target.value)}> {item} </Button>
-                                ))}
-                            </div>
-                        </div>}
+                <div className="right-area">
+                   <Button className="ppb-header-control-reset" onClick={() => setDefault()}> 
+                        <ResetIcon />
+                    </Button>
+                    {units && 
+                    <div className='ppb-units'>
+                        <span>{( 'object' !== typeof attributes.unit) ? attributes?.unit : attributes.unit[deviceType]}</span>
+                        <div className='ppb-units-btn'>
+                            {units.map((item, i)=>(
+                                <Button className={attributes.unit[deviceType] === item.toLowerCase() ? 'active' : ''} key={i} value={item} onClick={(e) => setUnit(e.target.value)}> {item} </Button>
+                            ))}
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
             <RangeControl
                 value={ value }

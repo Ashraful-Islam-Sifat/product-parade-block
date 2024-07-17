@@ -80,8 +80,16 @@
 		"containerBorderRadius": {
 			"type": "object",
 			"default": {
-				"value": "5",
-				"unit": "px"
+				"device": {
+					"Desktop": 5,
+					"Tablet": 5,
+					"Mobile": 5	
+				},
+				"unit": {
+					"Desktop": "px",
+					"Tablet": "px",
+					"Mobile": "px"
+				}
 			}
 		},
 		"nameFontSize": {
@@ -93,7 +101,7 @@
 		},
 		"nameFontFamily": {
 			"type": "string",
-			"default": "'Times New Roman', Times, serif"
+			"default": ""
 		},
 		"nameFontWeight": {
 			"type": "string",
@@ -168,7 +176,7 @@
 		},
 		"buttonFontFamily": {
 			"type": "string",
-			"default": "'Times New Roman', Times, serif"
+			"default": ""
 		},
 		"showSortingDropdown": {
 			"type": "boolean",
