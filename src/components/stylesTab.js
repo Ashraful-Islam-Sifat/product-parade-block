@@ -9,7 +9,7 @@ import Typography from "./typography";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
     const [nameStyleType, setNameStyleType] = useState('default');
@@ -129,34 +129,6 @@ const StylesTab = ({attributes, setAttributes}) => {
                 fontWeight='nameFontWeight'
             />
 
-        {/* <div className="ppb-editor-typography">
-            <div className="ppb-editor-typography-header">
-              <p className="product-parade-block-sidebar-label-text">Typography</p>
-              <button className={ isOpen ? "active" : ""} onClick={toggleDropdown}>T</button>
-            </div>
-            {isOpen && (
-            <div className="typography-area">
-                <MyRangeControl
-                  label={__('Font Size', 'product-parade-block')}
-                  setAttributes={setAttributes}
-                  attributes={attributes}
-                  units={['px', '%', 'em']}
-                  attributesKey='nameFontSize'
-                  min={0}
-                  max={60}
-                  step={1}
-                />
-    
-                <SelectControl
-                  label={__('Font Family', 'product-parade-block')}
-                  value={nameFontFamily}
-                  options={fontFamilyOptions}
-                  onChange={(newValue) => setAttributes({ nameFontFamily: newValue })}
-                />
-            </div>
-            )}
-        </div> */}
-
             <div className="product-parade-block-sidebar-label-text">Color Settings</div>
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${nameStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setNameStyleType('default')}>Default</Button>
@@ -198,16 +170,14 @@ const StylesTab = ({attributes, setAttributes}) => {
         </PanelBody>
 
         <PanelBody title={ __('Price', 'product-parade-block') } initialOpen={ false }>
-            {/* <MyRangeControl
-                label={__('Font Size', 'product-parade-block')}
-                setAttributes={setAttributes}
-                attributes={attributes}
-                units= {['px', '%', 'em']}
-                attributesKey={'priceFontSize'}
-                min={0}
-                max={40}
-                step={0.5}
-            /> */}
+            <Typography
+                fontSize = {priceFontSize} 
+                fontSizeKey = "priceFontSize"
+                attributes ={ attributes }
+                setAttributes={ setAttributes }
+                fontWeight= "priceFontWeight"
+                defaultValue = {{unit: 'px', value: 14}}
+            />
             <div className="product-parade-block-sidebar-label-text">Color Settings</div>
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${priceStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setPriceStyleType('default')}>Default</Button>
@@ -247,17 +217,19 @@ const StylesTab = ({attributes, setAttributes}) => {
             )}
         </PanelBody>
 
+        {showAverageRatings &&
         <PanelBody title={ __('Rating', 'product-parade-block') } initialOpen={ false }>
-            {/* <MyRangeControl
+            <MyRangeControl
                 label={__('Icon Size', 'product-parade-block')}
                 setAttributes={setAttributes}
-                attributes={attributes}
+                attributes={iconSize}
                 units= {['px', '%', 'em']}
                 attributesKey={'iconSize'}
                 min={0}
                 max={40}
                 step={0.5}
-            /> */}
+                defaultValue = {{unit: 'px', value: 14}}
+            />
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${iconsStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setIconsStyleType('default')}>Default</Button>
                 <Button className={`product-parade-block-sidebar-button ${iconsStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setIconsStyleType('hover')}>Hover</Button>
@@ -309,25 +281,19 @@ const StylesTab = ({attributes, setAttributes}) => {
                 </>
             )}
         </PanelBody>
+        }
 
         <PanelBody title={ __('Button', 'product-parade-block') } initialOpen={ false }>
-                <>
-                    {/* <MyRangeControl
-                        label={__('Border Radius', 'product-parade-block')}
-                        setAttributes={setAttributes}
-                        attributes={attributes}
-                        units= {['px', '%', 'em']}
-                        attributesKey={'buttonBorderRadius'}
-                        min={0}
-                        max={100}
-                        step={1}
-                    /> */}
-                    <SelectControl
-                        label={__('Font Family', 'product-parade-block')}
-                        value={buttonFontFamily}
-                        options={fontFamilyOptions}
-                        onChange={(newValue)=> setAttributes({ buttonFontFamily: newValue })}
-                    />
+            <>
+            <Typography
+                fontSize = {buttonFontSize} 
+                fontSizeKey = "buttonFontSize"
+                defaultFontSize={{unit: 'px', value: 16}}
+                attributes ={ attributes }
+                setAttributes={ setAttributes }
+                fontFamily='buttonFontFamily'
+                fontWeight='buttonFontWeight'
+            />
                     <div className="product-parade-block-sidebar-label-text">Color Settings</div>
                     <div className='product-parade-block-button-group'>
                         <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setButtonStyleType('default')}>Default</Button>

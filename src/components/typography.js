@@ -4,7 +4,7 @@ import { SelectControl } from "@wordpress/components";
 import { __ } from '@wordpress/i18n';
 
 const Typography = (props) => {
-  const { attributes, setAttributes, fontSize, fontFamily, fontWeight, fontSizeKey } = props;
+  const { attributes, setAttributes, fontSize, fontFamily, fontWeight, fontSizeKey, defaultFontSize } = props;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,12 +39,10 @@ const Typography = (props) => {
   ];
 
   const fontWeightOptions = [
-    { label: '300', value: '300' },
-    { label: '400', value: '400' },
-    { label: '500', value: '500' },
-    { label: '600', value: '600' },
-    { label: '700', value: '700' },
-    { label: '800', value: '800' }
+    { label: 'Nomal', value: 'normal' },
+    { label: 'Light', value: 'light' },
+    { label: 'Bold', value: 'bold' },
+    { label: 'Bolder', value: 'bolder' }
   ];
 
   return (
@@ -64,6 +62,7 @@ const Typography = (props) => {
           min={0}
           max={60}
           step={1}
+          defaultValue ={defaultFontSize}
         />
         }
 

@@ -1,7 +1,7 @@
 import { cssDataCheck, cssString, unit } from "./controls/controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight } = attributes;
 
     let desktopCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -26,17 +26,18 @@ function dynamicCss(attributes) {
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
             'color': priceColor,
-            'font-size': priceFontSize.value+priceFontSize.unit,
+            'font-size': cssDataCheck(priceFontSize.device.Desktop, unit(priceFontSize, 'Desktop')),
+            'font-weight': priceFontWeight
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .price`]: {
             'color': priceHoverColor,
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .filled-icons`]: {
-            'font-size': iconSize.value+iconSize.unit,
+            'font-size': cssDataCheck(iconSize.device.Desktop, unit(iconSize, 'Desktop')),
             'color': filledIconsColor
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .empty-icons`]: {
-            'font-size': iconSize.value+iconSize.unit,
+            'font-size': cssDataCheck(iconSize.device.Desktop, unit(iconSize, 'Desktop')),
             'color': emptyIconsColor
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover .product-contents .product-parade-block-rating-area .filled-icons`]: {
@@ -48,8 +49,15 @@ function dynamicCss(attributes) {
         [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
             'background-color': buttonBgColor,
             'color': buttonTextColor,
-            'border-radius': buttonBorderRadius.value+buttonBorderRadius.unit,
-            'font-family': buttonFontFamily
+            'font-family': buttonFontFamily,
+            'font-size': cssDataCheck(buttonFontSize.device.Desktop, unit(buttonFontSize, 'Desktop')),
+            'font-weight': buttonFontWeight,
+            'width': '132px',
+            'box-sizing': 'border-box',
+            'padding': '10px',
+            'border': 'none',
+            'line-height': 'normal',
+            'min-height': 'auto'
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button:hover`]: {
             'background-color': buttonHoverBgColor,
@@ -58,6 +66,7 @@ function dynamicCss(attributes) {
         
     };
 
+
     let tabletCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
             'margin-right': cssDataCheck(gapBetweenProducts.device.Tablet, unit(gapBetweenProducts, 'Tablet')),
@@ -65,8 +74,23 @@ function dynamicCss(attributes) {
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
             'font-size': cssDataCheck(nameFontSize.device.Tablet, unit(nameFontSize, 'Tablet')),
-        }
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
+            'font-size': cssDataCheck(priceFontSize.device.Tablet, unit(priceFontSize, 'Tablet')),
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .filled-icons`]: {
+            'font-size': cssDataCheck(iconSize.device.Tablet, unit(iconSize, 'Tablet')),
+            'color': filledIconsColor
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .empty-icons`]: {
+            'font-size': cssDataCheck(iconSize.device.Tablet, unit(iconSize, 'Tablet')),
+            'color': emptyIconsColor
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
+            'font-size': cssDataCheck(buttonFontSize.device.Tablet, unit(buttonFontSize, 'Tablet'))
+        },
     };
+
 
     let mobileCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -75,6 +99,20 @@ function dynamicCss(attributes) {
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
             'font-size': cssDataCheck(nameFontSize.device.Mobile, unit(nameFontSize, 'Mobile')),
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
+            'font-size': cssDataCheck(priceFontSize.device.Mobile, unit(priceFontSize, 'Mobile')),
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .filled-icons`]: {
+            'font-size': cssDataCheck(iconSize.device.Mobile, unit(iconSize, 'Mobile')),
+            'color': filledIconsColor
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-parade-block-rating-area .empty-icons`]: {
+            'font-size': cssDataCheck(iconSize.device.Mobile, unit(iconSize, 'Mobile')),
+            'color': emptyIconsColor
+        },
+        [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
+            'font-size': cssDataCheck(buttonFontSize.device.Mobile, unit(buttonFontSize, 'Mobile'))
         }
     };
     

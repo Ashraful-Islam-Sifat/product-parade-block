@@ -113,7 +113,7 @@ export default function Edit({ clientId, attributes, setAttributes }) {
                                             }
                                         })}
                                         <p className='add-to-cart'>
-                                        <button className='button'>Add to cart</button>
+                                        <a className='button wp-element-button'>Add to cart</a>
                                         </p>
                                     </div>
                                 </div>

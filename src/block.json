@@ -113,7 +113,7 @@
 		},
 		"nameFontWeight": {
 			"type": "string",
-			"default": "400"
+			"default": "normal"
 		},
 		"nameColor": {
 			"type": "string",
@@ -126,9 +126,21 @@
 		"priceFontSize": {
 			"type": "object",
 			"default": {
-				"value": "14",
-				"unit": "px"
+				"device": {
+					"Desktop": 14,
+					"Tablet": 14,
+					"Mobile": 14	
+				},
+				"unit": {
+					"Desktop": "px",
+					"Tablet": "px",
+					"Mobile": "px"
+				}
 			}
+		},
+		"priceFontWeight": {
+			"type": "string",
+			"default": "normal"
 		},
 		"priceColor": {
 			"type": "string",
@@ -141,8 +153,16 @@
 		"iconSize": {
 			"type": "object",
 			"default": {
-				"value":"14",
-				"unit": "px"
+				"device": {
+					"Desktop": 14,
+					"Tablet": 14,
+					"Mobile": 14	
+				},
+				"unit": {
+					"Desktop": "px",
+					"Tablet": "px",
+					"Mobile": "px"
+				}
 			}
 		},
 		"filledIconsColor": {
@@ -181,6 +201,24 @@
 				"value": "5",
 				"unit": "px"
 			}
+		},
+		"buttonFontSize": {
+			"default": {
+				"device": {
+					"Desktop": 16,
+					"Tablet": 16,
+					"Mobile": 16	
+				},
+				"unit": {
+					"Desktop": "px",
+					"Tablet": "px",
+					"Mobile": "px"
+				}
+			}
+		},
+		"buttonFontWeight": {
+			"type": "string",
+			"default": "normal"
 		},
 		"buttonFontFamily": {
 			"type": "string",
