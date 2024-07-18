@@ -9,7 +9,7 @@ import Typography from "./typography";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize, buttonBorder, buttonHoverBorder, buttonBorderRadius } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
     const [nameStyleType, setNameStyleType] = useState('default');
@@ -24,7 +24,7 @@ const StylesTab = ({attributes, setAttributes}) => {
     };
 
     const colors = [
-        { name: 'Blue 20', color: '#72aee6' },
+        { name: 'Green 20', color: 'rgb(1, 83, 83)' },
         // ...
     ];
     const fontFamilyOptions = [
@@ -77,7 +77,7 @@ const StylesTab = ({attributes, setAttributes}) => {
                     />
                     <BorderControl
                         colors={colors}
-                        label={__('Border')}
+                        label={__('Border', 'product-parade-block')}
                         onChange={(v) => setAttributes({ containerBorder: v })}
                         value={containerBorder}
                     />
@@ -285,21 +285,37 @@ const StylesTab = ({attributes, setAttributes}) => {
 
         <PanelBody title={ __('Button', 'product-parade-block') } initialOpen={ false }>
             <>
-            <Typography
-                fontSize = {buttonFontSize} 
-                fontSizeKey = "buttonFontSize"
-                defaultFontSize={{unit: 'px', value: 16}}
-                attributes ={ attributes }
-                setAttributes={ setAttributes }
-                fontFamily='buttonFontFamily'
-                fontWeight='buttonFontWeight'
-            />
-                    <div className="product-parade-block-sidebar-label-text">Color Settings</div>
+                    <Typography
+                        fontSize = {buttonFontSize} 
+                        fontSizeKey = "buttonFontSize"
+                        defaultFontSize={{unit: 'px', value: 16}}
+                        attributes ={ attributes }
+                        setAttributes={ setAttributes }
+                        fontFamily='buttonFontFamily'
+                        fontWeight='buttonFontWeight'
+                    />
+                    <MyRangeControl
+                        label={__('Border Radius', 'product-parade-block')}
+                        setAttributes={setAttributes}
+                        attributes={buttonBorderRadius}
+                        units= {['px', '%', 'em']}
+                        attributesKey={'buttonBorderRadius'}
+                        min={0}
+                        max={40}
+                        step={1}
+                    />
                     <div className='product-parade-block-button-group'>
                         <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setButtonStyleType('default')}>Default</Button>
                         <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setButtonStyleType('hover')}>Hover</Button>
                     </div>
                     {buttonStyleType === 'default'&&
+                    <>
+                    <BorderControl
+                        colors={ colors }
+                        label={ __( 'Border', 'product-parade-block' ) }
+                        onChange={(v) => setAttributes({ buttonBorder: v })}
+                        value={ buttonBorder }
+                    />
                     <PanelColorSettings
                         disableCustomColors={false}
                         colorSettings={[
@@ -318,8 +334,17 @@ const StylesTab = ({attributes, setAttributes}) => {
                                 }
                             }
                         ]}
-                    />}
+                    />
+                    </>
+                    }
                     {buttonStyleType === 'hover'&&
+                    <>
+                    <BorderControl
+                        colors={ colors }
+                        label={ __( 'Border', 'product-parade-block' ) }
+                        onChange={(v) => setAttributes({ buttonHoverBorder: v })}
+                        value={ buttonHoverBorder }
+                    />
                     <PanelColorSettings
                         disableCustomColors={false}
                         colorSettings={[
@@ -338,7 +363,9 @@ const StylesTab = ({attributes, setAttributes}) => {
                                 }
                             }
                         ]}
-                    />}
+                    />
+                    </>
+                    }
                 </>
         </PanelBody>
         </>

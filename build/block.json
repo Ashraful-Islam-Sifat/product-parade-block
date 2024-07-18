@@ -64,6 +64,10 @@
       "type": "string",
       "default": "topLeft"
     },
+    "containerBgColorType": {
+      "type": "string",
+      "default": "default"
+    },
     "containerBgColor": {
       "type": "string",
       "default": "#fff"
@@ -209,11 +213,20 @@
     "buttonBorderRadius": {
       "type": "object",
       "default": {
-        "value": "5",
-        "unit": "px"
+        "device": {
+          "Desktop": 5,
+          "Tablet": 5,
+          "Mobile": 5
+        },
+        "unit": {
+          "Desktop": "px",
+          "Tablet": "px",
+          "Mobile": "px"
+        }
       }
     },
     "buttonFontSize": {
+      "type": "object",
       "default": {
         "device": {
           "Desktop": 16,
@@ -234,6 +247,22 @@
     "buttonFontFamily": {
       "type": "string",
       "default": ""
+    },
+    "buttonBorder": {
+      "type": "object",
+      "default": {
+        "color": "",
+        "style": "none",
+        "width": "0px"
+      }
+    },
+    "buttonHoverBorder": {
+      "type": "object",
+      "default": {
+        "color": "",
+        "style": "none",
+        "width": "0px"
+      }
     },
     "showSortingDropdown": {
       "type": "boolean",

@@ -1,7 +1,7 @@
 import { cssDataCheck, cssString, unit } from "./controls/controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight, buttonBorder, buttonHoverBorder } = attributes;
 
     let desktopCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -47,21 +47,23 @@ function dynamicCss(attributes) {
             'color': emptyIconsHoverColor,
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
-            'background-color': buttonBgColor,
+            'background-color': buttonBgColor===undefined? "transparent" : buttonBgColor,
             'color': buttonTextColor,
             'font-family': buttonFontFamily,
             'font-size': cssDataCheck(buttonFontSize.device.Desktop, unit(buttonFontSize, 'Desktop')),
             'font-weight': buttonFontWeight,
             'width': '132px',
             'box-sizing': 'border-box',
+            'border-radius':  cssDataCheck(buttonBorderRadius.device.Desktop, unit(buttonBorderRadius, 'Desktop')),
             'padding': '10px',
-            'border': 'none',
+            'border': buttonBorder.color+' ' + buttonBorder.style +' '+ buttonBorder.width,
             'line-height': 'normal',
             'min-height': 'auto'
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button:hover`]: {
             'background-color': buttonHoverBgColor,
-            'color': buttonHoverTextColor
+            'color': buttonHoverTextColor,
+            'border': buttonHoverBorder.color+' ' + buttonHoverBorder.style +' '+ buttonHoverBorder.width,
         },
         
     };
@@ -87,7 +89,8 @@ function dynamicCss(attributes) {
             'color': emptyIconsColor
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
-            'font-size': cssDataCheck(buttonFontSize.device.Tablet, unit(buttonFontSize, 'Tablet'))
+            'font-size': cssDataCheck(buttonFontSize.device.Tablet, unit(buttonFontSize, 'Tablet')),
+            'border-radius':  cssDataCheck(buttonBorderRadius.device.Tablet, unit(buttonBorderRadius, 'Tablet')),
         },
     };
 
@@ -112,7 +115,8 @@ function dynamicCss(attributes) {
             'color': emptyIconsColor
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
-            'font-size': cssDataCheck(buttonFontSize.device.Mobile, unit(buttonFontSize, 'Mobile'))
+            'font-size': cssDataCheck(buttonFontSize.device.Mobile, unit(buttonFontSize, 'Mobile')),
+            'border-radius':  cssDataCheck(buttonBorderRadius.device.Mobile, unit(buttonBorderRadius, 'Mobile')),
         }
     };
     

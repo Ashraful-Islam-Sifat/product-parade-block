@@ -711,7 +711,10 @@ const StylesTab = ({
     buttonHoverTextColor,
     buttonFontFamily,
     showAverageRatings,
-    buttonFontSize
+    buttonFontSize,
+    buttonBorder,
+    buttonHoverBorder,
+    buttonBorderRadius
   } = attributes;
   const [containerStyleType, setContainerStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const [nameStyleType, setNameStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
@@ -723,8 +726,8 @@ const StylesTab = ({
     setIsOpen(!isOpen);
   };
   const colors = [{
-    name: 'Blue 20',
-    color: '#72aee6'
+    name: 'Green 20',
+    color: 'rgb(1, 83, 83)'
   }
   // ...
   ];
@@ -822,7 +825,7 @@ const StylesTab = ({
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBorderControl, {
     colors: colors,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border', 'product-parade-block'),
     onChange: v => setAttributes({
       containerBorder: v
     }),
@@ -1017,9 +1020,16 @@ const StylesTab = ({
     setAttributes: setAttributes,
     fontFamily: "buttonFontFamily",
     fontWeight: "buttonFontWeight"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_myRangeControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border Radius', 'product-parade-block'),
+    setAttributes: setAttributes,
+    attributes: buttonBorderRadius,
+    units: ['px', '%', 'em'],
+    attributesKey: 'buttonBorderRadius',
+    min: 0,
+    max: 40,
+    step: 1
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "product-parade-block-sidebar-label-text"
-  }, "Color Settings"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-button-group"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     className: `product-parade-block-sidebar-button ${buttonStyleType == "default" ? 'active-button' : ''}`,
@@ -1027,7 +1037,14 @@ const StylesTab = ({
   }, "Default"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     className: `product-parade-block-sidebar-button ${buttonStyleType == "hover" ? 'active-button' : ''}`,
     onClick: () => setButtonStyleType('hover')
-  }, "Hover")), buttonStyleType === 'default' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+  }, "Hover")), buttonStyleType === 'default' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBorderControl, {
+    colors: colors,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border', 'product-parade-block'),
+    onChange: v => setAttributes({
+      buttonBorder: v
+    }),
+    value: buttonBorder
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
     disableCustomColors: false,
     colorSettings: [{
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Background', 'product-parade-block'),
@@ -1046,7 +1063,14 @@ const StylesTab = ({
         });
       }
     }]
-  }), buttonStyleType === 'hover' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+  })), buttonStyleType === 'hover' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBorderControl, {
+    colors: colors,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border', 'product-parade-block'),
+    onChange: v => setAttributes({
+      buttonHoverBorder: v
+    }),
+    value: buttonHoverBorder
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
     disableCustomColors: false,
     colorSettings: [{
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Background', 'product-parade-block'),
@@ -1065,7 +1089,7 @@ const StylesTab = ({
         });
       }
     }]
-  }))));
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StylesTab);
 
@@ -1987,7 +2011,9 @@ function dynamicCss(attributes) {
     nameFontWeight,
     priceFontWeight,
     buttonFontSize,
-    buttonFontWeight
+    buttonFontWeight,
+    buttonBorder,
+    buttonHoverBorder
   } = attributes;
   let desktopCss = {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -2033,21 +2059,23 @@ function dynamicCss(attributes) {
       'color': emptyIconsHoverColor
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
-      'background-color': buttonBgColor,
+      'background-color': buttonBgColor === undefined ? "transparent" : buttonBgColor,
       'color': buttonTextColor,
       'font-family': buttonFontFamily,
       'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonFontSize.device.Desktop, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonFontSize, 'Desktop')),
       'font-weight': buttonFontWeight,
       'width': '132px',
       'box-sizing': 'border-box',
+      'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonBorderRadius.device.Desktop, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonBorderRadius, 'Desktop')),
       'padding': '10px',
-      'border': 'none',
+      'border': buttonBorder.color + ' ' + buttonBorder.style + ' ' + buttonBorder.width,
       'line-height': 'normal',
       'min-height': 'auto'
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button:hover`]: {
       'background-color': buttonHoverBgColor,
-      'color': buttonHoverTextColor
+      'color': buttonHoverTextColor,
+      'border': buttonHoverBorder.color + ' ' + buttonHoverBorder.style + ' ' + buttonHoverBorder.width
     }
   };
   let tabletCss = {
@@ -2070,7 +2098,8 @@ function dynamicCss(attributes) {
       'color': emptyIconsColor
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
-      'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonFontSize.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonFontSize, 'Tablet'))
+      'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonFontSize.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonFontSize, 'Tablet')),
+      'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonBorderRadius.device.Tablet, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonBorderRadius, 'Tablet'))
     }
   };
   let mobileCss = {
@@ -2093,7 +2122,8 @@ function dynamicCss(attributes) {
       'color': emptyIconsColor
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button`]: {
-      'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonFontSize.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonFontSize, 'Mobile'))
+      'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonFontSize.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonFontSize, 'Mobile')),
+      'border-radius': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(buttonBorderRadius.device.Mobile, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(buttonBorderRadius, 'Mobile'))
     }
   };
   desktopCss = (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssString)(desktopCss);
@@ -2362,7 +2392,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontSize":{"type":"object","default":{"device":{"Desktop":20,"Tablet":20,"Mobile":20},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontFamily":{"type":"string","default":""},"nameFontWeight":{"type":"string","default":"normal"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"priceFontWeight":{"type":"string","default":"normal"},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"value":"5","unit":"px"}},"buttonFontSize":{"default":{"device":{"Desktop":16,"Tablet":16,"Mobile":16},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"buttonFontWeight":{"type":"string","default":"normal"},"buttonFontFamily":{"type":"string","default":""},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColorType":{"type":"string","default":"default"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontSize":{"type":"object","default":{"device":{"Desktop":20,"Tablet":20,"Mobile":20},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontFamily":{"type":"string","default":""},"nameFontWeight":{"type":"string","default":"normal"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"priceFontWeight":{"type":"string","default":"normal"},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"buttonFontSize":{"type":"object","default":{"device":{"Desktop":16,"Tablet":16,"Mobile":16},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"buttonFontWeight":{"type":"string","default":"normal"},"buttonFontFamily":{"type":"string","default":""},"buttonBorder":{"type":"object","default":{"color":"","style":"none","width":"0px"}},"buttonHoverBorder":{"type":"object","default":{"color":"","style":"none","width":"0px"}},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
