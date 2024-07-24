@@ -651,6 +651,273 @@ const Responsive = () => {
 
 /***/ }),
 
+/***/ "./src/components/spacing.js":
+/*!***********************************!*\
+  !*** ./src/components/spacing.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _controls_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../controls/svgIcon */ "./src/controls/svgIcon.js");
+/* harmony import */ var _responsive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./responsive */ "./src/components/responsive.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _controls_controls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../controls/controls */ "./src/controls/controls.js");
+
+
+
+
+
+
+const Spacing = ({
+  label,
+  attributes,
+  attributesKey,
+  setAttributes,
+  units,
+  linkButton = true,
+  labelItem = {
+    'top': __('Top', 'ppb'),
+    'right': __('Right', 'ppb'),
+    'bottom': __('Bottom', 'ppb'),
+    'left': __('Left', 'ppb')
+  },
+  defaultValue = {
+    'unit': 'px',
+    'value': {
+      'top': '0',
+      'right': '0',
+      'bottom': '0',
+      'left': '0'
+    }
+  },
+  boxUnits = false,
+  customSize = false
+}) => {
+  const deviceType = (0,_controls_controls__WEBPACK_IMPORTED_MODULE_4__.useDeviceType)();
+  const SpacingAllChangeIcon = attributes?.allChange ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SpacingControlActiveIcon, null) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SpacingControlIcon, null);
+  const value = attributes?.device ? attributes?.device[deviceType] : attributes;
+  const setSpacingData = (newValue, typeKey) => {
+    if (attributes.device && !attributes.allChange) {
+      setAttributes({
+        [attributesKey]: {
+          ...attributes,
+          'device': {
+            ...attributes?.device,
+            [deviceType]: {
+              ...attributes?.device[deviceType],
+              [typeKey]: newValue
+            }
+          }
+        }
+      });
+    }
+    if (!attributes?.device && !attributes?.allChange) {
+      setAttributes({
+        [attributesKey]: {
+          ...attributes,
+          [typeKey]: newValue
+        }
+      });
+    }
+    if (attributes?.device && attributes?.allChange) {
+      let data = {
+        ...attributes?.device[deviceType],
+        'top': newValue,
+        'right': newValue,
+        'bottom': newValue,
+        'left': newValue
+      };
+      setAttributes({
+        [attributesKey]: {
+          ...attributes,
+          'device': {
+            ...attributes.device,
+            [deviceType]: data
+          }
+        }
+      });
+    }
+    if (!attributes?.device && attributes?.allChange) {
+      let data = {
+        ...attributes,
+        'top': newValue,
+        'right': newValue,
+        'bottom': newValue,
+        'left': newValue
+      };
+      setAttributes({
+        [attributesKey]: data
+      });
+    }
+  };
+  const setDefaultValue = () => {
+    if (attributes?.device) {
+      let data = {
+        ...attributes.device[deviceType],
+        'top': defaultValue?.value?.top,
+        'right': defaultValue?.value?.right,
+        'bottom': defaultValue?.value?.bottom,
+        'left': defaultValue?.value?.left
+      };
+      setAttributes({
+        [attributesKey]: {
+          ...attributes,
+          'device': {
+            ...attributes?.device,
+            [deviceType]: data
+          },
+          'unit': {
+            ...attributes.unit,
+            [deviceType]: defaultValue?.unit
+          }
+        }
+      });
+    } else {
+      let data = {
+        ...attributes,
+        'top': defaultValue?.value?.top,
+        'right': defaultValue?.value?.right,
+        'bottom': defaultValue?.value?.bottom,
+        'left': defaultValue?.value?.left
+      };
+      setAttributes({
+        [attributesKey]: data,
+        'unit': {
+          ...attributes.unit,
+          [deviceType]: defaultValue?.unit
+        }
+      });
+    }
+  };
+
+  // Set unit function.
+  const setUnit = newValue => {
+    setAttributes({
+      [attributesKey]: {
+        ...attributes,
+        'unit': {
+          ...attributes.unit,
+          [deviceType]: newValue.toLowerCase()
+        }
+      }
+    });
+  };
+
+  // When the reset button active & unActive.
+  const activeResetButton = () => {
+    if (defaultValue?.unit !== attributes?.unit || JSON.stringify(defaultValue.value) != JSON.stringify(value)) {
+      return 'active';
+    }
+    return '';
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-spacing ppb-component-mb"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-spacing-part-1"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "my-range-control-header-area"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "left-area"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "my-range-control-label"
+  }, label), attributes?.device && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_responsive__WEBPACK_IMPORTED_MODULE_2__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "right-area"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    onClick: () => setDefaultValue(),
+    className: `ppb-header-control-reset ${activeResetButton()}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_svgIcon__WEBPACK_IMPORTED_MODULE_1__.ResetIcon, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `ppb-units ${boxUnits ? 'box' : ''}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: boxUnits ? 'box-unit' : ''
+  }, 'object' !== typeof attributes.unit ? attributes?.unit : attributes.unit[deviceType]), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-units-btn"
+  }, units.map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    className: attributes?.unit[deviceType] === item.toLowerCase() ? 'active' : '',
+    key: i,
+    value: item,
+    onClick: e => setUnit(e.target.value)
+  }, " ", item, " "))))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-spacing-part-2"
+  }, !customSize && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-spacing-top"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    id: "ppb-spacing-top",
+    onChange: e => setSpacingData(e.target.value, 'top'),
+    type: "number",
+    value: value?.top
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "ppb-spacing-top"
+  }, labelItem.top)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-spacing-right"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    id: "ppb-spacing-right",
+    onChange: e => setSpacingData(e.target.value, 'right'),
+    type: "number",
+    value: value?.right
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "ppb-spacing-right"
+  }, labelItem?.right)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-spacing-bottom"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    id: "ppb-spacing-bottom",
+    onChange: e => setSpacingData(e.target.value, 'bottom'),
+    type: "number",
+    value: value?.bottom
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "ppb-spacing-bottom"
+  }, labelItem?.bottom)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `ppb-spacing-left ${!linkButton ? 'box' : ''}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    id: "ppb-spacing-left",
+    onChange: e => setSpacingData(e.target.value, 'left'),
+    type: "number",
+    value: value?.left
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "ppb-spacing-left"
+  }, labelItem?.left)), linkButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `ppb-spacing-all`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    className: attributes?.allChange ? 'active' : '',
+    onClick: () => setAttributes({
+      [attributesKey]: {
+        ...attributes,
+        'allChange': !attributes?.allChange
+      }
+    })
+  }, SpacingAllChangeIcon))), customSize && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ppb-spacing-top"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    id: "ppb-spacing-top",
+    onChange: e => setSpacingData(e.target.value, 'top'),
+    type: "number",
+    value: value?.top,
+    placeholder: "auto",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "ppb-spacing-top"
+  }, labelItem.top)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `ppb-spacing-right ${!linkButton ? 'box' : ''}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    id: "ppb-spacing-right",
+    onChange: e => setSpacingData(e.target.value, 'right'),
+    type: "number",
+    value: value?.right,
+    placeholder: "auto",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "ppb-spacing-right"
+  }, labelItem?.right))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Spacing);
+
+/***/ }),
+
 /***/ "./src/components/stylesTab.js":
 /*!*************************************!*\
   !*** ./src/components/stylesTab.js ***!
@@ -674,6 +941,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _myRangeControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./myRangeControl */ "./src/components/myRangeControl.js");
 /* harmony import */ var _Icons_myIcons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Icons/myIcons */ "./src/Icons/myIcons.js");
 /* harmony import */ var _typography__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./typography */ "./src/components/typography.js");
+/* harmony import */ var _spacing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./spacing */ "./src/components/spacing.js");
+
 
 
 
@@ -714,7 +983,8 @@ const StylesTab = ({
     buttonFontSize,
     buttonBorder,
     buttonHoverBorder,
-    buttonBorderRadius
+    buttonBorderRadius,
+    titleMargin
   } = attributes;
   const [containerStyleType, setContainerStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
   const [nameStyleType, setNameStyleType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('default');
@@ -860,7 +1130,19 @@ const StylesTab = ({
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Name', 'product-parade-block'),
     initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_spacing__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Margin', 'styble'),
+    attributes: titleMargin,
+    attributesKey: 'titleMargin',
+    setAttributes: setAttributes,
+    units: ["px", '%', "em"],
+    labelItem: {
+      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'styble'),
+      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'styble'),
+      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'styble'),
+      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'styble')
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     fontSize: nameFontSize,
     fontSizeKey: "nameFontSize",
     attributes: attributes,
@@ -2013,7 +2295,8 @@ function dynamicCss(attributes) {
     buttonFontSize,
     buttonFontWeight,
     buttonBorder,
-    buttonHoverBorder
+    buttonHoverBorder,
+    titleMargin
   } = attributes;
   let desktopCss = {
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -2034,7 +2317,8 @@ function dynamicCss(attributes) {
       'color': nameColor,
       'font-size': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(nameFontSize.device.Desktop, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(nameFontSize, 'Desktop')),
       'font-family': nameFontFamily,
-      'font-weight': nameFontWeight
+      'font-weight': nameFontWeight,
+      'margin': (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.cssDataCheck)(titleMargin.device.Desktop, (0,_controls_controls__WEBPACK_IMPORTED_MODULE_0__.unit)(titleMargin, 'Desktop'))
     },
     [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
       'color': priceColor,
@@ -2392,7 +2676,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColorType":{"type":"string","default":"default"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontSize":{"type":"object","default":{"device":{"Desktop":20,"Tablet":20,"Mobile":20},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontFamily":{"type":"string","default":""},"nameFontWeight":{"type":"string","default":"normal"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"priceFontWeight":{"type":"string","default":"normal"},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"buttonFontSize":{"type":"object","default":{"device":{"Desktop":16,"Tablet":16,"Mobile":16},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"buttonFontWeight":{"type":"string","default":"normal"},"buttonFontFamily":{"type":"string","default":""},"buttonBorder":{"type":"object","default":{"color":"","style":"none","width":"0px"}},"buttonHoverBorder":{"type":"object","default":{"color":"","style":"none","width":"0px"}},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"wpdev/product-parade-block","version":"0.1.0","title":"Product Parade Block","category":"widgets","icon":"slides","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide","full"]},"attributes":{"uniqueId":{"type":"string"},"frontendCss":{"type":"string","default":""},"categories":{"type":"array","items":{"type":"object"}},"productPrices":{"type":"array","default":[]},"postPerPage":{"type":"number","default":88},"orderBy":{"type":"string","default":"date"},"order":{"type":"string","default":"asc"},"showOnSaleRibbon":{"type":"boolean","default":true},"showAverageRatings":{"type":"boolean","default":true},"contentPosition":{"type":"string","default":"bottom"},"onSaleLabelText":{"type":"string","default":"On Sale!"},"ribbonPosition":{"type":"string","default":"topLeft"},"containerBgColorType":{"type":"string","default":"default"},"containerBgColor":{"type":"string","default":"#fff"},"containerHoverBgColor":{"type":"string","default":"none"},"containerBorder":{"type":"object","default":{"color":"#e3e3e3","style":"solid","width":"1px"}},"containerHoverBorder":{"type":"object","default":{"color":"none","style":"none","width":"0px"}},"containerBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"nameFontSize":{"type":"object","default":{"device":{"Desktop":20,"Tablet":20,"Mobile":20},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"titleMargin":{"type":"object","default":{"device":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"},"allChange":false}},"nameFontFamily":{"type":"string","default":""},"nameFontWeight":{"type":"string","default":"normal"},"nameColor":{"type":"string","default":"#000"},"nameHoverColor":{"type":"string","default":""},"priceFontSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"priceFontWeight":{"type":"string","default":"normal"},"priceColor":{"type":"string","default":"#888"},"priceHoverColor":{"type":"string","default":""},"iconSize":{"type":"object","default":{"device":{"Desktop":14,"Tablet":14,"Mobile":14},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"filledIconsColor":{"type":"string","default":"rgb(146, 124, 0)"},"emptyIconsColor":{"type":"string","default":"#888"},"filledIconsHoverColor":{"type":"string"},"emptyIconsHoverColor":{"type":"string"},"buttonBgColor":{"type":"string","default":"rgb(1, 83, 83)"},"buttonTextColor":{"type":"string","default":"#fff"},"buttonHoverBgColor":{"type":"string","default":""},"buttonHoverTextColor":{"type":"string","default":""},"buttonBorderRadius":{"type":"object","default":{"device":{"Desktop":5,"Tablet":5,"Mobile":5},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"buttonFontSize":{"type":"object","default":{"device":{"Desktop":16,"Tablet":16,"Mobile":16},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}},"buttonFontWeight":{"type":"string","default":"normal"},"buttonFontFamily":{"type":"string","default":""},"buttonBorder":{"type":"object","default":{"color":"","style":"none","width":"0px"}},"buttonHoverBorder":{"type":"object","default":{"color":"","style":"none","width":"0px"}},"showSortingDropdown":{"type":"boolean","default":true},"gapBetweenProducts":{"type":"object","default":{"device":{"Desktop":15,"Tablet":15,"Mobile":15},"unit":{"Desktop":"px","Tablet":"px","Mobile":"px"}}}},"textdomain":"product-parade-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

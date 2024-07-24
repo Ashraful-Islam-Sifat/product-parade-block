@@ -111,6 +111,37 @@
 				}
 			}
 		},
+		"titleMargin": {
+			"type": "object",
+			"default": {
+				"device": {
+					"Desktop": {
+						"top": "0",
+						"right": "0",
+						"bottom": "0",
+						"left": "0"	
+					},
+					"Tablet": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Mobile": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					}
+				},
+				"unit": {
+					"Desktop": "px",
+					"Tablet": "px",
+					"Mobile": "px"
+				},
+				"allChange": false
+			}
+		},
 		"nameFontFamily": {
 			"type": "string",
 			"default": ""

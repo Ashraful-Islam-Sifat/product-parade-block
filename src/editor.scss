@@ -247,6 +247,42 @@
         color: rgb(1, 83, 83);
     }
 
+    .ppb-spacing-part-2 {
+        display: flex;
+        input {
+            border-radius: 0;
+            border-right: 0;
+            border-color: #ddd;
+            padding: 0;
+            text-align: center;
+            width: 100%;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        label {
+            color: #8c8f94;
+            display: inline-block;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+        .ppb-spacing-all {
+            height: 30px;
+            width: 140px;
+            border: 1px solid #ddd;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            button{
+                &.active{
+                        background-color: green;
+                }
+            }
+        }
+    }
+
     
         
     .components-range-control__wrapper{

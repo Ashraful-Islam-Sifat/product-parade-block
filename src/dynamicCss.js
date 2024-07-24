@@ -1,7 +1,7 @@
 import { cssDataCheck, cssString, unit } from "./controls/controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight, buttonBorder, buttonHoverBorder } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight, buttonBorder, buttonHoverBorder, titleMargin } = attributes;
 
     let desktopCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -22,7 +22,8 @@ function dynamicCss(attributes) {
             'color': nameColor,
             'font-size': cssDataCheck(nameFontSize.device.Desktop, unit(nameFontSize, 'Desktop')),
             'font-family': nameFontFamily,
-            'font-weight': nameFontWeight
+            'font-weight': nameFontWeight,
+            'margin': cssDataCheck(titleMargin.device.Desktop, unit(titleMargin, 'Desktop')),
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
             'color': priceColor,

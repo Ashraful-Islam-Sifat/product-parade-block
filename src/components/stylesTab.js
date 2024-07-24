@@ -6,10 +6,11 @@ import { __ } from '@wordpress/i18n';
 import MyRangeControl from "./myRangeControl";
 import {TypographyIcon} from '../Icons/myIcons';
 import Typography from "./typography";
+import Spacing from "./spacing";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize, buttonBorder, buttonHoverBorder, buttonBorderRadius } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize, buttonBorder, buttonHoverBorder, buttonBorderRadius, titleMargin } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
     const [nameStyleType, setNameStyleType] = useState('default');
@@ -119,6 +120,20 @@ const StylesTab = ({attributes, setAttributes}) => {
         </PanelBody>
 
         <PanelBody title={ __('Name', 'product-parade-block') } initialOpen={ false }>
+
+        <Spacing
+            label={__('Margin', 'styble')}
+            attributes={titleMargin}
+            attributesKey={'titleMargin'}
+            setAttributes={setAttributes}
+            units={["px", '%', "em"]}
+            labelItem={{
+                'top': __('Top', 'styble'),
+                'right': __('Right', 'styble'),
+                'bottom': __('Bottom', 'styble'),
+                'left': __('Left', 'styble')
+            }}
+        />
 
             <Typography
                 fontSize = {nameFontSize} 

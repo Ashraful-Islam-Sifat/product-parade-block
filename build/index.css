@@ -212,6 +212,39 @@
 .product-parade-block-tab-panel .ppb-header-control-reset:hover {
   color: rgb(1, 83, 83);
 }
+.product-parade-block-tab-panel .ppb-spacing-part-2 {
+  display: flex;
+}
+.product-parade-block-tab-panel .ppb-spacing-part-2 input {
+  border-radius: 0;
+  border-right: 0;
+  border-color: #ddd;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+.product-parade-block-tab-panel .ppb-spacing-part-2 input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.product-parade-block-tab-panel .ppb-spacing-part-2 label {
+  color: #8c8f94;
+  display: inline-block;
+  font-size: 11px;
+  margin-top: 4px;
+}
+.product-parade-block-tab-panel .ppb-spacing-part-2 .ppb-spacing-all {
+  height: 30px;
+  width: 140px;
+  border: 1px solid #ddd;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-parade-block-tab-panel .ppb-spacing-part-2 .ppb-spacing-all button.active {
+  background-color: green;
+}
 .product-parade-block-tab-panel .components-range-control__wrapper .components-range-control__track {
   background-color: rgb(1, 83, 83);
 }

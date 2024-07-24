@@ -99,37 +99,6 @@ const GeneralTab = ({attributes, setAttributes}) => {
 					onCategoryChange={onCategoryChange}
 				/>
 
-
-
-
-                {/* <RangeControl
-                    label={__('Post per page', 'product-parade-block')}
-                    value={ postPerPage }
-                    onChange={ ( value ) => setAttributes( { postPerPage: value } ) }
-                    min={ 2 }
-                    max={ 100 }
-                    units= {['Px', 'rem', 'Em']}
-                /> */}
-
-
-                {/* <SelectControl
-                    label={__('Orderby', 'product-parade-block')}
-                    value={ orderBy }
-                    onChange={ (value)=> setAttributes({ orderBy: value }) }
-                    options={ [
-                        { value: '', label: 'Orderby', disabled: true },
-                        { value: 'date', label: 'Date' },
-                        { value: 'title', label: 'Name' },
-                        { value: 'rating', label: 'Rating' },
-                    ] }
-                /> */}
-                
-                {/* <div className='product-parade-block-sidebar-label-text'>{__('Order', 'product-parade-block')}</div>
-                <div className='product-parade-block-button-group'>
-                    <Button className={`product-parade-block-sidebar-button ${order == "asc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "asc"})}>Ascending</Button>
-                    <Button className={`product-parade-block-sidebar-button ${order == "desc" ? 'active-button' : ''}`} onClick={()=> setAttributes({order: "desc"})}>Descending</Button>
-                </div> */}
-
                 <ToggleControl
                     label={__('Show Average Ratings', 'product-parade-block')}
                     help={
