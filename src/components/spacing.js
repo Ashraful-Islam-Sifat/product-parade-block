@@ -7,10 +7,10 @@ import { useDeviceType } from '../controls/controls';
 import { SpacingControlIcon, SpacingControlActiveIcon } from '../controls/svgIcon';
 
 const Spacing = ({label, attributes, attributesKey, setAttributes, units, linkButton = true, labelItem = {
-    'top': __('Top', 'ppb'),
-    'right': __('Right', 'ppb'),
-    'bottom': __('Bottom', 'ppb'),
-    'left': __('Left', 'ppb')
+    'top': __('Top', 'product-parade-block'),
+    'right': __('Right', 'product-parade-block'),
+    'bottom': __('Bottom', 'product-parade-block'),
+    'left': __('Left', 'product-parade-block')
 }, defaultValue = {'unit': 'px', 'value': {
     'top': '0',
     'right': '0',

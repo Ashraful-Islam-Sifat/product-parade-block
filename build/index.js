@@ -682,10 +682,10 @@ const Spacing = ({
   units,
   linkButton = true,
   labelItem = {
-    'top': __('Top', 'ppb'),
-    'right': __('Right', 'ppb'),
-    'bottom': __('Bottom', 'ppb'),
-    'left': __('Left', 'ppb')
+    'top': __('Top', 'product-parade-block'),
+    'right': __('Right', 'product-parade-block'),
+    'bottom': __('Bottom', 'product-parade-block'),
+    'left': __('Left', 'product-parade-block')
   },
   defaultValue = {
     'unit': 'px',
@@ -1074,7 +1074,7 @@ const StylesTab = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Container', 'product-parade-block'),
     initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_spacing__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Padding', 'styble'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Padding', 'product-parade-block'),
     attributes: containerPadding,
     attributesKey: 'containerPadding',
     setAttributes: setAttributes,
@@ -1089,10 +1089,10 @@ const StylesTab = ({
       }
     },
     labelItem: {
-      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'styble'),
-      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'styble'),
-      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'styble'),
-      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'styble')
+      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'product-parade-block'),
+      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'product-parade-block'),
+      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'product-parade-block'),
+      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'product-parade-block')
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-parade-block-button-group"
@@ -1151,7 +1151,7 @@ const StylesTab = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Name', 'product-parade-block'),
     initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_spacing__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Margin', 'styble'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Margin', 'product-parade-block'),
     attributes: titleMargin,
     attributesKey: 'titleMargin',
     setAttributes: setAttributes,
@@ -1166,10 +1166,10 @@ const StylesTab = ({
       }
     },
     labelItem: {
-      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'styble'),
-      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'styble'),
-      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'styble'),
-      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'styble')
+      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'product-parade-block'),
+      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'product-parade-block'),
+      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'product-parade-block'),
+      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'product-parade-block')
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     fontSize: nameFontSize,
@@ -1321,7 +1321,7 @@ const StylesTab = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Button', 'product-parade-block'),
     initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_spacing__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Padding', 'styble'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Padding', 'product-parade-block'),
     attributes: buttonPadding,
     attributesKey: 'buttonPadding',
     setAttributes: setAttributes,
@@ -1336,22 +1336,22 @@ const StylesTab = ({
       }
     },
     labelItem: {
-      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'styble'),
-      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'styble'),
-      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'styble'),
-      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'styble')
+      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'product-parade-block'),
+      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'product-parade-block'),
+      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'product-parade-block'),
+      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'product-parade-block')
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_spacing__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Margin', 'styble'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Margin', 'product-parade-block'),
     attributes: buttonMargin,
     attributesKey: 'buttonMargin',
     setAttributes: setAttributes,
     units: ["px", '%', "em"],
     labelItem: {
-      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'styble'),
-      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'styble'),
-      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'styble'),
-      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'styble')
+      'top': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Top', 'product-parade-block'),
+      'right': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Right', 'product-parade-block'),
+      'bottom': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Bottom', 'product-parade-block'),
+      'left': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Left', 'product-parade-block')
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     fontSize: buttonFontSize,

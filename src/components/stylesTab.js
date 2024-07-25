@@ -53,7 +53,7 @@ const StylesTab = ({attributes, setAttributes}) => {
         <PanelBody title={ __('Container','product-parade-block') } initialOpen={ false }>
 
             <Spacing
-                label={__('Padding', 'styble')}
+                label={__('Padding', 'product-parade-block')}
                 attributes={containerPadding}
                 attributesKey={'containerPadding'}
                 setAttributes={setAttributes}
@@ -65,10 +65,10 @@ const StylesTab = ({attributes, setAttributes}) => {
                     'left': "10" 
                 }}}
                 labelItem={{
-                    'top': __('Top', 'styble'),
-                    'right': __('Right', 'styble'),
-                    'bottom': __('Bottom', 'styble'),
-                    'left': __('Left', 'styble')
+                    'top': __('Top', 'product-parade-block'),
+                    'right': __('Right', 'product-parade-block'),
+                    'bottom': __('Bottom', 'product-parade-block'),
+                    'left': __('Left', 'product-parade-block')
                 }}
             />
 
@@ -136,7 +136,7 @@ const StylesTab = ({attributes, setAttributes}) => {
         <PanelBody title={ __('Name', 'product-parade-block') } initialOpen={ false }>
 
         <Spacing
-            label={__('Margin', 'styble')}
+            label={__('Margin', 'product-parade-block')}
             attributes={titleMargin}
             attributesKey={'titleMargin'}
             setAttributes={setAttributes}
@@ -148,10 +148,10 @@ const StylesTab = ({attributes, setAttributes}) => {
                 'left': "0" 
             }}}
             labelItem={{
-                'top': __('Top', 'styble'),
-                'right': __('Right', 'styble'),
-                'bottom': __('Bottom', 'styble'),
-                'left': __('Left', 'styble')
+                'top': __('Top', 'product-parade-block'),
+                'right': __('Right', 'product-parade-block'),
+                'bottom': __('Bottom', 'product-parade-block'),
+                'left': __('Left', 'product-parade-block')
             }}
         />
 
@@ -321,7 +321,7 @@ const StylesTab = ({attributes, setAttributes}) => {
         <PanelBody title={ __('Button', 'product-parade-block') } initialOpen={ false }>
             <>
             <Spacing
-                label={__('Padding', 'styble')}
+                label={__('Padding', 'product-parade-block')}
                 attributes={buttonPadding}
                 attributesKey={'buttonPadding'}
                 setAttributes={setAttributes}
@@ -333,23 +333,23 @@ const StylesTab = ({attributes, setAttributes}) => {
                     'left': "10" 
                 }}}
                 labelItem={{
-                    'top': __('Top', 'styble'),
-                    'right': __('Right', 'styble'),
-                    'bottom': __('Bottom', 'styble'),
-                    'left': __('Left', 'styble')
+                    'top': __('Top', 'product-parade-block'),
+                    'right': __('Right', 'product-parade-block'),
+                    'bottom': __('Bottom', 'product-parade-block'),
+                    'left': __('Left', 'product-parade-block')
                 }}
             />
             <Spacing
-                label={__('Margin', 'styble')}
+                label={__('Margin', 'product-parade-block')}
                 attributes={buttonMargin}
                 attributesKey={'buttonMargin'}
                 setAttributes={setAttributes}
                 units={["px", '%', "em"]}
                 labelItem={{
-                    'top': __('Top', 'styble'),
-                    'right': __('Right', 'styble'),
-                    'bottom': __('Bottom', 'styble'),
-                    'left': __('Left', 'styble')
+                    'top': __('Top', 'product-parade-block'),
+                    'right': __('Right', 'product-parade-block'),
+                    'bottom': __('Bottom', 'product-parade-block'),
+                    'left': __('Left', 'product-parade-block')
                 }}
             />
                 <Typography
