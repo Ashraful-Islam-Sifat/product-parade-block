@@ -135,7 +135,7 @@
           "Tablet": "px",
           "Mobile": "px"
         },
-        "allChange": false
+        "allChange": true
       }
     },
     "nameFontSize": {
@@ -324,6 +324,68 @@
         "color": "",
         "style": "none",
         "width": "0px"
+      }
+    },
+    "buttonPadding": {
+      "type": "object",
+      "default": {
+        "device": {
+          "Desktop": {
+            "top": "10",
+            "right": "10",
+            "bottom": "10",
+            "left": "10"
+          },
+          "Tablet": {
+            "top": "10",
+            "right": "10",
+            "bottom": "10",
+            "left": "10"
+          },
+          "Mobile": {
+            "top": "10",
+            "right": "10",
+            "bottom": "10",
+            "left": "10"
+          }
+        },
+        "unit": {
+          "Desktop": "px",
+          "Tablet": "px",
+          "Mobile": "px"
+        },
+        "allChange": true
+      }
+    },
+    "buttonMargin": {
+      "type": "object",
+      "default": {
+        "device": {
+          "Desktop": {
+            "top": "0",
+            "right": "0",
+            "bottom": "5",
+            "left": "0"
+          },
+          "Tablet": {
+            "top": "",
+            "right": "",
+            "bottom": "5",
+            "left": ""
+          },
+          "Mobile": {
+            "top": "",
+            "right": "",
+            "bottom": "5",
+            "left": ""
+          }
+        },
+        "unit": {
+          "Desktop": "px",
+          "Tablet": "px",
+          "Mobile": "px"
+        },
+        "allChange": false
       }
     },
     "showSortingDropdown": {

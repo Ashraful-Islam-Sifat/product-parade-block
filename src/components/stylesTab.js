@@ -10,7 +10,7 @@ import Spacing from "./spacing";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize, buttonBorder, buttonHoverBorder, buttonBorderRadius, titleMargin, containerPadding } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize, buttonBorder, buttonHoverBorder, buttonBorderRadius, titleMargin, containerPadding, buttonPadding, buttonMargin } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
     const [nameStyleType, setNameStyleType] = useState('default');
@@ -53,11 +53,17 @@ const StylesTab = ({attributes, setAttributes}) => {
         <PanelBody title={ __('Container','product-parade-block') } initialOpen={ false }>
 
             <Spacing
-                label={__('Margin', 'styble')}
+                label={__('Padding', 'styble')}
                 attributes={containerPadding}
                 attributesKey={'containerPadding'}
                 setAttributes={setAttributes}
                 units={["px", '%', "em"]}
+                defaultValue={{unit: "px", value: {
+                    'top': "10",
+                    'right': "10",
+                    'bottom': "10",
+                    'left': "10" 
+                }}}
                 labelItem={{
                     'top': __('Top', 'styble'),
                     'right': __('Right', 'styble'),
@@ -135,6 +141,12 @@ const StylesTab = ({attributes, setAttributes}) => {
             attributesKey={'titleMargin'}
             setAttributes={setAttributes}
             units={["px", '%', "em"]}
+            defaultValue={{unit: "px", value: {
+                'top': "0",
+                'right': "0",
+                'bottom': "0",
+                'left': "0" 
+            }}}
             labelItem={{
                 'top': __('Top', 'styble'),
                 'right': __('Right', 'styble'),
@@ -308,88 +320,120 @@ const StylesTab = ({attributes, setAttributes}) => {
 
         <PanelBody title={ __('Button', 'product-parade-block') } initialOpen={ false }>
             <>
-                    <Typography
-                        fontSize = {buttonFontSize} 
-                        fontSizeKey = "buttonFontSize"
-                        defaultFontSize={{unit: 'px', value: 16}}
-                        attributes ={ attributes }
-                        setAttributes={ setAttributes }
-                        fontFamily='buttonFontFamily'
-                        fontWeight='buttonFontWeight'
-                    />
-                    <MyRangeControl
-                        label={__('Border Radius', 'product-parade-block')}
-                        setAttributes={setAttributes}
-                        attributes={buttonBorderRadius}
-                        units= {['px', '%', 'em']}
-                        attributesKey={'buttonBorderRadius'}
-                        min={0}
-                        max={40}
-                        step={1}
-                    />
-                    <div className='product-parade-block-button-group'>
-                        <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setButtonStyleType('default')}>Default</Button>
-                        <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "hover" ? 'active-button' : ''}`} onClick={()=> setButtonStyleType('hover')}>Hover</Button>
-                    </div>
-                    {buttonStyleType === 'default'&&
-                    <>
-                    <BorderControl
-                        colors={ colors }
-                        label={ __( 'Border', 'product-parade-block' ) }
-                        onChange={(v) => setAttributes({ buttonBorder: v })}
-                        value={ buttonBorder }
-                    />
-                    <PanelColorSettings
-                        disableCustomColors={false}
-                        colorSettings={[
-                            {
-                                label: __('Background', 'product-parade-block'),
-                                value: buttonBgColor,
-                                onChange: (value) => {
-                                    setAttributes({ buttonBgColor: value });
-                                }
-                            },
-                            {
-                                label: __('Text Color', 'product-parade-block'),
-                                value: buttonTextColor,
-                                onChange: (value) => {
-                                    setAttributes({ buttonTextColor: value });
-                                }
+            <Spacing
+                label={__('Padding', 'styble')}
+                attributes={buttonPadding}
+                attributesKey={'buttonPadding'}
+                setAttributes={setAttributes}
+                units={["px", '%', "em"]}
+                defaultValue={{unit: "px", value: {
+                    'top': "10",
+                    'right': "10",
+                    'bottom': "10",
+                    'left': "10" 
+                }}}
+                labelItem={{
+                    'top': __('Top', 'styble'),
+                    'right': __('Right', 'styble'),
+                    'bottom': __('Bottom', 'styble'),
+                    'left': __('Left', 'styble')
+                }}
+            />
+            <Spacing
+                label={__('Margin', 'styble')}
+                attributes={buttonMargin}
+                attributesKey={'buttonMargin'}
+                setAttributes={setAttributes}
+                units={["px", '%', "em"]}
+                labelItem={{
+                    'top': __('Top', 'styble'),
+                    'right': __('Right', 'styble'),
+                    'bottom': __('Bottom', 'styble'),
+                    'left': __('Left', 'styble')
+                }}
+            />
+                <Typography
+                    fontSize = {buttonFontSize} 
+                    fontSizeKey = "buttonFontSize"
+                    defaultFontSize={{unit: 'px', value: 16}}
+                    attributes ={ attributes }
+                    setAttributes={ setAttributes }
+                    fontFamily='buttonFontFamily'
+                    fontWeight='buttonFontWeight'
+                />
+                <MyRangeControl
+                    label={__('Border Radius', 'product-parade-block')}
+                    setAttributes={setAttributes}
+                    attributes={buttonBorderRadius}
+                    units= {['px', '%', 'em']}
+                    attributesKey={'buttonBorderRadius'}
+                    min={0}
+                    max={40}
+                    step={1}
+                />
+                <div className='product-parade-block-button-group'>
+                    <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "default" ? 'active-button' : ''}`} onClick={()=>setButtonStyleType('default')}>Default</Button>
+                    <Button className={`product-parade-block-sidebar-button ${buttonStyleType == "hover" ? 'active-button' : ''}`} onClick={()=>setButtonStyleType('hover')}>Hover</Button>
+                </div>
+                {buttonStyleType === 'default'&&
+                <>
+                <BorderControl
+                    colors={ colors }
+                    label={ __( 'Border', 'product-parade-block' ) }
+                    onChange={(v) => setAttributes({ buttonBorder: v })}
+                    value={ buttonBorder }
+                />
+                <PanelColorSettings
+                    disableCustomColors={false}
+                    colorSettings={[
+                        {
+                            label: __('Background', 'product-parade-block'),
+                            value: buttonBgColor,
+                            onChange: (value) => {
+                                setAttributes({ buttonBgColor: value });
                             }
-                        ]}
-                    />
-                    </>
-                    }
-                    {buttonStyleType === 'hover'&&
-                    <>
-                    <BorderControl
-                        colors={ colors }
-                        label={ __( 'Border', 'product-parade-block' ) }
-                        onChange={(v) => setAttributes({ buttonHoverBorder: v })}
-                        value={ buttonHoverBorder }
-                    />
-                    <PanelColorSettings
-                        disableCustomColors={false}
-                        colorSettings={[
-                            {
-                                label: __('Background', 'product-parade-block'),
-                                value: buttonHoverBgColor,
-                                onChange: (value) => {
-                                    setAttributes({ buttonHoverBgColor: value });
-                                }
-                            },
-                            {
-                                label: __('Text Color', 'product-parade-block'),
-                                value: buttonHoverTextColor,
-                                onChange: (value) => {
-                                    setAttributes({ buttonHoverTextColor: value });
-                                }
+                        },
+                        {
+                            label: __('Text Color', 'product-parade-block'),
+                            value: buttonTextColor,
+                            onChange: (value) => {
+                                setAttributes({ buttonTextColor: value });
                             }
-                        ]}
-                    />
-                    </>
-                    }
+                        }
+                    ]}
+                />
                 </>
+                }
+                {buttonStyleType === 'hover'&&
+                <>
+                <BorderControl
+                    colors={ colors }
+                    label={ __( 'Border', 'product-parade-block' ) }
+                    onChange={(v) => setAttributes({ buttonHoverBorder: v })}
+                    value={ buttonHoverBorder }
+                />
+                <PanelColorSettings
+                    disableCustomColors={false}
+                    colorSettings={[
+                        {
+                            label: __('Background', 'product-parade-block'),
+                            value: buttonHoverBgColor,
+                            onChange: (value) => {
+                                setAttributes({ buttonHoverBgColor: value });
+                            }
+                        },
+                        {
+                            label: __('Text Color', 'product-parade-block'),
+                            value: buttonHoverTextColor,
+                            onChange: (value) => {
+                                setAttributes({ buttonHoverTextColor: value });
+                            }
+                        }
+                    ]}
+                />
+                </>
+                }
+            </>
         </PanelBody>
         </>
      );

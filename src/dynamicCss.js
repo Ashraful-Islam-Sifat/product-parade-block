@@ -1,7 +1,7 @@
 import { cssDataCheck, cssString, unit } from "./controls/controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight, buttonBorder, buttonHoverBorder, titleMargin, containerPadding } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight, buttonBorder, buttonHoverBorder, titleMargin, containerPadding, buttonPadding, buttonMargin } = attributes;
 
     let desktopCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -54,13 +54,15 @@ function dynamicCss(attributes) {
             'font-family': buttonFontFamily,
             'font-size': cssDataCheck(buttonFontSize.device.Desktop, unit(buttonFontSize, 'Desktop')),
             'font-weight': buttonFontWeight,
-            'width': '132px',
-            'box-sizing': 'border-box',
+            'width': '122px',
+            'box-sizing': 'content-box',
             'border-radius':  cssDataCheck(buttonBorderRadius.device.Desktop, unit(buttonBorderRadius, 'Desktop')),
-            'padding': '10px',
+            'padding': cssDataCheck(buttonPadding.device.Desktop, unit(buttonPadding, 'Desktop')),
             'border': buttonBorder.color+' ' + buttonBorder.style +' '+ buttonBorder.width,
             'line-height': 'normal',
-            'min-height': 'auto'
+            'min-height': 'auto',
+            'margin': cssDataCheck(buttonMargin.device.Desktop, unit(buttonMargin, 'Desktop')),
+            
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId}  .ppb-product .add-to-cart .button:hover`]: {
             'background-color': buttonHoverBgColor,
