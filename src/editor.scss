@@ -243,6 +243,10 @@
 
     }
 
+    .ppb-spacing{
+        margin-bottom: 10px;
+    }
+
     .ppb-header-control-reset:hover{
         color: rgb(1, 83, 83);
     }
@@ -275,9 +279,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
             button{
                 &.active{
-                        background-color: green;
+                        background-color: rgb(1, 83, 83);
                 }
             }
         }

@@ -101,7 +101,7 @@ const Spacing = ({label, attributes, attributesKey, setAttributes, units, linkBu
 
     return(
         <>
-            <div className="ppb-spacing ppb-component-mb">
+            <div className="ppb-spacing">
                 <div className='ppb-spacing-part-1'>
                     <div className='my-range-control-header-area'>
                         <div className='left-area'>

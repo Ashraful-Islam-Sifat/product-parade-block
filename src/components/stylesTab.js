@@ -10,19 +10,13 @@ import Spacing from "./spacing";
 
 const StylesTab = ({attributes, setAttributes}) => {
     
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize, buttonBorder, buttonHoverBorder, buttonBorderRadius, titleMargin } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, buttonBgColor, buttonTextColor, buttonHoverBgColor, buttonHoverTextColor, buttonFontFamily, showAverageRatings, buttonFontSize, buttonBorder, buttonHoverBorder, buttonBorderRadius, titleMargin, containerPadding } = attributes;
 
     const [containerStyleType, setContainerStyleType] = useState('default');
     const [nameStyleType, setNameStyleType] = useState('default');
     const [priceStyleType, setPriceStyleType] = useState('default');
     const [iconsStyleType, setIconsStyleType] = useState('default');
     const [buttonStyleType, setButtonStyleType] = useState('default');
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDropdown = () => {
-      setIsOpen(!isOpen);
-    };
 
     const colors = [
         { name: 'Green 20', color: 'rgb(1, 83, 83)' },
@@ -57,6 +51,20 @@ const StylesTab = ({attributes, setAttributes}) => {
     return ( 
         <>
         <PanelBody title={ __('Container','product-parade-block') } initialOpen={ false }>
+
+            <Spacing
+                label={__('Margin', 'styble')}
+                attributes={containerPadding}
+                attributesKey={'containerPadding'}
+                setAttributes={setAttributes}
+                units={["px", '%', "em"]}
+                labelItem={{
+                    'top': __('Top', 'styble'),
+                    'right': __('Right', 'styble'),
+                    'bottom': __('Bottom', 'styble'),
+                    'left': __('Left', 'styble')
+                }}
+            />
 
             <div className='product-parade-block-button-group'>
                 <Button className={`product-parade-block-sidebar-button ${containerStyleType == "default" ? 'active-button' : ''}`} onClick={()=> setContainerStyleType('default')}>Default</Button>

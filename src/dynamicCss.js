@@ -1,7 +1,7 @@
 import { cssDataCheck, cssString, unit } from "./controls/controls";
 
 function dynamicCss(attributes) {
-    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight, buttonBorder, buttonHoverBorder, titleMargin } = attributes;
+    const { containerBgColor, containerBorder, containerHoverBgColor, containerHoverBorder, containerBorderRadius, nameFontSize, nameFontFamily, nameColor, nameHoverColor, priceFontSize, priceColor, priceHoverColor, iconSize, filledIconsColor, emptyIconsColor, filledIconsHoverColor, emptyIconsHoverColor, uniqueId, buttonBgColor, buttonTextColor, gapBetweenProducts, buttonHoverBgColor, buttonHoverTextColor, buttonBorderRadius, buttonFontFamily, nameFontWeight, priceFontWeight, buttonFontSize, buttonFontWeight, buttonBorder, buttonHoverBorder, titleMargin, containerPadding } = attributes;
 
     let desktopCss = {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
@@ -10,6 +10,7 @@ function dynamicCss(attributes) {
             'border-radius':  cssDataCheck(containerBorderRadius.device.Desktop, unit(containerBorderRadius, 'Desktop')),
             'transition': '0.4s all',
             'margin-right': cssDataCheck(gapBetweenProducts.device.Desktop, unit(gapBetweenProducts, 'Desktop')),
+            'padding': cssDataCheck(containerPadding.device.Desktop, unit(containerPadding, 'Desktop')),
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product:hover`]: {
             'background-color': containerHoverBgColor,
@@ -74,9 +75,11 @@ function dynamicCss(attributes) {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
             'margin-right': cssDataCheck(gapBetweenProducts.device.Tablet, unit(gapBetweenProducts, 'Tablet')),
             'border-radius':  cssDataCheck(containerBorderRadius.device.Tablet, unit(containerBorderRadius, 'Tablet')),
+            'padding': cssDataCheck(containerPadding.device.Tablet, unit(containerPadding, 'Tablet')),
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
             'font-size': cssDataCheck(nameFontSize.device.Tablet, unit(nameFontSize, 'Tablet')),
+            'margin': cssDataCheck(titleMargin.device.Tablet, unit(titleMargin, 'Tablet')),
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
             'font-size': cssDataCheck(priceFontSize.device.Tablet, unit(priceFontSize, 'Tablet')),
@@ -100,9 +103,11 @@ function dynamicCss(attributes) {
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product`]: {
             'margin-right': cssDataCheck(gapBetweenProducts.device.Mobile, unit(gapBetweenProducts, 'Mobile')),
             'border-radius':  cssDataCheck(containerBorderRadius.device.Mobile, unit(containerBorderRadius, 'Mobile')),
+            'padding': cssDataCheck(containerPadding.device.Mobile, unit(containerPadding, 'Mobile')),
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .product-name`]: {
             'font-size': cssDataCheck(nameFontSize.device.Mobile, unit(nameFontSize, 'Mobile')),
+            'margin': cssDataCheck(titleMargin.device.Mobile, unit(titleMargin, 'Mobile')),
         },
         [`.wp-block-wpdev-product-parade-block-${uniqueId} .ppb-product .product-contents .price`]: {
             'font-size': cssDataCheck(priceFontSize.device.Mobile, unit(priceFontSize, 'Mobile')),

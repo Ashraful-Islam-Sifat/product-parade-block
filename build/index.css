@@ -209,6 +209,9 @@
   color: rgb(1, 83, 83);
   background-color: rgba(140, 143, 148, 0.4392156863);
 }
+.product-parade-block-tab-panel .ppb-spacing {
+  margin-bottom: 10px;
+}
 .product-parade-block-tab-panel .ppb-header-control-reset:hover {
   color: rgb(1, 83, 83);
 }
@@ -241,9 +244,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .product-parade-block-tab-panel .ppb-spacing-part-2 .ppb-spacing-all button.active {
-  background-color: green;
+  background-color: rgb(1, 83, 83);
 }
 .product-parade-block-tab-panel .components-range-control__wrapper .components-range-control__track {
   background-color: rgb(1, 83, 83);
