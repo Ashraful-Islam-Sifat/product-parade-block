@@ -17,6 +17,31 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
+// Makes sure the plugin is defined before trying to use it.
+if (!function_exists('is_plugin_active_for_network')) {
+    require_once ABSPATH . '/wp-admin/includes/plugin.php';
+}
+
+// Function to display admin notice if WooCommerce is not active
+function product_parade_block_error_admin_notice() {
+    $plugin_page_url = admin_url('plugin-install.php?s=woocommerce&tab=search&type=term'); // URL to search for WooCommerce plugin
+    ?>
+    <div class="notice notice-error">
+        <p>
+            <?php _e('<strong>Product Parade Block</strong> plugin requires <strong>WooCommerce</strong> to be active.', 'product-parade-block'); ?>
+            <a href="<?php echo esc_url($plugin_page_url); ?>"><?php _e('Install or activate WooCommerce here.', 'product-parade-block'); ?></a>
+        </p>
+    </div>
+    <?php
+}
+
+
+// Check if WooCommerce is active
+if (!is_plugin_active_for_network('woocommerce/woocommerce.php') && !in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')), true)) {
+    add_action('admin_notices', 'product_parade_block_error_admin_notice');
+    return; // Exit if WooCommerce is not active
+}
+
 // Function to enqueue FontAwesome
 function enqueue_fontawesome() {
     wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
